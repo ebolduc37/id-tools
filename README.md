@@ -1,4 +1,4 @@
-# Comme des Garçons Identification Function / JavaScript
+# Comme des Garçons Identification / JavaScript
 
 ### Made possible by the support our [Patreon](https://www.patreon.com/bePatron?u=36066750) subscribers. Thank you!
 
