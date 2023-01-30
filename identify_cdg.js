@@ -1030,7 +1030,6 @@ function identify_cdg(code_input, year_input) {
     if ((year < 1969 || year_curr < year) && year > 0) error_empty("error: year out of range");
 
     // initializing values
-    let result = [];
     let code_output = "";
     let garmentID = '';
     let size = '';
@@ -1040,9 +1039,24 @@ function identify_cdg(code_input, year_input) {
     for (let rep of rep_list) if (code === rep[0] && (year === rep[1] || year === -1))
        collections.push("fake")
 
+    let result = [];
+
     // identifying the possible collections by going through the different product code patterns
 	if (ismonthlycode(code)) result = identify_cdg_monthly(code, year);
-    else if (isseasonalcode(code)) result = identify_cdg_seasonal(code, year);
+
+    // setting output values
+    if (result.length !== 0) {
+        code_output = result[0];
+        garmentID = result[2];
+        size = result[3];
+        collections = collections.concat(result[4]);
+    }
+
+    result = [];
+
+    // There can be overlaps between product codes from different periods
+
+    if (isseasonalcode(code)) result = identify_cdg_seasonal(code, year);
     else if (isshirtcode(code)) result = identify_cdg_shirt(code, year);
     else if (iscdgcdgcode(code)) result = identify_cdg_cdgcdg(code, year);
 
