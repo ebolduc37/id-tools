@@ -25,7 +25,7 @@ const name_dict = {
     // _
        'cdg':       "COMME des GARÇONS",
     // 1
-	   'blk':       "BLACK COMME des GARÇONS",
+	'blk':       "BLACK COMME des GARÇONS",
     // 2
         'pocket':     "COMME des GARÇONS POCKET",
     // 3
@@ -142,7 +142,7 @@ const lineID_dict = {
 
     '_': [[name_dict['cdg'],        'L',    [['',  1969], ['S', 1982]]]],
 
-	'1': [[name_dict['blk'],        'L',    [['S', 2009], ['',  9999]]]],
+    '1': [[name_dict['blk'],        'L',    [['S', 2009], ['',  9999]]]],
 
     '2': [[name_dict['pocket'],     'L',    [['S', 2011], ['',  2017]]]],
 
