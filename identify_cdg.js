@@ -1110,7 +1110,7 @@ function identifyToString(identification) {
     }
 	result += ", your item would have to be";
     if (garmentID in garmentID_dict) result += " " + garmentID_dict[garmentID];
-    if (size !== '') result += " in size " + size;
+    if (size !== '' && size !== '0') result += " in size " + size;
     result += " from";
     if (collections.length > 1 || collections[0][1].length > 1) result += " either";
     for (let col of collections) {
