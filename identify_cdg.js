@@ -25,7 +25,7 @@ const name_dict = {
     // _
        'cdg':       "COMME des GARÇONS",
     // 1
-	'blk':       "BLACK COMME des GARÇONS",
+       'blk':       "BLACK COMME des GARÇONS",
     // 2
         'pocket':     "COMME des GARÇONS POCKET",
     // 3
@@ -394,8 +394,7 @@ function error_false(str) {
 // output
     // (boolean) truth value of statement
 function isalpha(str) {
-    if (/^[0-9A-Za-z]$/.test(str)) return true;
-    else return error_false("internal error: wrong input to isalpha function");
+    return /^[0-9A-Za-z]+$/.test(str);
 };
 
 // returns true if the string is only composed of numerical digits
@@ -404,8 +403,7 @@ function isalpha(str) {
 // output
     // (boolean) truth value of statement
 function isnumeric(str) {
-    if (/^[0-9]$/.test(str)) return true;
-    else return error_false("internal error: wrong input to isnumeric function");
+    return /^[0-9]+$/.test(str);
 };
 
 // returns true if the character is an accepted type of schedule
@@ -1131,9 +1129,3 @@ function identifyToString(identification) {
     }
     return result
 };
-
-
-
-
-
-
