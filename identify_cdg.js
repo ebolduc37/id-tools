@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////
 ///// WELCOME TO THE 'COMME des GARÇONS' IDENTIFICATION CENTER /////
 ////////////////////////////////////////////////////////////////////
@@ -15,7 +14,7 @@
 ///// DICTIONARIES & OTHER VARIABLES
 
 // current year to act as a bound
-const year_curr = 2023;
+// const year_curr = 2023;
 
 // name dictionary for the different lines (and details) that are attached to different line IDs
 // categorized in (mostly) the same order as the line ID dictionary

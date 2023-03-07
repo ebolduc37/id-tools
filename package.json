@@ -1,6 +1,7 @@
 {
   "name": "cdg-identification",
   "version": "1.0.0",
+  "type": "module",
   "description": "Identify any Comme des Garçons piece from the product code and production year on the care label.",
   "main": "identify_cdg.js",
   "scripts": {
