@@ -1,7 +1,7 @@
 // garment ID dictionary for the different garment IDs and their corresponding type of garment
 // categorized alphabetically
 // key: garment ID / value: string for the type of garment
-export const garmentID_dict = {
+const garmentID_dict = {
   A: "a piece",
   B: "a button-up",
   C: "a coat",
@@ -16,3 +16,5 @@ export const garmentID_dict = {
   X: "a piece",
   Z: "a piece",
 };
+
+export default garmentID_dict;

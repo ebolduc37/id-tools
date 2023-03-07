@@ -3,7 +3,7 @@
 // key: season ID / value: [list of [season, year] pairs]
 // 'S' is for Spring/Summer and 'W' is for Autumn/Winter
 // for U and Z, there is no specific season and year pair they refer to
-export const seasonID_dict = {
+const seasonID_dict = {
   A: [
     ["S", 2008],
     ["S", 2018],
@@ -151,3 +151,5 @@ export const seasonID_dict = {
     ["W", 2015],
   ],
 };
+
+export default seasonID_dict;

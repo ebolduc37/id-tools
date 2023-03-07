@@ -1,7 +1,7 @@
 // name dictionary for the different lines (and details) that are attached to different line IDs
 // categorized in (mostly) the same order as the line ID dictionary
 // key: unique short string / value: corresponding name
-export const name_dict = {
+const name_dict = {
   // _
   cdg: "COMME des GARÇONS",
   // 1
@@ -110,3 +110,5 @@ export const name_dict = {
     "COMME des GARÇONS Chrome Hearts (custom COMME des GARÇONS HOMME PLUS)", // only the double name label
   chlim: "COMME des GARÇONS Chrome Hearts (Aoyama exclusive limited release)", // only the double name label
 };
+
+export default name_dict;

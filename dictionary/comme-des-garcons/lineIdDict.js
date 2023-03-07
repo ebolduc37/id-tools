@@ -8,7 +8,7 @@
 // 'S' is for Spring/Summer and 'W' is for Autumn/Winter
 // if it is unclear or if it is not a seasonal matter, the season is left as an empty string
 // if the line is still ongoing, the season is left as an empty string and the year is set to 9999
-export const lineID_dict = {
+const lineID_dict = {
   _: [
     [
       name_dict["cdg"],
@@ -694,3 +694,5 @@ export const lineID_dict = {
     ],
   ],
 };
+
+export default lineID_dict;

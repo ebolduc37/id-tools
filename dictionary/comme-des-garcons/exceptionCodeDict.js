@@ -63,3 +63,5 @@ const exception_code_dict = {
   CDGCH03: ["CDG-CH-03", 0, "B", "", [[name_dict["chlim"], [["W", 2021]]]]],
   CDGCH04: ["CDG-CH-04", 0, "B", "", [[name_dict["chlim"], [["W", 2021]]]]],
 };
+
+export default exception_code_dict;
