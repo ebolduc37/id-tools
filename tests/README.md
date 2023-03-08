@@ -1,5 +1,7 @@
 # Docs: Unit Testing with Jest
 
+[View Jest Documentation](https://jestjs.io/docs/getting-started)
+
 ### Introduction
 
 Jest is a Javascript testing framework that be used for granular testing of any relevant files. It is curently configured to handle typescript implementation.
