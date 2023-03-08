@@ -5,7 +5,7 @@
   "description": "Identify any Comme des Garçons piece from the product code and production year on the care label",
   "main": "identify_cdg.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

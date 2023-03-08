@@ -1,8 +1,6 @@
 import example from "./example";
 
 describe("Jest Test Example", () => {
-  const expectedResult = 7;
-
   it("returns the sum of two arguments passed into the example function", () => {
     const a = 1;
     const b = 1;
