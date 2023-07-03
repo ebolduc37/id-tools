@@ -1,4 +1,4 @@
-# Identification of Fashion Labels in JavaScript
+# Identification of COMME des GARÇONS in JavaScript
 
 ### [Try it out!](https://www.myclothingarchive.net/identification)
 
