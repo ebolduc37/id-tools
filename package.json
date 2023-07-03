@@ -2,10 +2,10 @@
   "name": "cdg-identification",
   "version": "1.0.0",
   "type": "module",
-  "description": "Identify any Comme des Garçons piece from the product code and production year on the care label",
+  "description": "Identify any Comme des Garçons piece from the product code and production year on the care label.",
   "main": "identify_cdg.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/ebolduc37/cdg-identification/issues"
   },
-  "homepage": "https://github.com/ebolduc37/cdg-identification#readme",
+  "homepage": "https://github.com/ebolduc37/identification#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "@babel/preset-env": "^7.20.2",

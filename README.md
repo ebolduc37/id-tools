@@ -1,10 +1,10 @@
-# Comme des Garçons Identification / JavaScript
+# Identification of COMME des GARÇONS in JavaScript
 
-### This project was made possible with the support of our Patreon subscribers. Thank you!
+### [Try it out!](https://www.myclothingarchive.net/identification)
 
-This JavaScript function can help you identify any Comme des Garçons piece from the product code and production year on the care label. For more information on how to identify Comme des Garçons, please consult the identification chart. [Try it out on our website.](https://www.myclothingarchive.net/identification)
+This JavaScript code implements the identification of a COMME des GARÇONS piece from basic information provided by the user. For more information on how to identify COMME des GARÇONS, please consult our identification chart.
 
-### You can support us by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [by making a donation on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
+This project was made possible thanks to the support of our Patreon subscribers. You can support us by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or by [making a donation on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
 
 ## Function
 
