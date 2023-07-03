@@ -1,0 +1,20 @@
+{
+  "name": "cdg-identification",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Identify any Comme des Garçons piece from the product code and production year on the care label.",
+  "main": "identify_cdg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebolduc37/cdg-identification.git"
+  },
+  "author": "Etienne Bolduc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebolduc37/cdg-identification/issues"
+  },
+  "homepage": "https://github.com/ebolduc37/cdg-identification#readme"
+}
