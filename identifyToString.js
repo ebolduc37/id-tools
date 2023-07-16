@@ -1,7 +1,7 @@
 /**
- * Identification driver.
+ * Identification string.
  *
- * Driver file to execute the identification of a garment.
+ * Return the string representation of a garment identification.
  *
  * @author Etienne Bolduc
  */
@@ -74,7 +74,7 @@ function identifyToString(labelInput, codeInput, yearInput) {
         }
         str += `, `;
 
-        str += `the item could be ${res.itemType} `;
+        str += `the item could be ${res.garmentType} `;
         if (res.size != null) str += `in size ${res.size} `;
         str += `from`;
         if (res.byLine.length > 1 || res.byLine[0].colList.length > 1) str += ` one of`;
