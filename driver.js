@@ -100,6 +100,3 @@ function identifyToString(labelInput, codeInput, yearInput) {
     }
     return str;
 }
-
-const labelInput = "CDG", codeInput = "DB-91001M", yearInput = "erased";
-console.log(identifyToString(labelInput, codeInput, yearInput))
