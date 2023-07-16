@@ -100,3 +100,5 @@ function identifyToString(labelInput, codeInput, yearInput) {
     }
     return str;
 }
+
+export default identifyToString;
