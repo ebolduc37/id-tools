@@ -1,6 +1,6 @@
 # Garment identification software in JavaScript
 
-### [Try it out on our website!](https://www.myclothingarchive.net/identification)
+### [Try it out on our website!](https://www.myclothingarchive.net/identification-tools)
 
 This JavaScript code implements the identification of COMME des GARÇONS garments using simple information provided by the user. Please consult our identification chart for more information on identifying COMME des GARÇONS.
 
