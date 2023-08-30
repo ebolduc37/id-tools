@@ -132,8 +132,8 @@ export default identifyToString;
 
 const inputCDG = {
     labelInput: Labels.CDG,
-    codeInput: "HB-11000M",
-    yearInput: "erased",
+    codeInput: "PB-11000M",
+    yearInput: "1999",
 }
 //console.log(identifyToString(inputCDG));
 
@@ -144,4 +144,4 @@ const inputYY = {
     signatureStyle: SignatureStyles.MAIN_I,
     fontType: FontTypes.SERIF,
 }
-console.log(identifyToString(inputYY));
+//console.log(identifyToString(inputYY));
