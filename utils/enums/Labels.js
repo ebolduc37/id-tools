@@ -13,6 +13,7 @@
  */
 const Labels = Object.freeze({
     CDG: "COMME des GARÇONS",
+    YY: "Yohji Yamamoto",
 });
 
 
