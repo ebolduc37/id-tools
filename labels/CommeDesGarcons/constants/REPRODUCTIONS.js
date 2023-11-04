@@ -14,6 +14,7 @@
  */
 const REPRODUCTIONS = Object.freeze({
     "AZT026": 2005,
+    "AZT026": 2007,
     "AZT095": 2009
 });
 

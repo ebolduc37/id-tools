@@ -135,7 +135,7 @@ const inputCDG = {
     codeInput: "PB-11000M",
     yearInput: "1999",
 }
-//console.log(identifyToString(inputCDG));
+console.log(identifyToString(inputCDG));
 
 const inputYY = {
     labelInput: Labels.YY,
