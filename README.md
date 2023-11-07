@@ -1,4 +1,4 @@
-# Garment identification software in JavaScript
+# Garment Identification Module in JavaScript
 
 ### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
