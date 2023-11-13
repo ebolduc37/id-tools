@@ -1,17 +1,17 @@
 /**
  * Initialization of LINE_ID.
  *
- * Initialization of the lines associated with each line ID and their corresponding
- * operation period and production schedule.
+ * Initialization of the Yohji Yamamoto line IDs and their corresponding
+ * lines with adjusted operation period.
  *
  * @author Etienne Bolduc
  */
 
-import { Seasons, Collection, deepFreeze } from "../../../utils/index.js";
+import { deepFreeze } from "../../../utils/index.js";
 import LINES from "./LINES.js";
 
 /**
- * Enum for the line IDs and lines.
+ * Enum for the Yohji Yamamoto line IDs and their corresponding lines.
  * @constant
  * @readonly
  * @enum {LINES[]}

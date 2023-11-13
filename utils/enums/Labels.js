@@ -1,13 +1,13 @@
 /**
  * Initialization of enum Labels.
  *
- * Initialization of labels covered that can be identified.
+ * Initialization of labels that can be identified.
  *
  * @author Etienne Bolduc
  */
 
 /**
- * Enum for labels that can be identified.
+ * Enum for the labels that can be identified.
  * @readonly
  * @enum {string}
  */
@@ -15,6 +15,5 @@ const Labels = Object.freeze({
     CDG: "COMME des GARÇONS",
     YY: "Yohji Yamamoto",
 });
-
 
 export default Labels;

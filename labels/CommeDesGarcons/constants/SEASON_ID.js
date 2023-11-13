@@ -1,16 +1,19 @@
 /**
  * Initialization of SEASON_ID.
  *
- * Initialization of the season IDs and their corresponding conditional function on collections
- * to use as a filter on possible candidates.
+ * Initialization of the COMME des GARÇONS season IDs and their corresponding
+ * conditional function on the collections to use as a filter on possible candidates.
  *
  * @author Etienne Bolduc
  */
 
-import { Seasons, Collection } from "../../../utils/index.js";
+import { Collection } from "../../../utils/index.js";
 
-// Setting preliminary functions to simplify the notation below
-const REG = (col, lastDigit) => col.isAfterOrIn(new Collection(2003, Seasons.W)) && col.year % 10 === lastDigit;
+// Initializing useful parameter
+const SEASONS = Collection.SEASONS;
+
+// Initializing preliminary functions for simplification
+const REG = (col, lastDigit) => col.isAfterOrIn(new Collection(2003, SEASONS.W)) && col.year % 10 === lastDigit;
 const REG_S = (col, lastDigit) => REG(col, lastDigit) && col.isS();
 const REG_W = (col, lastDigit) => REG(col, lastDigit) && col.isW();
 
@@ -21,35 +24,34 @@ const REG_W = (col, lastDigit) => REG(col, lastDigit) && col.isW();
  */
 
 /**
- * Enum for the season IDs and conditional functions to filter accordingly.
+ * Enum for the COMME des GARÇONS season IDs and conditional functions to filter accordingly.
  * @constant
  * @readonly
  * @enum {lambda}
  */
 const SEASON_ID = Object.freeze({
-
   /** @param {Collection} col @return {boolean} */
   A: col => REG_S(col, 8),
   /** @param {Collection} col @return {boolean} */
   B: col => REG_W(col, 8),
   /** @param {Collection} col @return {boolean} */
-  C: col => REG_S(col, 9) || col.isEqualTo(new Collection(2001, Seasons.W)),
+  C: col => REG_S(col, 9) || col.isEqualTo(new Collection(2001, SEASONS.W)),
   /** @param {Collection} col @return {boolean} */
-  D: col => REG_W(col, 9) || col.isEqualTo(new Collection(2001, Seasons.W)),
+  D: col => REG_W(col, 9) || col.isEqualTo(new Collection(2001, SEASONS.W)),
   /** @param {Collection} col @return {boolean} */
-  E: col => REG_S(col, 0) || col.isEqualTo(new Collection(2002, Seasons.S)),
+  E: col => REG_S(col, 0) || col.isEqualTo(new Collection(2002, SEASONS.S)),
   /** @param {Collection} col @return {boolean} */
-  F: col => REG_W(col, 0) || col.isEqualTo(new Collection(2002, Seasons.S)),
+  F: col => REG_W(col, 0) || col.isEqualTo(new Collection(2002, SEASONS.S)),
   /** @param {Collection} col @return {boolean} */
-  G: col => REG_S(col, 1) || col.isEqualTo(new Collection(2002, Seasons.W)),
+  G: col => REG_S(col, 1) || col.isEqualTo(new Collection(2002, SEASONS.W)),
   /** @param {Collection} col @return {boolean} */
-  H: col => REG_W(col, 1) || col.isEqualTo(new Collection(2002, Seasons.W)),
+  H: col => REG_W(col, 1) || col.isEqualTo(new Collection(2002, SEASONS.W)),
   /** @param {Collection} col @return {boolean} */
-  I: col => REG_S(col, 2) || col.isEqualTo(new Collection(2003, Seasons.S)),
+  I: col => REG_S(col, 2) || col.isEqualTo(new Collection(2003, SEASONS.S)),
   /** @param {Collection} col @return {boolean} */
-  J: col => REG_W(col, 2) || col.isEqualTo(new Collection(2003, Seasons.S)),
+  J: col => REG_W(col, 2) || col.isEqualTo(new Collection(2003, SEASONS.S)),
   /** @param {Collection} col @return {boolean} */
-  K: col => REG_S(col, 3) || col.isEqualTo(new Collection(2003, Seasons.W)),
+  K: col => REG_S(col, 3) || col.isEqualTo(new Collection(2003, SEASONS.W)),
   /** @param {Collection} col @return {boolean} */
   L: col => REG_W(col, 3),
   /** @param {Collection} col @return {boolean} */

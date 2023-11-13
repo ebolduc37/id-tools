@@ -1,8 +1,8 @@
 /**
  * Initialization of class OperationPeriod.
  *
- * Initialization of a class for an operation period with some collection as lower bound,
- * another as an upper bound, and a condition on the elements in-between.
+ * Initialization of a class for an operation period with a collection as lower bound,
+ * another as an upper bound, and a condition on the elements.
  *
  * @author Etienne Bolduc
  */
@@ -15,10 +15,10 @@ import Collection from "./Collection.js";
 class OperationPeriod {
     /**
      * Create a class for an operation period with a lower bound, an upper bound,
-     * and a condition on the elements in-between.
+     * and a condition on the elements.
      * @param {Collection} [lowerBound] - Lower bound collection.
      * @param {Collection} [upperBound] - Upper bound collection.
-     * @param {function} [filter] - Condition on the elements in-between.
+     * @param {function} [filter] - Condition on the elements.
      */
     constructor(lowerBound, upperBound, filter = () => true) {
         /** @type {Collection} */
@@ -48,14 +48,23 @@ class OperationPeriod {
 
     /**
      * Evaluate if the instance overlaps another operation period.
-     * @param {OperationPeriod} opPeriod - Operation period to compare the range with.
+     * @param {OperationPeriod} operationPeriod - Operation period to compare the range with.
      * @return {boolean} True if the operation periods overlap; false otherwise.
      */
-    overlaps(opPeriod) {
-        if (this.lowerBound == null) return this.upperBound == null || opPeriod.lowerBound == null || opPeriod.lowerBound.isBeforeOrIn(this.upperBound);
-        else if (this.upperBound == null) return opPeriod.upperBound == null || this.lowerBound.isBeforeOrIn(opPeriod.upperBound);
-        else if (opPeriod.lowerBound == null) return opPeriod.upperBound == null || this.lowerBound.isBeforeOrIn(opPeriod.upperBound);
-        else return opPeriod.lowerBound.isBeforeOrIn(this.upperBound) || this.lowerBound.isBeforeOrIn(opPeriod.upperBound);
+    overlaps(operationPeriod) {
+        if (this.lowerBound == null)
+            return this.upperBound == null
+                || operationPeriod.lowerBound == null
+                || operationPeriod.lowerBound.isBeforeOrIn(this.upperBound);
+        else if (this.upperBound == null)
+            return operationPeriod.upperBound == null
+                || this.lowerBound.isBeforeOrIn(operationPeriod.upperBound);
+        else if (operationPeriod.lowerBound == null)
+            return operationPeriod.upperBound == null
+                || this.lowerBound.isBeforeOrIn(operationPeriod.upperBound);
+        else
+            return operationPeriod.lowerBound.isBeforeOrIn(this.upperBound)
+                || this.lowerBound.isBeforeOrIn(operationPeriod.upperBound);
     }
 };
 

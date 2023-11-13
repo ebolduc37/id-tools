@@ -12,7 +12,7 @@ export { default as FROM_MONTHLY_TO_SEASONAL } from "./FROM_MONTHLY_TO_SEASONAL.
 export { default as GARMENT_ID } from "./GARMENT_ID.js";
 export { default as LINE_ID } from "./LINE_ID.js";
 export { default as LINES } from "./LINES.js";
-export { default as REPRODUCTIONS } from "./REPRODUCTIONS.js";
+export { default as COUNTERFEITS } from "./COUNTERFEITS.js";
 export { default as SEASON_ID } from "./SEASON_ID.js";
 export { default as SIZES } from "./SIZES.js";
 export { default as SPECIAL_CASES } from "./SPECIAL_CASES.js";

@@ -1,7 +1,7 @@
 /**
- * COMME des GARÇONS constants index.
+ * Yohji Yamamoto constants index.
  *
- * Barrel file to export COMME des GARÇONS constants across the codebase.
+ * Barrel file to export Yohji Yamamoto constants across the codebase.
  *
  * @author Etienne Bolduc
  */

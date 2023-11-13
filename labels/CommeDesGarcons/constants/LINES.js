@@ -1,249 +1,256 @@
 /**
  * Initialization of LINES.
  *
- * Initialization of the lines with information on their operation period and production schedule if necessary.
+ * Initialization of all COMME des GARÇONS lines with information
+ * on their operation period and production schedule when required.
  *
  * @author Etienne Bolduc
  */
 
-import { deepFreeze, Seasons, Collection, OperationPeriod } from "../../../utils/index.js";
-import ProductionSchedules from "../utils/enums/ProductionSchedules.js";
-import LineCDG from "../utils/classes/LineCDG.js";
+import { Collection, Line, OperationPeriod, deepFreeze } from "../../../utils/index.js";
+
+// Initializing useful parameters
+const SEASONS = Collection.SEASONS;
+const PRODUCTION_SCHEDULE_TYPES = Line.PRODUCTION_SCHEDULE_TYPES;
 
 /**
- * Enum for the lines and their operation period and production schedule information
+ * Enum for all COMME des GARÇONS lines with their operation period and production schedule when required.
  * @constant
  * @readonly
- * @enum {LineCDG}
+ * @enum {Line}
  */
 const LINES = deepFreeze({
 
     // _
-    CDG: new LineCDG("COMME des GARÇONS",
+    CDG: new Line("COMME des GARÇONS",
         new OperationPeriod(new Collection(1969)),
-        ProductionSchedules.EARLY), // L production schedule until Spring/Summer 1982 in LINEID
+        PRODUCTION_SCHEDULE_TYPES.EARLY), // L production schedule until Spring/Summer 1982 in LINEID
 
     // 1
-    BLK: new LineCDG("BLACK COMME des GARÇONS",
-        new OperationPeriod(new Collection(2009, Seasons.S))),
+    BLK: new Line("BLACK COMME des GARÇONS",
+        new OperationPeriod(new Collection(2009, SEASONS.S))),
 
     // 2
-    POCKET: new LineCDG("COMME des GARÇONS POCKET",
-        new OperationPeriod(new Collection(2011, Seasons.S), new Collection(2017))),
+    POCKET: new Line("COMME des GARÇONS POCKET",
+        new OperationPeriod(new Collection(2011, SEASONS.S), new Collection(2017))),
 
     // 3
-    TAOCDG: new LineCDG("tao COMME des GARÇONS",
-        new OperationPeriod(new Collection(2005, Seasons.W), new Collection(2011, Seasons.S))),
-    NOIRKN: new LineCDG("noir kei ninomiya",
-        new OperationPeriod(new Collection(2013, Seasons.W))),
+    TAOCDG: new Line("tao COMME des GARÇONS",
+        new OperationPeriod(new Collection(2005, SEASONS.W), new Collection(2011, SEASONS.S))),
+    NOIRKN: new Line("noir kei ninomiya",
+        new OperationPeriod(new Collection(2013, SEASONS.W))),
 
     // 5
-    SPEEDO: new LineCDG("speedo COMME des GARÇONS",
-        new OperationPeriod((new Collection(2007, Seasons.S), new Collection(2009, Seasons.S),
+    SPEEDO: new Line("speedo COMME des GARÇONS",
+        new OperationPeriod((new Collection(2007, SEASONS.S), new Collection(2009, SEASONS.S),
             col => col.isS()))),
 
     // 6
-    EDITW: new LineCDG("COMME des GARÇONS EDITED (for women)",
-        new OperationPeriod(new Collection(2007, Seasons.S))),
+    EDITW: new Line("COMME des GARÇONS EDITED (women)",
+        new OperationPeriod(new Collection(2007, SEASONS.S))),
 
     // 7
-    EDITM: new LineCDG("COMME des GARÇONS EDITED (for men)",
-        new OperationPeriod(new Collection(2007, Seasons.S))),
+    EDITM: new Line("COMME des GARÇONS EDITED (men)",
+        new OperationPeriod(new Collection(2007, SEASONS.S))),
 
     // 8
-    WALL: new LineCDG("Wallet COMME des GARÇONS",
+    WALL: new Line("Wallet COMME des GARÇONS",
         new OperationPeriod(new Collection(1980)),
-        ProductionSchedules.LATE),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
 
     // A
-    NOIR: new LineCDG("COMME des GARÇONS NOIR",
-        new OperationPeriod(new Collection(1987, Seasons.W), new Collection(2009, Seasons.S),
-            col => !col.isBetween(new Collection(1996, Seasons.S), new Collection(2005, Seasons.S))),
-        ProductionSchedules.EARLY),
-    PLAY: new LineCDG("PLAY COMME des GARÇONS",
+    NOIR: new Line("COMME des GARÇONS NOIR",
+        new OperationPeriod(new Collection(1987, SEASONS.W), new Collection(2009, SEASONS.S),
+            col => !col.isBetween(new Collection(1996, SEASONS.S), new Collection(2005, SEASONS.S))),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    PLAY: new Line("PLAY COMME des GARÇONS",
         new OperationPeriod(new Collection(2002))),
 
     // B
-    PPDSM: new LineCDG("COMME des GARÇONS parfums PARFUMS (shop exclusive DOVER STREET MARKET launch)",
-        new OperationPeriod(new Collection(2009, Seasons.W), new Collection(2009, Seasons.W))),
+    PPDSM: new Line("COMME des GARÇONS parfums PARFUMS (shop exclusive DOVER STREET MARKET launch)",
+        new OperationPeriod(new Collection(2009, SEASONS.W), new Collection(2009, SEASONS.W))),
 
     // D
-    H2: new LineCDG("COMME des GARÇONS HOMME DEUX",
+    H2: new Line("COMME des GARÇONS HOMME DEUX",
         new OperationPeriod(new Collection(1987)),
-        ProductionSchedules.LATE),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
 
     // E
-    RKCDG: new LineCDG("Rei Kawakubo [COMME des GARÇONS Canadian trademark]",
-        new OperationPeriod(new Collection(1984, Seasons.S), new Collection(1995, Seasons.W)),
-        ProductionSchedules.EARLY),
-    GAN: new LineCDG("GANRYU COMME des GARÇONS",
-        new OperationPeriod(new Collection(2008, Seasons.S), new Collection(2017, Seasons.S))),
+    RKCDG: new Line("Rei Kawakubo [COMME des GARÇONS Canadian trademark]",
+        new OperationPeriod(new Collection(1984, SEASONS.S), new Collection(1995, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    GAN: new Line("GANRYU COMME des GARÇONS",
+        new OperationPeriod(new Collection(2008, SEASONS.S), new Collection(2017, SEASONS.S))),
 
     // F
-    FR: new LineCDG("COMME des GARÇONS FRANCE",
-        new OperationPeriod(new Collection(1983, Seasons.W), new Collection(1987, Seasons.W)),
-        ProductionSchedules.LATE),
-    SHIRT: new LineCDG("COMME des GARÇONS SHIRT",
+    FR: new Line("COMME des GARÇONS FRANCE",
+        new OperationPeriod(new Collection(1983, SEASONS.W), new Collection(1987, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    SHIRT: new Line("COMME des GARÇONS SHIRT",
         new OperationPeriod(new Collection(1988))),
-    FOREVER: new LineCDG("COMME des GARÇONS SHIRT (FOREVER)",
+    FOREVER: new Line("COMME des GARÇONS SHIRT (FOREVER)",
         new OperationPeriod(new Collection(2010))),
-    SHIRTGIRL: new LineCDG("COMME des GARÇONS SHIRT (GIRL)",
-        new OperationPeriod(new Collection(2010, Seasons.S), new Collection(2014, Seasons.W))),
-    SHIRTBOY: new LineCDG("COMME des GARÇONS SHIRT BOY",
-        new OperationPeriod(new Collection(2015, Seasons.W), new Collection(2016, Seasons.S))),
-    SHIRTBOYS: new LineCDG("COMME des GARÇONS SHIRT boys",
-        new OperationPeriod(new Collection(2016, Seasons.W), new Collection(2019, Seasons.S))),
+    SHIRTGIRL: new Line("COMME des GARÇONS SHIRT (GIRL)",
+        new OperationPeriod(new Collection(2010, SEASONS.S), new Collection(2014, SEASONS.W))),
+    SHIRTBOY: new Line("COMME des GARÇONS SHIRT BOY",
+        new OperationPeriod(new Collection(2015, SEASONS.W), new Collection(2016, SEASONS.S))),
+    SHIRTBOYS: new Line("COMME des GARÇONS SHIRT boys",
+        new OperationPeriod(new Collection(2016, SEASONS.W), new Collection(2019, SEASONS.S))),
 
     // H
-    H: new LineCDG("COMME des GARÇONS HOMME",
+    H: new Line("COMME des GARÇONS HOMME",
         new OperationPeriod(new Collection(1978)),
-        ProductionSchedules.LATE),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
 
     // I
-    IND: new LineCDG("COMME des GARÇONS indigo",
-        new OperationPeriod(new Collection(1983, Seasons.W), new Collection(1987, Seasons.W)),
-        ProductionSchedules.LATE),
-    HI: new LineCDG("COMME des GARÇONS HOMME (inverted)",
-        new OperationPeriod(new Collection(1994, Seasons.S), new Collection(1998, Seasons.W)),
-        ProductionSchedules.LATE),
-    HH: new LineCDG("COMME des GARÇONS HOMME HOMME",
-        new OperationPeriod(new Collection(1999, Seasons.S), new Collection(2001, Seasons.W)),
-        ProductionSchedules.LATE),
-    JAN: new LineCDG("JAN COMME des GARÇONS",
-        new OperationPeriod(new Collection(2005, Seasons.S), new Collection(2006, Seasons.W))),
-    ALIVE: new LineCDG("MAGAZINE ALIVE (VOGUE NIPPON and COMME des GARÇONS)",
-        new OperationPeriod(new Collection(2009, Seasons.W), new Collection(2009, Seasons.W))),
-    GDS: new LineCDG("GOOD DESIGN SHOP COMME des GARÇONS",
+    IND: new Line("COMME des GARÇONS indigo",
+        new OperationPeriod(new Collection(1983, SEASONS.W), new Collection(1987, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    HI: new Line("COMME des GARÇONS HOMME (inverted)",
+        new OperationPeriod(new Collection(1994, SEASONS.S), new Collection(1998, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    HH: new Line("COMME des GARÇONS HOMME HOMME",
+        new OperationPeriod(new Collection(1999, SEASONS.S), new Collection(2001, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    JAN: new Line("JAN COMME des GARÇONS",
+        new OperationPeriod(new Collection(2005, SEASONS.S), new Collection(2006, SEASONS.W))),
+    ALIVE: new Line("MAGAZINE ALIVE (VOGUE NIPPON and COMME des GARÇONS)",
+        new OperationPeriod(new Collection(2009, SEASONS.W), new Collection(2009, SEASONS.W))),
+    GDS: new Line("GOOD DESIGN SHOP COMME des GARÇONS",
         new OperationPeriod(new Collection(2011), new Collection(2018))),
 
     // J
-    JW: new LineCDG("JUNYA WATANABE COMME des GARÇONS",
-        new OperationPeriod(new Collection(1992, Seasons.W)),
-        ProductionSchedules.EARLY),
+    JW: new Line("JUNYA WATANABE COMME des GARÇONS",
+        new OperationPeriod(new Collection(1992, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
 
     // K
-    AOY: new LineCDG("COMME des GARÇONS (Aoyama exclusive)",
-        new OperationPeriod(new Collection(1989, Seasons.S)),
-        ProductionSchedules.LATE),
-    CHAOY: new LineCDG("COMME des GARÇONS Chrome Hearts (Aoyama exclusive)",
-        new OperationPeriod(new Collection(2012, Seasons.S), new Collection(2012, Seasons.W))),
+    AOY: new Line("COMME des GARÇONS (Aoyama exclusive)",
+        new OperationPeriod(new Collection(1989, SEASONS.S)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    CHAOY: new Line("COMME des GARÇONS Chrome Hearts (Aoyama exclusive)",
+        new OperationPeriod(new Collection(2012, SEASONS.S), new Collection(2012, SEASONS.W))),
 
     // L
-    ISE115: new LineCDG("COMME des GARÇONS (ISETAN 115yrs)",
-        new OperationPeriod(new Collection(2001, Seasons.W), new Collection(2001, Seasons.W)),
-        ProductionSchedules.LATE),
-    ISE2MAN: new LineCDG("COMME des GARÇONS HOMME PLUS (CELEBRATION ISETAN MEN'S 1YEAR + COMME des GARCONS 2 MAN)",
-        new OperationPeriod(new Collection(2004, Seasons.W), new Collection(2004, Seasons.W))),
-    PPOH: new LineCDG("COMME des GARÇONS parfums PARFUMS (shop exclusive ODOUR HOLIDAY)",
-        new OperationPeriod(new Collection(2019, Seasons.W), new Collection(2019, Seasons.W))),
+    ISE115: new Line("COMME des GARÇONS (ISETAN 115yrs)",
+        new OperationPeriod(new Collection(2001, SEASONS.W), new Collection(2001, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    ISE2MAN: new Line("COMME des GARÇONS HOMME PLUS (CELEBRATION ISETAN MEN'S 1YEAR + COMME des GARCONS 2 MAN)",
+        new OperationPeriod(new Collection(2004, SEASONS.W), new Collection(2004, SEASONS.W))),
+    PPOH: new Line("COMME des GARÇONS parfums PARFUMS (shop exclusive ODOUR HOLIDAY)",
+        new OperationPeriod(new Collection(2019, SEASONS.W), new Collection(2019, SEASONS.W))),
 
     // N
-    GIRL: new LineCDG("COMME des GARÇONS GIRL",
-        new OperationPeriod(new Collection(2015, Seasons.S))),
+    GIRL: new Line("COMME des GARÇONS GIRL",
+        new OperationPeriod(new Collection(2015, SEASONS.S))),
 
     // O
-    CCNO: new LineCDG("10 corso como COMME des GARÇONS (shop exclusive number series)",
-        new OperationPeriod(new Collection(2002, Seasons.S), new Collection(2003, Seasons.W)),
-        ProductionSchedules.LATE),
-    AOYSE: new LineCDG("COMME des GARÇONS (Aoyama exclusive)",
-        new OperationPeriod(new Collection(2004, Seasons.W), new Collection(2004, Seasons.W))),
-    CDGSE: new LineCDG("COMME des GARÇONS (shop exclusive)",
+    CCNO: new Line("10 corso como COMME des GARÇONS (shop exclusive number series)",
+        new OperationPeriod(new Collection(2002, SEASONS.S), new Collection(2003, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    AOYSE: new Line("COMME des GARÇONS (Aoyama exclusive)",
+        new OperationPeriod(new Collection(2004, SEASONS.W), new Collection(2004, SEASONS.W))),
+    CDGSE: new Line("COMME des GARÇONS (shop exclusive)",
         new OperationPeriod(new Collection(2005))),
-    WALLSE: new LineCDG("Wallet COMME des GARÇONS (shop exclusive)",
+    WALLSE: new Line("Wallet COMME des GARÇONS (shop exclusive)",
         new OperationPeriod(new Collection(2005))),
-    EYESE: new LineCDG("eYe JUNYA WATANABE COMME des GARÇONS MAN (shop exclusive)",
-        new OperationPeriod(new Collection(2005, Seasons.W), new Collection(2005, Seasons.W))),
-    SPEEDOSE: new LineCDG("speedo COMME des GARÇONS (shop exclusive)",
-        new OperationPeriod(new Collection(2006, Seasons.S), new Collection(2006, Seasons.S))),
-    TRAD: new LineCDG("TRADING MUSEUM COMME des GARÇONS",
-        new OperationPeriod(new Collection(2009, Seasons.W))),
-    PLAYXMAX: new LineCDG("PLAY COMME des GARÇONS (shop exclusive holidays special)",
-        new OperationPeriod(new Collection(2013, Seasons.W), new Collection(2017, Seasons.W),
+    EYESE: new Line("eYe JUNYA WATANABE COMME des GARÇONS MAN (shop exclusive)",
+        new OperationPeriod(new Collection(2005, SEASONS.W), new Collection(2005, SEASONS.W))),
+    SPEEDOSE: new Line("speedo COMME des GARÇONS (shop exclusive)",
+        new OperationPeriod(new Collection(2006, SEASONS.S), new Collection(2006, SEASONS.S))),
+    TRAD: new Line("TRADING MUSEUM COMME des GARÇONS",
+        new OperationPeriod(new Collection(2009, SEASONS.W))),
+    PLAYXMAX: new Line("PLAY COMME des GARÇONS (shop exclusive holidays special)",
+        new OperationPeriod(new Collection(2013, SEASONS.W), new Collection(2017, SEASONS.W),
             col => col.isW())),
-    BM: new LineCDG("black market COMME des GARÇONS",
-        new OperationPeriod(new Collection(2017, Seasons.S))),
-    CDGLINESE: new LineCDG("CDG (shop exclusive)",
-        new OperationPeriod(new Collection(2018, Seasons.S), new Collection(2018, Seasons.S))),
-    FRIENDS: new LineCDG("Friends and COMME des GARÇONS Happy Holidays",
-        new OperationPeriod(new Collection(2018, Seasons.W), new Collection(2018, Seasons.W))),
-    PEOPLE: new LineCDG("COMME des GARÇONS (People of the Year by COMME des GARÇONS and SWITCH)",
-        new OperationPeriod(new Collection(2020, Seasons.W), new Collection(2020, Seasons.W))),
+    BM: new Line("black market COMME des GARÇONS",
+        new OperationPeriod(new Collection(2017, SEASONS.S))),
+    CDGLINESE: new Line("CDG (shop exclusive)",
+        new OperationPeriod(new Collection(2018, SEASONS.S), new Collection(2018, SEASONS.S))),
+    FRIENDS: new Line("Friends and COMME des GARÇONS Happy Holidays",
+        new OperationPeriod(new Collection(2018, SEASONS.W), new Collection(2018, SEASONS.W))),
+    PEOPLE: new Line("COMME des GARÇONS (People of the Year by COMME des GARÇONS and SWITCH)",
+        new OperationPeriod(new Collection(2020, SEASONS.W), new Collection(2020, SEASONS.W))),
 
     // P
-    HP: new LineCDG("COMME des GARÇONS HOMME PLUS",
-        new OperationPeriod(new Collection(1985, Seasons.S)),
-        ProductionSchedules.EARLY),
-    HPS: new LineCDG("SPORT COMME des GARÇONS HOMME PLUS",
-        new OperationPeriod(new Collection(2005, Seasons.W), new Collection(2006, Seasons.W))),
-    HPE: new LineCDG("COMME des GARÇONS HOMME PLUS EVER GREEN",
-        new OperationPeriod(new Collection(2005, Seasons.W), new Collection(2009, Seasons.W))),
+    HP: new Line("COMME des GARÇONS HOMME PLUS",
+        new OperationPeriod(new Collection(1985, SEASONS.S)),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    HPS: new Line("SPORT COMME des GARÇONS HOMME PLUS",
+        new OperationPeriod(new Collection(2005, SEASONS.W), new Collection(2006, SEASONS.W))),
+    HPE: new Line("COMME des GARÇONS HOMME PLUS EVER GREEN",
+        new OperationPeriod(new Collection(2005, SEASONS.W), new Collection(2009, SEASONS.W))),
+
+    // Q
+    ALD: new Line("aldentelacrise for Comme des Garçons",
+        new OperationPeriod(new Collection(2009, SEASONS.W), new Collection(2009, SEASONS.W))),
 
     // R
-    RDC: new LineCDG("robe de chambre COMME des GARÇONS",
-        new OperationPeriod(new Collection(1981), new Collection(2004, Seasons.W),),
-        ProductionSchedules.LATE),
-    CDGCDG: new LineCDG("COMME des GARÇONS COMME des GARÇONS",
+    RDC: new Line("robe de chambre COMME des GARÇONS",
+        new OperationPeriod(new Collection(1981), new Collection(2004, SEASONS.W),),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    CDGCDG: new Line("COMME des GARÇONS COMME des GARÇONS",
         new OperationPeriod(new Collection(1993))),
 
     // S
-    CC: new LineCDG("10 corso como COMME des GARÇONS",
-        new OperationPeriod(new Collection(2002, Seasons.S), new Collection(2011, Seasons.W)),
-        ProductionSchedules.LATE),
-    CDGLINE: new LineCDG("CDG",
-        new OperationPeriod(new Collection(2018, Seasons.S))),
+    CC: new Line("10 corso como COMME des GARÇONS",
+        new OperationPeriod(new Collection(2002, SEASONS.S), new Collection(2011, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    CDGLINE: new Line("CDG",
+        new OperationPeriod(new Collection(2018, SEASONS.S))),
 
     // T
-    TRIC: new LineCDG("tricot COMME des GARÇONS",
-        new OperationPeriod(new Collection(1981), new Collection(2021, Seasons.W)),
-        ProductionSchedules.LATE),
-    TAO: new LineCDG("tao",
-        new OperationPeriod(new Collection(2022, Seasons.S))),
+    TRIC: new Line("tricot COMME des GARÇONS",
+        new OperationPeriod(new Collection(1981), new Collection(2021, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    TAO: new Line("tao",
+        new OperationPeriod(new Collection(2022, SEASONS.S))),
 
     // U
-    HPD: new LineCDG("COMME des GARÇONS HOMME PLUS in collaboration with District UNITED ARROWS",
-        new OperationPeriod(new Collection(2000, Seasons.W), new Collection(2005, Seasons.W),
-            col => !col.isBetween(new Collection(2003, Seasons.S), new Collection(2005, Seasons.S))),
-        ProductionSchedules.EARLY),
-    PINK: new LineCDG("JUNYA WATANABE COMME des GARÇONS (pink)",
-        new OperationPeriod(new Collection(2003, Seasons.S), new Collection(2014, Seasons.S))),
+    HPD: new Line("COMME des GARÇONS HOMME PLUS in collaboration with District UNITED ARROWS",
+        new OperationPeriod(new Collection(2000, SEASONS.W), new Collection(2005, SEASONS.W),
+            col => !col.isBetween(new Collection(2003, SEASONS.S), new Collection(2005, SEASONS.S))),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    PINK: new Line("JUNYA WATANABE COMME des GARÇONS (pink)",
+        new OperationPeriod(new Collection(2003, SEASONS.S), new Collection(2014, SEASONS.S))),
 
     // V
-    BEAT: new LineCDG("The Beatles COMME des GARÇONS",
-        new OperationPeriod(new Collection(2009, Seasons.S))),
+    BEAT: new Line("The Beatles COMME des GARÇONS",
+        new OperationPeriod(new Collection(2009, SEASONS.S))),
 
     // W
-    JWMAN: new LineCDG("JUNYA WATANABE COMME des GARÇONS MAN",
-        new OperationPeriod(new Collection(2002, Seasons.S)),
-        ProductionSchedules.EARLY),
-    EYE: new LineCDG("eYe JUNYA WATANABE COMME des GARÇONS MAN",
-        new OperationPeriod(new Collection(2005, Seasons.W))),
+    JWMAN: new Line("JUNYA WATANABE COMME des GARÇONS MAN",
+        new OperationPeriod(new Collection(2002, SEASONS.S)),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    EYE: new Line("eYe JUNYA WATANABE COMME des GARÇONS MAN",
+        new OperationPeriod(new Collection(2005, SEASONS.W))),
 
     // X
-    RKHP: new LineCDG("Rei Kawakubo [COMME des GARÇONS HOMME PLUS Canadian trademark]",
-        new OperationPeriod(new Collection(1985, Seasons.S), new Collection(1995, Seasons.W)),
-        ProductionSchedules.EARLY),
-    JWD: new LineCDG("JUNYA WATANABE COMME des GARÇONS denim",
-        new OperationPeriod(new Collection(2014), new Collection(2021, Seasons.W))),
+    RKHP: new Line("Rei Kawakubo [COMME des GARÇONS HOMME PLUS Canadian trademark]",
+        new OperationPeriod(new Collection(1985, SEASONS.S), new Collection(1995, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.EARLY),
+    JWD: new Line("JUNYA WATANABE COMME des GARÇONS denim",
+        new OperationPeriod(new Collection(2014), new Collection(2021, SEASONS.W))),
 
     // Z
-    TWO: new LineCDG("COMME des GARÇONS HOMME HOMME (Aoyama exclusive COMME des GARÇONS two)",
-        new OperationPeriod(new Collection(1999, Seasons.S), new Collection(2001, Seasons.W)),
-        ProductionSchedules.LATE),
-    PEG: new LineCDG("Peggy Moffitt COMME des GARÇONS",
-        new OperationPeriod(new Collection(2003, Seasons.S), new Collection(2005, Seasons.W))),
-    VIV: new LineCDG("Vivienne Westwood COMME des GARÇONS",
-        new OperationPeriod(new Collection(2003, Seasons.W), new Collection(2004, Seasons.S))),
-    CDGCHG: new LineCDG("COMME des GARÇONS Chrome Hearts (DOVER STREET MARKET GINZA exclusive)",
+    TWO: new Line("COMME des GARÇONS HOMME HOMME (Aoyama exclusive COMME des GARÇONS two)",
+        new OperationPeriod(new Collection(1999, SEASONS.S), new Collection(2001, SEASONS.W)),
+        PRODUCTION_SCHEDULE_TYPES.LATE),
+    PEG: new Line("Peggy Moffitt COMME des GARÇONS",
+        new OperationPeriod(new Collection(2003, SEASONS.S), new Collection(2005, SEASONS.W))),
+    VIV: new Line("Vivienne Westwood COMME des GARÇONS",
+        new OperationPeriod(new Collection(2003, SEASONS.W), new Collection(2004, SEASONS.S))),
+    CDGCHG: new Line("COMME des GARÇONS Chrome Hearts (DOVER STREET MARKET GINZA exclusive)",
         new OperationPeriod(new Collection(2012), new Collection(2019))),
 
     // EXCEPTIONS
-    CCBB: new LineCDG("10 corso como COMME des GARÇONS (BE@RBRICK series)"),
-    HPCH: new LineCDG("COMME des GARÇONS HOMME PLUS customized by Chrome Hearts"), // both labels on garment
-    CCSS: new LineCDG("10 corso como COMME des GARÇONS (summer series)"),
-    SHCHRE: new LineCDG("COMME des GARÇONS Chrome Hearts (striped shirt limited edition)"), // only the double name label
-    SHCH: new LineCDG("COMME des GARÇONS SHIRT customized by Chrome Hearts"),  // both labels on garment
-    HPCHRE: new LineCDG("COMME des GARÇONS Chrome Hearts (custom COMME des GARÇONS HOMME PLUS)"), // only the double name label
-    CHLIM: new LineCDG("COMME des GARÇONS Chrome Hearts (Aoyama exclusive limited release)"), // only the double name label
+    CCBB: new Line("10 corso como COMME des GARÇONS (BE@RBRICK series)"),
+    HPCH: new Line("COMME des GARÇONS HOMME PLUS customized by Chrome Hearts"), // both labels on garment
+    CCSS: new Line("10 corso como COMME des GARÇONS (summer series)"),
+    SHCHRE: new Line("COMME des GARÇONS Chrome Hearts (striped shirt limited edition)"), // only the double name label
+    SHCH: new Line("COMME des GARÇONS SHIRT customized by Chrome Hearts"),  // both labels on garment
+    HPCHRE: new Line("COMME des GARÇONS Chrome Hearts (custom COMME des GARÇONS HOMME PLUS)"), // only the double name label
+    CHLIM: new Line("COMME des GARÇONS Chrome Hearts (Aoyama exclusive limited release)"), // only the double name label
 });
 
 export default LINES;

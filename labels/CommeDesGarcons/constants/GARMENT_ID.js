@@ -1,7 +1,7 @@
 /**
  * Initialization of GARMENT_ID.
  *
- * Initialization of the garment IDs and their corresponding garment type.
+ * Initialization of the COMME des GARÇONS garment IDs and their corresponding garment type.
  *
  * @author Etienne Bolduc
  */

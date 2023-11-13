@@ -2,13 +2,13 @@
  * Initialization of WRONG_CODE.
  *
  * Initialization as a constant of the code that appears on the care label
- * but that is not the product code.
+ * that is not a COMME des GARÇONS product code.
  *
  * @author Etienne Bolduc
  */
 
 /**
- * Code that appears on the care label but that is not the product code.
+ * Code that appears on the care label that is not the product code.
  * @constant
  * @readonly
  * @type {string}

@@ -2,29 +2,40 @@
  * Initialization of class Collection.
  *
  * Initialization of a class for a collection consisting of either a year of production
- * or a year with a season and optionally a title and textual information.
+ * or a year and a season, optionally with a title and textual information.
  *
  * @author Etienne Bolduc
  */
 
-import Seasons from "../enums/Seasons.js";
+/**
+ * Enum for bi-annual seasons.
+ * @readonly
+ * @enum {string}
+ */
+const SEASONS = Object.freeze({
+    S: "Spring/Summer",
+    W: "Autumn/Winter"
+})
 
 /**
  * Class for a collection consisting of either a year of production
- * or a year with a season and optionally a title and textual information.
+ * or a year and a season, optionally with a title and textual information.
  */
 class Collection {
+
+    static SEASONS = SEASONS;
+
     /**
      * Create a collection from a year and optionally a season, a title, and a text.
      * @param {number} year - Year of the collection.
-     * @param {Seasons} [season] - Season of the collection.
+     * @param {Collection.SEASONS} [season] - Season of the collection.
      * @param {string} [title] - Title of the collection.
-     * @param {string} [text] - Text about the collection added at the end of its string representation.
+     * @param {string} [text] - Text to be added at the end of the collection's string representation.
      */
     constructor(year, season, title, text) {
         /** @type {number} */
         this.year = year;
-        /** @type {Seasons} */
+        /** @type {Collection.SEASONS} */
         this.season = season;
         /** @type {string} */
         this.title = title;
@@ -47,25 +58,25 @@ class Collection {
     toString() {
         let str = `${this.year}`;
         if (this.season != null) str = `${this.season} ` + str;
-        if (this.title != null) str = str + ` • ${this.title}`;
-        if (this.text != null) str = str + `${this.text}`;
+        if (this.title != null && this.title != "") str = str + ` • ${this.title}`;
+        if (this.text != null && this.text != "") str = str + ` ${this.text}`;
         return str;
     }
 
     /**
-     * Evaluate if the instance has season of type Seasons.S.
-     * @return {boolean} True if the instance has season of type Seasons.S; false otherwise.
+     * Evaluate if the instance's season is SEASONS.S.
+     * @return {boolean} True if the instance's season is SEASONS.S; false otherwise.
      */
     isS() {
-        return this.season == Seasons.S;
+        return this.season === Collection.SEASONS.S;
     }
 
     /**
-     * Evaluate if the instance has season of type Seasons.W.
-     * @return {boolean} True if the instance has season of type Seasons.W; false otherwise.
+     * Evaluate if the instance's season is SEASONS.W.
+     * @return {boolean} True if the instance's season is SEASONS.W; false otherwise.
      */
     isW() {
-        return this.season == Seasons.W;
+        return this.season === Collection.SEASONS.W;
     }
 
     /**
@@ -82,7 +93,7 @@ class Collection {
      * @return {boolean} True if the instance's year is equal to that year; false otherwise.
      */
     isReleasedIn(year) {
-        return this.year == year;
+        return this.year === year;
     }
 
     /**
@@ -91,7 +102,7 @@ class Collection {
      * @return {boolean} True if the instance could have been produced in that year; false otherwise.
      */
     isProducedIn(year) {
-        return this.year == year || this.isEqualTo(new Collection(year + 1, Seasons.S));
+        return this.year === year || this.isEqualTo(new Collection(year + 1, Collection.SEASONS.S));
     }
 
     /**
@@ -100,7 +111,7 @@ class Collection {
      * @return {boolean} True if the instance could have been produced before or in that year; false otherwise.
      */
     isProducedBeforeOrIn(year) {
-        return this.year <= year || this.isEqualTo(new Collection(year + 1, Seasons.S));
+        return this.year <= year || this.isEqualTo(new Collection(year + 1, Collection.SEASONS.S));
     };
 
     /**
@@ -129,7 +140,7 @@ class Collection {
      */
     isEqualTo(col) {
         if (col == null) return false;
-        return this.year == col.year && this.season == col.season;
+        return this.year === col.year && this.season === col.season;
     }
 
     /**

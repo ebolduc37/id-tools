@@ -1,14 +1,15 @@
 /**
  * Initialization of YEAR_SEASONAL.
  *
- * Initialization as a constant of the year and quarter that the product code stopped following
- * the monthly pattern and began following the seasonal pattern.
+ * Initialization as a constant containing the year and quarter
+ * where the COMME des GARÇONS product code changed from
+ * the monthly pattern and to the seasonal pattern.
  *
  * @author Etienne Bolduc
  */
 
 /**
- * Year and quarter at which the product code pattern changed from monthly to seasonal notation.
+ * Year and quarter where the COMME des GARÇONS product code changed from monthly to seasonal pattern.
  * @constant
  * @readonly
  * @type {{year: number, quarter: number}}

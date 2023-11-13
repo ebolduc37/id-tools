@@ -1,14 +1,14 @@
 /**
  * Initialization of FROM_BLANK_TO_PRINT.
  *
- * Initialization as a constant of the year and quarter that the year was printed
- * on every care label except in certain known cases.
+ * Initialization as a constant containing the year and quarter
+ * where COMME des GARÇONS began to print the production year on care labels.
  *
  * @author Etienne Bolduc
  */
 
 /**
- * Year and quarter at which the year print broadly appeared on all care labels.
+ * Year and quarter where COMME des GARÇONS began to print the production year on care labels.
  * @constant
  * @readonly
  * @type {{year: number, quarter: number}}

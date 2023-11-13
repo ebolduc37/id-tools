@@ -9,12 +9,11 @@
 // classes
 export { default as Collection } from "./classes/Collection.js";
 export { default as Identification } from "./classes/Identification.js";
+export { default as Input } from "./classes/Input.js";
 export { default as Line } from "./classes/Line.js";
-export { default as Occurrence } from "./classes/Occurrence.js";
 export { default as OperationPeriod } from "./classes/OperationPeriod.js";
 // enums
 export { default as Labels } from "./enums/Labels.js";
-export { default as Seasons } from "./enums/Seasons.js";
 // functions
 export { default as deepFreeze } from "./functions/deepFreeze.js";
 export { default as isNumeric } from "./functions/isNumeric.js";

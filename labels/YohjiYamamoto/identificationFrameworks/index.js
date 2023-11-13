@@ -1,9 +1,9 @@
 /**
  * Yohji Yamamoto identification frameworks index.
  *
- * Barrel file to export Yohji Yamamoto identification frameworks across the codebase.
+ * Barrel file to assign the Yohji Yamamoto identification frameworks to InputYY.
  *
  * @author Etienne Bolduc
  */
 
-export { identifyRegular as Regular } from "./Regular.js";
+import "./Regular.js";

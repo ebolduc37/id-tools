@@ -7,9 +7,8 @@
  * @author Etienne Bolduc
  */
 
-// Imports
-import { standardize, Collection, OperationPeriod, Occurrence, Labels } from "../../../utils/index.js";
-import { IdentificationCDG, YearPrint, isValid } from "../utils/index.js";
+import { Collection, Identification, Labels, OperationPeriod } from "../../../utils/index.js";
+import { InputCDG } from "../utils/index.js";
 
 // Constants
 import { ALL_COLLECTIONS, LINES } from "../constants/index.js";
@@ -17,52 +16,45 @@ const REGEX_FOREVER = /^[C][D][G][A-Z]\d[A-Z]{2}[0-9A-Z]*$/;
 const OPERATION_PERIOD_FOREVER = new OperationPeriod(new Collection(2010), new Collection(2020));
 
 /**
- * Evaluate if a product code and year print data correspond to the COMME des GARÇONS SHIRT (FOREVER) framework.
- * @param {string} codeInput - Product code.
- * @param {(string|YearPrint)} yearInput - Year print data.
- * @return {boolean} True if the pair corresponds to the COMME des GARÇONS SHIRT framework; false otherwise.
+ * Evaluate if the input data corresponds to the COMME des GARÇONS SHIRT (FOREVER) framework.
+ * @return {boolean} True if the input data corresponds to the COMME des GARÇONS SHIRT framework; false otherwise.
  */
-function isForever(codeInput, yearInput) {
+InputCDG.prototype.isForever = function() {
 
-    // Returning false if the product code and year print data are not valid inputs
-    if (!isValid(codeInput, yearInput)) return false;
+    // Returning false if the input data is not valid
+    if (!this.isValid()) return false;
 
-    // Standardizing the product code and year print data
-    codeInput = standardize(codeInput);
-    yearInput = new YearPrint(yearInput);
+    // Initializing useful parameters
+    const productCode = this.getProductCodeStandardized();
 
     // Returning false if the product code does not fit the regular expression of the framework
-    if (!REGEX_FOREVER.test(codeInput)) return false;
+    if (!REGEX_FOREVER.test(productCode)) return false;
 
     // Returning false if there is a year print
-    if (yearInput.isNumeric()) return false;
+    if (this.isYearPrintNumeric()) return false;
 
     // Returning true otherwise
     return true;
 };
 
 /**
- * Identification of the occurrence of possible collections from the product code and year print data
+ * Identification of the occurrence of possible collections from the input data
  * by following the COMME des GARÇONS SHIRT (FOREVER) framework.
- * @param {string} codeInput - Product code.
- * @param {(string|YearPrint)} yearInput - Year print data.
- * @return {IdentificationCDG} Identification of the occurrence of possible collections.
+ * @return {Identification} Identification of the occurrence of possible collections.
  */
-function identifyForever(codeInput, yearInput) {
+InputCDG.prototype.identifyForever = function() {
 
-    // Returning null if the product code and year print data are not
-    // valid COMME des GARÇONS SHIRT (FOREVER) framework inputs
-    if (!isForever(codeInput, yearInput)) return null;
+    // Returning null if the input data is not a valid COMME des GARÇONS SHIRT (FOREVER) framework input
+    if (!this.isForever()) return null;
 
-    // Standardizing the product code and year print data
-    codeInput = standardize(codeInput);
-    yearInput = new YearPrint(yearInput);
+    // Initializing useful parameters
+    const productCode = this.getProductCodeStandardized();
 
     // Initializing the identification object
-    let identification = new IdentificationCDG({
+    let identification = new Identification({
         label: Labels.CDG,
+        input: this.copy(),
         framework: LINES.FOREVER.name,
-        yearPrint: yearInput,
     });
 
     // Initializing the set of candidates as production years
@@ -71,11 +63,9 @@ function identifyForever(codeInput, yearInput) {
     candidates = candidates.filter(col => OPERATION_PERIOD_FOREVER.includes(col));
 
     // Assigning the occurrence
-    identification.byLine = [new Occurrence(LINES.FOREVER.name, candidates)];
+    identification.lineList = [LINES.FOREVER.newCollectionList(candidates)];
     // Assigning the standardized code as the stylized code
-    identification.codeStylized = codeInput;
+    identification.codeStylized = productCode;
 
     return identification;
 };
-
-export { identifyForever };

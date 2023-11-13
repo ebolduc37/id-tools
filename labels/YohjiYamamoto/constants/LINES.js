@@ -1,15 +1,19 @@
 /**
  * Initialization of LINES.
  *
- * Initialization of the lines with information on their operation period.
+ * Initialization of all Yohji Yamamoto lines with information
+ * on their operation period.
  *
  * @author Etienne Bolduc
  */
 
-import { deepFreeze, Seasons, Collection, OperationPeriod, Line } from "../../../utils/index.js";
+import { Collection, Line, OperationPeriod, deepFreeze } from "../../../utils/index.js";
+
+// Initializing useful parameter
+const SEASONS = Collection.SEASONS;
 
 /**
- * Enum for the lines and their operation period and production schedule information
+ * Enum for all Yohji Yamamoto lines with their operation period.
  * @constant
  * @readonly
  * @enum {Line}
@@ -18,11 +22,11 @@ const LINES = deepFreeze({
 
     // F
     YY: new Line("Yohji Yamamoto",
-        new OperationPeriod(new Collection(1981, Seasons.W))),
+        new OperationPeriod(new Collection(1981, SEASONS.W))),
 
     // H
-    YYPH: new Line("Yohji Yamamoto POUR HOMME",
-        new OperationPeriod(new Collection(1981, Seasons.W))),
+    YYPH: new Line("Yohji Yamamoto Pour Homme",
+        new OperationPeriod(new Collection(1981, SEASONS.W))),
 });
 
 export default LINES;

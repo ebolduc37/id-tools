@@ -1,7 +1,7 @@
 /**
  * Initialization of GARMENT_ID.
  *
- * Initialization of the garment IDs and their corresponding garment type.
+ * Initialization of the Yohji Yamamoto garment IDs and their corresponding garment type.
  *
  * @author Etienne Bolduc
  */
@@ -20,6 +20,7 @@ const GARMENT_ID = Object.freeze({
 	P: "pants or shorts",
 	S: "a skirt",
 	T: "a top",
+	Y: "a piece" // only seen on a tailored jacket/blazer so far
 });
 
 export default GARMENT_ID;

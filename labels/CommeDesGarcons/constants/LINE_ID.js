@@ -1,25 +1,28 @@
 /**
  * Initialization of LINE_ID.
  *
- * Initialization of the lines associated with each line ID and their corresponding
- * operation period and production schedule.
+ * Initialization of the COMME des GARÇONS line IDs and their corresponding
+ * lines with adjusted operation period and production schedule if required.
  *
  * @author Etienne Bolduc
  */
 
-import { Seasons, Collection, deepFreeze } from "../../../utils/index.js";
-import ProductionSchedules from "../utils/enums/ProductionSchedules.js";
+import { Collection, Line, deepFreeze } from "../../../utils/index.js";
 import LINES from "./LINES.js";
 
+// Initializing useful parameter
+const SEASONS = Collection.SEASONS;
+const PRODUCTION_SCHEDULE_TYPES = Line.PRODUCTION_SCHEDULE_TYPES;
+
 /**
- * Enum for the line IDs and lines.
+ * Enum for the COMME des GARÇONS line IDs and their corresponding lines.
  * @constant
  * @readonly
  * @enum {LINES[]}
  */
 const LINE_ID = deepFreeze({
 
-     _: [LINES.CDG.changeUpperBound(new Collection(1982, Seasons.S)).changeProdSched(ProductionSchedules.LATE)],
+     _: [LINES.CDG.newUpperBound(new Collection(1982, SEASONS.S)).newProductionSchedule(PRODUCTION_SCHEDULE_TYPES.LATE)],
 
      1: [LINES.BLK],
 
@@ -36,24 +39,24 @@ const LINE_ID = deepFreeze({
 
      8: [LINES.WALL],
 
-     A: [LINES.NOIR.changeUpperBound(new Collection(1995, Seasons.W)),
+     A: [LINES.NOIR.newUpperBound(new Collection(1995, SEASONS.W)),
      LINES.PLAY],
 
      B: [LINES.PPDSM],
 
      D: [LINES.H2],
 
-     E: [LINES.CDG.changeBounds(new Collection(1982, Seasons.W), new Collection(2005, Seasons.W)),
-     LINES.RKCDG.changeUpperBound(new Collection(2005, Seasons.W)),
-     LINES.NOIR.changeUpperBound(new Collection(2005, Seasons.W)),
+     E: [LINES.CDG.newBounds(new Collection(1982, SEASONS.W), new Collection(2005, SEASONS.W)),
+     LINES.RKCDG,
+     LINES.NOIR.newUpperBound(new Collection(2005, SEASONS.W)),
      LINES.GAN],
 
      F: [LINES.FR,
-     LINES.SHIRT.changeLowerBound(new Collection(2021, Seasons.S)),
-     LINES.FOREVER.changeLowerBound(new Collection(2021, Seasons.S))],
+     LINES.SHIRT.newLowerBound(new Collection(2021, SEASONS.S)),
+     LINES.FOREVER.newLowerBound(new Collection(2021, SEASONS.S))],
 
-     G: [LINES.CDG.changeLowerBound(new Collection(1982, Seasons.W)),
-     LINES.NOIR.changeLowerBound(new Collection(2005, Seasons.W))],
+     G: [LINES.CDG.newLowerBound(new Collection(1982, SEASONS.W)),
+     LINES.NOIR.newLowerBound(new Collection(2005, SEASONS.W))],
 
      H: [LINES.H],
 
@@ -61,10 +64,10 @@ const LINE_ID = deepFreeze({
      LINES.HI,
      LINES.HH,
      LINES.JAN,
-     LINES.JWMAN.changeBounds(new Collection(2006, Seasons.S), new Collection(2006, Seasons.S)),
+     LINES.JWMAN.newBounds(new Collection(2006, SEASONS.S), new Collection(2006, SEASONS.S)),
      LINES.ALIVE,
      LINES.GDS,
-     LINES.CDGSE.changeBounds(new Collection(2011, Seasons.W), new Collection(2012, Seasons.W))],
+     LINES.CDGSE.newBounds(new Collection(2011, SEASONS.W), new Collection(2012, SEASONS.W))],
 
      J: [LINES.JW],
 
@@ -79,7 +82,7 @@ const LINE_ID = deepFreeze({
 
      O: [LINES.CCNO,
      LINES.AOYSE,
-     LINES.CDGCDG.changeBounds(new Collection(2005, Seasons.S), new Collection(2005, Seasons.S)),
+     LINES.CDGCDG.newBounds(new Collection(2005, SEASONS.S), new Collection(2005, SEASONS.S)),
      LINES.CDGSE,
      LINES.WALLSE,
      LINES.EYESE,
@@ -87,7 +90,7 @@ const LINE_ID = deepFreeze({
      LINES.TRAD,
      LINES.PLAYXMAX,
      LINES.BM,
-     LINES.CDGLINESSE,
+     LINES.CDGLINESE,
      LINES.FRIENDS,
      LINES.PPOH,
      LINES.PEOPLE],
@@ -96,8 +99,10 @@ const LINE_ID = deepFreeze({
      LINES.HPS,
      LINES.HPE],
 
+     Q: [LINES.ALD],
+
      R: [LINES.RDC,
-     LINES.CDGCDG.changeLowerBound(new Collection(2005, Seasons.S))],
+     LINES.CDGCDG.newLowerBound(new Collection(2005, SEASONS.S))],
 
      S: [LINES.CC,
      LINES.CDGLINES],
@@ -108,17 +113,17 @@ const LINE_ID = deepFreeze({
      U: [LINES.HPD,
      LINES.PINK],
 
-     V: [LINES.JW.changeUpperBound(new Collection(2005, Seasons.W)),
+     V: [LINES.JW.newUpperBound(new Collection(2005, SEASONS.W)),
      LINES.BEAT],
 
      W: [LINES.JWMAN,
      LINES.EYE],
 
-     X: [LINES.HP.changeUpperBound(new Collection(2005, Seasons.W)),
+     X: [LINES.HP.newUpperBound(new Collection(2005, SEASONS.W)),
      LINES.RKHP,
      LINES.JWD],
 
-     Y: [LINES.JWMAN.changeUpperBound(new Collection(2005, Seasons.W))],
+     Y: [LINES.JWMAN.newUpperBound(new Collection(2005, SEASONS.W))],
 
      Z: [LINES.TWO,
      LINES.PEG,

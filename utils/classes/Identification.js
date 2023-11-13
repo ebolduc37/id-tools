@@ -1,43 +1,46 @@
 /**
  * Initialization of class Identification.
  *
- * Initialization of a class for cataloging the identification of an item from a label
- * based the pattern of its product code, which may be following a certain framework.
+ * Initialization of a class for the identification of an input's corresponding
+ * collections throughout different lines of a label following a single identification framework.
  *
  * @author Etienne Bolduc
  */
 
-import Occurrence from "./Occurrence.js";
+import Input from "./Input.js";
 
 /**
- * Class representing the cataloging of the identification of an item from a label
- * based the pattern of its product code, which may be following a certain framework.
+ * Class representing the identification of an input's corresponding
+ * collections throughout different lines of a label following a single identification framework.
  */
 class Identification {
     /**
-     * Create the identification catalog.
-     * @param {string} [label="this label"] - Name of the label.
-     * @param {string} [framework="usual"] - Framework.
-     * @param {string} [codeStylized] - Stylized product code.
+     * Create the identification.
+     * @param {string} [label] - Name of the label.
+     * @param {string} [framework] - Name of the identification framework used.
+     * @param {Input}  [input] - Input data.
+     * @param {string} [codeStylize] - Stylized product code.
      * @param {string} [garmentType="a piece"] - Item type.
      * @param {string} [size] - Item size.
-     * @param {Occurrence[]} [byLine] - Array of line occurences.
+     * @param {Line[]} [lineList] - Array of lines with associated collections.
      * @param {boolean} [exception=false] - True if it is an exception to the framework; false otherwise.
      */
-    constructor({ label = "this label", framework = "usual", codeStylized,
-        garmentType = "a piece", size, byLine, exception = false }) {
+    constructor({ label, framework, input, codeStylized,
+                    garmentType = "a piece", size, lineList, exception = false }) {
         /** @type {string} */
         this.label = label;
         /** @type {string} */
         this.framework = framework;
+        /** @type {Input} */
+        this.input = input;
         /** @type {string} */
         this.codeStylized = codeStylized;
         /** @type {string} */
         this.garmentType = garmentType;
         /** @type {string} */
         this.size = size;
-        /** @type {Occurrence[]} */
-        this.byLine = byLine;
+        /** @type {Line[]} */
+        this.lineList = lineList;
         /** @type {boolean} */
         this.exception = exception;
     }
@@ -48,10 +51,50 @@ class Identification {
      */
     copy() {
         return new Identification({
-            label: this.label, framework: this.framework,
-            codeStylized: this.codeStylized, garmentType: this.garmentType, size: this.size,
-            byLine: this.byLine, exception: this.exception
+            label: this.label, input: this.input, framework: this.framework, codeStylized: this.codeStylized,
+            garmentType: this.garmentType, size: this.size, lineList: this.lineList, exception: this.exception
         });
+    }
+
+    /**
+     * Return a string representation of the instance.
+     * @return {string} String representation of the instance.
+     */
+    toString() {
+
+        let str = "According to ";
+
+        // Exception
+        if (this.exception) {
+            if (this.lineList.length > 1 || this.lineList[0].collectionList.length > 1)
+                str += "exceptions to ";
+            else
+                str += "an exception to ";
+        }
+
+        // Framework
+        if (this.framework != null) str += `the ${this.framework} identification framework `
+        else str += "the identification framework ";
+
+        // Label
+        str += `of ${this.label}, the item should be `;
+
+        // Item type
+        if (this.garmentType != null) str += `${this.garmentType} `;
+
+        // Size
+        if (this.size != null) str += `in size ${this.size} `;
+
+        str += "from";
+        if (this.lineList.length > 1 || this.lineList[0].collectionList.length > 1) str += ` one of`;
+        str += "...";
+
+        // Lines and their collection list
+        for (let line of this.lineList) {
+            str += "\n\n" + line.toString();
+        }
+
+        return str;
     }
 };
 
