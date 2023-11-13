@@ -238,7 +238,7 @@ class InputYY extends Input {
             str += "\n- a serif typeface on the care label";
         else if (this.isFontSansSerif())
             str += "\n- a sans-serif typeface on the care label";
-        else if (this.isFontSansSerif()) {
+        else if (this.isFontUnknown()) {
             str += "\n- whether the typeface was originally serif or sans-serif ";
             str += "on the care label is unknown";
         }

@@ -117,9 +117,12 @@ const inputYY = [
     new InputYY({ productCode: CODE_UNREADABLE, signatureStyle: SIGNATURE_MAIN_III,
                     sizingSystem: SIZING_ALPHABETICAL, fontType: FONT_UNKNOWN,
                     laundrySymbolsLocation: LAUNDRY_UNKNOWN }),
+    new InputYY({ productCode: "HV-C00-000", signatureStyle: SIGNATURE_MAIN_III,
+                    sizingSystem: SIZING_NUMERICAL, fontType: FONT_UNKNOWN,
+                    laundrySymbolsLocation: LAUNDRY_UNKNOWN }),
 ];
 
-let input = inputCDG;
+let input = inputYY;
 
 let count = 1;
 for (let test of input) {
