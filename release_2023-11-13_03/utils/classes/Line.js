@@ -144,13 +144,13 @@ class Line {
             && this.collectionList.reduce(function (a, b) {return (a != null
             && a.year + 1 === b.year && a.season === b.season) ? b : null;})) {
             if (this.collectionList[0].season != null) {
-                str += `\n- any ${this.collectionList[0].season} collection from `;
-                str += `${this.collectionList[0].season} ${this.collectionList[0].year} until `;
+                str += `\n- any ${this.collectionList[0].season} collection between `;
+                str += `${this.collectionList[0].season} ${this.collectionList[0].year} and `;
                 str += `${this.collectionList.slice(-1)[0].season} ${this.collectionList.slice(-1)[0].year}`;
             }
             else {
-                str += `\n- any production year from `;
-                str += `${this.collectionList[0]} until `;
+                str += `\n- any production year between `;
+                str += `${this.collectionList[0]} and `;
                 str += `${this.collectionList.slice(-1)[0]}`;
             }
         }
@@ -163,8 +163,8 @@ class Line {
                         a.season === Collection.SEASONS.W &&
                         b.season === Collection.SEASONS.S)
                     )) ? b : null;})) {
-            str += `\n- any collection from `;
-            str += `${this.collectionList[0].season} ${this.collectionList[0].year} until `;
+            str += `\n- any collection between `;
+            str += `${this.collectionList[0].season} ${this.collectionList[0].year} and `;
             str += `${this.collectionList.slice(-1)[0].season} ${this.collectionList.slice(-1)[0].year}`;
         }
         else if (this.collectionList.length > 0) for (let col of this.collectionList) str += `\n- ${col}`;

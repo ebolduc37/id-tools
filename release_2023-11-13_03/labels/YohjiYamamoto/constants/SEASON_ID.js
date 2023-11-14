@@ -71,7 +71,8 @@ const SEASON_ID = Object.freeze({
 	/** @param {Collection} col @return {boolean} */
 	J: col => 	col.isEqualTo(new Collection(1998, SEASONS.S)) ||
 				col.isEqualTo(new Collection(2004, SEASONS.W)) ||
-				col.isEqualTo(new Collection(2010, SEASONS.S)),
+				col.isEqualTo(new Collection(2010, SEASONS.S)) ||
+				col.isEqualTo(new Collection(2023, SEASONS.W)),
 
 	/** @param {Collection} col @return {boolean} */
 	K: col => 	col.isEqualTo(new Collection(2017, SEASONS.W)),
@@ -145,7 +146,8 @@ const SEASON_ID = Object.freeze({
 	/** @param {Collection} col @return {boolean} */
 	Z: col =>	col.isEqualTo(new Collection(1992, SEASONS.S)) ||
 				col.isEqualTo(new Collection(2004, SEASONS.S)) ||
-				col.isEqualTo(new Collection(2009, SEASONS.W)),
+				col.isEqualTo(new Collection(2009, SEASONS.W)) ||
+				col.isEqualTo(new Collection(2023, SEASONS.S))
 });
 
 export default SEASON_ID;

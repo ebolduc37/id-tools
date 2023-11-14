@@ -13,7 +13,7 @@ import { InputYY } from "../utils/index.js";
 
 // Constants
 import { ALL_COLLECTIONS, GARMENT_ID, LINE_ID, SEASON_ID, LINES } from "../constants/index.js";
-const REGEX_REGULAR = /^[A-Z]{3}\d{5}$/;
+const REGEX_REGULAR = /^[A-Z]{3}\d{5}\d*$/;
 const FRAMEWORK_REGULAR = "regular";
 const SEASONS = Collection.SEASONS;
 
