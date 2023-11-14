@@ -13,14 +13,22 @@
  * @enum {string}
  */
 const GARMENT_ID = Object.freeze({
+	A: "a miscellaneous piece",
 	B: "a button-up",
 	C: "a coat",
+	D: "a dress or a one-piece",
+	F: "a belt",
+	H: "a hat",
+	I: "a bag",
 	J: "a jacket",
 	K: "a knitwear piece",
+	L: "a scarf",
+	N: "a tie",
 	P: "pants or shorts",
 	S: "a skirt",
 	T: "a top",
-	Y: "a jacket" // only seen on a tailored jacket/blazer so far
+	V: "a vest",
+	Y: "a blouson"
 });
 
 export default GARMENT_ID;

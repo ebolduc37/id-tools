@@ -18,9 +18,15 @@ import LINES from "./LINES.js";
  */
 const LINE_ID = deepFreeze({
 
+     // F
      F: [LINES.YY],
 
+     // H
      H: [LINES.YYPH],
+
+     // S
+     S: [LINES.WILD]
+     
 });
 
 export default LINE_ID;

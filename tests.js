@@ -55,6 +55,7 @@ const CODE_UNKNOWN = InputYY.NO_PRODUCT_CODE_TYPES.UNKNOWN;
 const SIGNATURE_MAIN_I = InputYY.SIGNATURE_STYLES.MAIN_I;
 const SIGNATURE_MAIN_II = InputYY.SIGNATURE_STYLES.MAIN_II;
 const SIGNATURE_MAIN_III = InputYY.SIGNATURE_STYLES.MAIN_III;
+const SIGNATURE_OTHER = InputYY.SIGNATURE_STYLES.OTHER;
 
 const SIZING_ALPHABETICAL = InputYY.SIZING_SYSTEMS.ALPHABETICAL;
 const SIZING_NUMERICAL = InputYY.SIZING_SYSTEMS.NUMERICAL;
@@ -147,9 +148,21 @@ const inputYY = [
     new InputYY({ productCode: CODE_UNKNOWN, signatureStyle: SIGNATURE_MAIN_III,
                     sizingSystem: SIZING_NUMERICAL, fontType: FONT_SERIF,
                     laundrySymbolsLocation: LAUNDRY_ABOVE }),
+    new InputYY({ productCode: "HB-T00-000", signatureStyle: SIGNATURE_OTHER,
+                    sizingSystem: SIZING_UNKNOWN, fontType: FONT_UNKNOWN,
+                    laundrySymbolsLocation: LAUNDRY_UNKNOWN }),
+    new InputYY({ productCode: "SJ-T00-000", signatureStyle: SIGNATURE_OTHER,
+                    sizingSystem: SIZING_UNKNOWN, fontType: FONT_UNKNOWN,
+                    laundrySymbolsLocation: LAUNDRY_UNKNOWN }),
+    new InputYY({ productCode: CODE_BLANK, signatureStyle: SIGNATURE_MAIN_III,
+                    sizingSystem: SIZING_ALPHABETICAL, fontType: FONT_SERIF,
+                    laundrySymbolsLocation: LAUNDRY_BELOW }),
+    new InputYY({ productCode: CODE_BLANK, signatureStyle: SIGNATURE_MAIN_III,
+                    sizingSystem: SIZING_NUMERICAL, fontType: FONT_SANS_SERIF,
+                    laundrySymbolsLocation: LAUNDRY_ABOVE }),
 ];
 
-let input = inputYY;
+let input = inputCDG;
 
 let count = 1;
 for (let test of input) {

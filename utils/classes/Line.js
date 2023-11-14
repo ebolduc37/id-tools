@@ -21,27 +21,38 @@ const PRODUCTION_SCHEDULE_TYPES = Object.freeze({
 })
 
 /**
+ * Enum for signature types.
+ * @readonly
+ * @enum {string}
+ */
+const SIGNATURE_TYPES = Object.freeze({
+    MAIN: "MAIN",
+    OTHER: "OTHER",
+})
+
+/**
  * Class representing a line with a name, an operation period,
  * and optionally a production schedule and a collection list.
  */
 class Line {
 
     static PRODUCTION_SCHEDULE_TYPES = PRODUCTION_SCHEDULE_TYPES;
+    static SIGNATURE_TYPES = SIGNATURE_TYPES;
 
     /**
      * Create a line from a name, an operation period,
      * optionally a production schedule, and an empty collection list.
      * @param {string} name - Line name.
      * @param {OperationPeriod} operationPeriod - Operation period.
-     * @param {Line.PRODUCTION_SCHEDULE_TYPES} productionSchedule - Production schedule type.
+     * @param {(Line.PRODUCTION_SCHEDULE_TYPES|Line.SIGNATURE_TYPES)} flag - Production schedule type or signature type.
      */
-    constructor(name, operationPeriod = new OperationPeriod(), productionSchedule) {
+    constructor(name, operationPeriod = new OperationPeriod(), flag) {
         /** @type {string} */
         this.name = name;
         /** @type {OperationPeriod} */
         this.operationPeriod = operationPeriod.copy();
         /** @type {Line.PRODUCTION_SCHEDULE_TYPES} */
-        this.productionSchedule = productionSchedule;
+        this.flag = flag;
         /** @type {Collection[]} */
         this.collectionList = [];
     };
@@ -51,7 +62,7 @@ class Line {
      * @return {Line} Copy of the instance.
      */
     copy() {
-        let line = new Line(this.name, this.operationPeriod, this.productionSchedule);
+        let line = new Line(this.name, this.operationPeriod, this.flag);
         line.collectionList = this.collectionList;
         return line;
     }
@@ -100,27 +111,27 @@ class Line {
     };
 
     /**
-     * Return a new line with the production schedule modified.
-     * @return {boolean} True if the production schedule is early; false otherwise.
+     * Evaluate if the production schedule is early.
+     * @return {boolean} True if it is; false otherwise.
      */
     isEarly() {
-        return this.productionSchedule === Line.PRODUCTION_SCHEDULE_TYPES.EARLY;
+        return this.flag === Line.PRODUCTION_SCHEDULE_TYPES.EARLY;
     };
 
     /**
-     * Return a new line with the production schedule modified.
-     * @return {boolean} True if the production schedule is late; false otherwise.
+     * Evaluate if the production schedule is late.
+     * @return {boolean} True if it is; false otherwise.
      */
     isLate() {
-        return this.productionSchedule === Line.PRODUCTION_SCHEDULE_TYPES.LATE;
+        return this.flag === Line.PRODUCTION_SCHEDULE_TYPES.LATE;
     };
 
     /**
-     * Return a new line with the production schedule modified.
-     * @return {boolean} True if the production schedule is early; false otherwise.
+     * Evaluate if there is a production schedule.
+     * @return {boolean} True if there is; false otherwise.
      */
     hasProductionSchedule() {
-        return this.productionSchedule != null;
+        return Object.values(Line.PRODUCTION_SCHEDULE_TYPES).includes(this.flag);
     };
 
     /**
@@ -130,6 +141,31 @@ class Line {
      */
     newProductionSchedule(productionSchedule) {
         return new Line(this.name, this.operationPeriod, productionSchedule);
+    };
+
+    /**
+     * Evaluate if it is the main signature type.
+     * @return {boolean} True if it is; false otherwise.
+     */
+    isSignatureTypeMain() {
+        return this.flag === Line.SIGNATURE_TYPES.MAIN;
+    };
+
+    /**
+     * Evaluate if it is another signature type.
+     * @return {boolean} True if it is; false otherwise.
+     */
+    isSignatureTypeOther() {
+        return this.flag === Line.SIGNATURE_TYPES.OTHER;
+    };
+
+    /**
+     * Return a new line with the signature type modified.
+     * @param {Line.SIGNATURE_TYPES} signatureType - New signature type.
+     * @return  {Line} Line with the modified signature type.
+     */
+    newSignatureType(signatureType) {
+        return new Line(this.name, this.operationPeriod, signatureType);
     };
 
     /**

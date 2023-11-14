@@ -12,9 +12,13 @@ import { Collection, Identification, Labels } from "../../../utils/index.js";
 import { InputYY } from "../utils/index.js";
 
 // Constants
-import { ALL_COLLECTIONS, GARMENT_ID, LINE_ID, SEASON_ID, LINES } from "../constants/index.js";
+import { ALL_COLLECTIONS, GARMENT_ID, LINE_ID, LINES, SEASON_ID } from "../constants/index.js";
 const REGEX_REGULAR = /^[A-Z]{3}\d{5}\d*$/;
 const FRAMEWORK_REGULAR = "regular";
+const PRODUCT_CODE_BLANK_EXCEPTIONS = [
+    LINES.YYFI.name,
+    LINES.YYPHFI.name,
+]
 const SEASONS = Collection.SEASONS;
 
 /**
@@ -94,17 +98,20 @@ InputYY.prototype.identifyRegular = function() {
         // Initialize the set of candidates
         let candidates = ALL_COLLECTIONS.map(col => col.copy());
 
-        if (this.isProductCodeBlank())
+        if (this.isProductCodeBlank() && !PRODUCT_CODE_BLANK_EXCEPTIONS.includes(line.name))
             candidates = candidates.filter(col => col.isBeforeOrIn(new Collection(1992, SEASONS.S)));
+        if (!this.isProductCodeBlank() && PRODUCT_CODE_BLANK_EXCEPTIONS.includes(line.name))
+            continue;
 
         // Limiting the set of candidates to the collections with the right signature style
         if (this.isSignatureI())
             candidates = candidates.filter(col => col.isBeforeOrIn(new Collection(1985, SEASONS.S)));
         else if (this.isSignatureII())
-            candidates = candidates.filter(col => col.isBetween(new Collection(1984, SEASONS.S),
-                                                                new Collection(1991, SEASONS.W)));
+            candidates = candidates.filter(col => col.isBetween(new Collection(1984, SEASONS.S), new Collection(1991, SEASONS.W)));
         else if (this.isSignatureIII())
             candidates = candidates.filter(col => col.isAfterOrIn(new Collection(1991, SEASONS.W)));
+        if (this.isSignatureOther() ^ line.isSignatureTypeOther())
+            continue;
 
         // Limiting the set of candidates to the collections with the right sizing system
         if (this.isSizingAlphabetical())

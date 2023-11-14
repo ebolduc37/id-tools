@@ -17,6 +17,8 @@ const SIGNATURE_STYLES = Object.freeze({
     MAIN_I: "MAIN_I", // A/W '81 -> S/S '85
     MAIN_II: "MAIN_II", // S/S '84 -> A/W '91
     MAIN_III: "MAIN_III", // A/W '91 -> NOW
+
+    OTHER: "OTHER"
 });
 
 /**
@@ -119,6 +121,14 @@ class InputYY extends Input {
      */
     isSignatureIII() {
         return this.signatureStyle === InputYY.SIGNATURE_STYLES.MAIN_III;
+    }
+
+    /**
+     * Evaluate if it is something else other than the signature.
+     * @return {boolean} True if it is; false otherwise.
+     */
+    isSignatureOther() {
+        return this.signatureStyle === InputYY.SIGNATURE_STYLES.OTHER;
     }
 
     /**
@@ -230,9 +240,11 @@ class InputYY extends Input {
             str += "\n- the previous, rounder signature style";
         else if (this.isSignatureIII())
             str += "\n- the current, sharp signature style";
+        else if (this.isSignatureOther())
+            str += "\n- another style of label";
         else str += "\n- an invalid signature style"
 
-        if (this.isSignatureIII()) {
+        if (!this.isSignatureI() || !this.isSignatureII()) {
 
             // Sizing system confirmation
             if (this.isSizingAlphabetical())

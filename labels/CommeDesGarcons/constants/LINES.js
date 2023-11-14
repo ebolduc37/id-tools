@@ -46,11 +46,11 @@ const LINES = deepFreeze({
             col => col.isS()))),
 
     // 6
-    EDITW: new Line("COMME des GARÇONS EDITED (women)",
+    EDITW: new Line("COMME des GARÇONS EDITED [women]",
         new OperationPeriod(new Collection(2007, SEASONS.S))),
 
     // 7
-    EDITM: new Line("COMME des GARÇONS EDITED (men)",
+    EDITM: new Line("COMME des GARÇONS EDITED [men]",
         new OperationPeriod(new Collection(2007, SEASONS.S))),
 
     // 8
@@ -67,7 +67,7 @@ const LINES = deepFreeze({
         new OperationPeriod(new Collection(2002))),
 
     // B
-    PPDSM: new Line("COMME des GARÇONS parfums PARFUMS (shop exclusive DOVER STREET MARKET launch)",
+    PPDSM: new Line("COMME des GARÇONS parfums PARFUMS [shop exclusive DOVER STREET MARKET launch]",
         new OperationPeriod(new Collection(2009, SEASONS.W), new Collection(2009, SEASONS.W))),
 
     // D
@@ -88,9 +88,9 @@ const LINES = deepFreeze({
         PRODUCTION_SCHEDULE_TYPES.LATE),
     SHIRT: new Line("COMME des GARÇONS SHIRT",
         new OperationPeriod(new Collection(1988))),
-    FOREVER: new Line("COMME des GARÇONS SHIRT (FOREVER)",
+    FOREVER: new Line("COMME des GARÇONS SHIRT [FOREVER]",
         new OperationPeriod(new Collection(2010))),
-    SHIRTGIRL: new Line("COMME des GARÇONS SHIRT (GIRL)",
+    SHIRTGIRL: new Line("COMME des GARÇONS SHIRT [GIRL]",
         new OperationPeriod(new Collection(2010, SEASONS.S), new Collection(2014, SEASONS.W))),
     SHIRTBOY: new Line("COMME des GARÇONS SHIRT BOY",
         new OperationPeriod(new Collection(2015, SEASONS.W), new Collection(2016, SEASONS.S))),
@@ -106,7 +106,7 @@ const LINES = deepFreeze({
     IND: new Line("COMME des GARÇONS indigo",
         new OperationPeriod(new Collection(1983, SEASONS.W), new Collection(1987, SEASONS.W)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
-    HI: new Line("COMME des GARÇONS HOMME (inverted)",
+    HI: new Line("COMME des GARÇONS HOMME [inverted]",
         new OperationPeriod(new Collection(1994, SEASONS.S), new Collection(1998, SEASONS.W)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
     HH: new Line("COMME des GARÇONS HOMME HOMME",
@@ -125,19 +125,19 @@ const LINES = deepFreeze({
         PRODUCTION_SCHEDULE_TYPES.EARLY),
 
     // K
-    AOY: new Line("COMME des GARÇONS (Aoyama exclusive)",
+    AOY: new Line("COMME des GARÇONS [Aoyama exclusive]",
         new OperationPeriod(new Collection(1989, SEASONS.S)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
-    CHAOY: new Line("COMME des GARÇONS Chrome Hearts (Aoyama exclusive)",
+    CHAOY: new Line("COMME des GARÇONS Chrome Hearts [Aoyama exclusive]",
         new OperationPeriod(new Collection(2012, SEASONS.S), new Collection(2012, SEASONS.W))),
 
     // L
-    ISE115: new Line("COMME des GARÇONS (ISETAN 115yrs)",
+    ISE115: new Line("COMME des GARÇONS [ISETAN 115yrs]",
         new OperationPeriod(new Collection(2001, SEASONS.W), new Collection(2001, SEASONS.W)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
-    ISE2MAN: new Line("COMME des GARÇONS HOMME PLUS (CELEBRATION ISETAN MEN'S 1YEAR + COMME des GARCONS 2 MAN)",
+    ISE2MAN: new Line("COMME des GARÇONS HOMME PLUS [CELEBRATION ISETAN MEN'S 1YEAR + COMME des GARCONS 2 MAN]",
         new OperationPeriod(new Collection(2004, SEASONS.W), new Collection(2004, SEASONS.W))),
-    PPOH: new Line("COMME des GARÇONS parfums PARFUMS (shop exclusive ODOUR HOLIDAY)",
+    PPOH: new Line("COMME des GARÇONS parfums PARFUMS [shop exclusive ODOUR HOLIDAY]",
         new OperationPeriod(new Collection(2019, SEASONS.W), new Collection(2019, SEASONS.W))),
 
     // N
@@ -145,31 +145,31 @@ const LINES = deepFreeze({
         new OperationPeriod(new Collection(2015, SEASONS.S))),
 
     // O
-    CCNO: new Line("10 corso como COMME des GARÇONS (shop exclusive number series)",
+    CCNO: new Line("10 corso como COMME des GARÇONS [shop exclusive number series]",
         new OperationPeriod(new Collection(2002, SEASONS.S), new Collection(2003, SEASONS.W)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
-    AOYSE: new Line("COMME des GARÇONS (Aoyama exclusive)",
+    AOYSE: new Line("COMME des GARÇONS [Aoyama exclusive]",
         new OperationPeriod(new Collection(2004, SEASONS.W), new Collection(2004, SEASONS.W))),
-    CDGSE: new Line("COMME des GARÇONS (shop exclusive)",
+    CDGSE: new Line("COMME des GARÇONS [shop exclusive]",
         new OperationPeriod(new Collection(2005))),
-    WALLSE: new Line("Wallet COMME des GARÇONS (shop exclusive)",
+    WALLSE: new Line("Wallet COMME des GARÇONS [shop exclusive]",
         new OperationPeriod(new Collection(2005))),
-    EYESE: new Line("eYe JUNYA WATANABE COMME des GARÇONS MAN (shop exclusive)",
+    EYESE: new Line("eYe JUNYA WATANABE COMME des GARÇONS MAN [shop exclusive]",
         new OperationPeriod(new Collection(2005, SEASONS.W), new Collection(2005, SEASONS.W))),
-    SPEEDOSE: new Line("speedo COMME des GARÇONS (shop exclusive)",
+    SPEEDOSE: new Line("speedo COMME des GARÇONS [shop exclusive]",
         new OperationPeriod(new Collection(2006, SEASONS.S), new Collection(2006, SEASONS.S))),
     TRAD: new Line("TRADING MUSEUM COMME des GARÇONS",
         new OperationPeriod(new Collection(2009, SEASONS.W))),
-    PLAYXMAX: new Line("PLAY COMME des GARÇONS (shop exclusive holidays special)",
+    PLAYXMAX: new Line("PLAY COMME des GARÇONS [shop exclusive holidays special]",
         new OperationPeriod(new Collection(2013, SEASONS.W), new Collection(2017, SEASONS.W),
             col => col.isW())),
     BM: new Line("black market COMME des GARÇONS",
         new OperationPeriod(new Collection(2017, SEASONS.S))),
-    CDGLINESE: new Line("CDG (shop exclusive)",
+    CDGLINESE: new Line("CDG [shop exclusive]",
         new OperationPeriod(new Collection(2018, SEASONS.S), new Collection(2018, SEASONS.S))),
     FRIENDS: new Line("Friends and COMME des GARÇONS Happy Holidays",
         new OperationPeriod(new Collection(2018, SEASONS.W), new Collection(2018, SEASONS.W))),
-    PEOPLE: new Line("COMME des GARÇONS (People of the Year by COMME des GARÇONS and SWITCH)",
+    PEOPLE: new Line("COMME des GARÇONS [People of the Year by COMME des GARÇONS and SWITCH]",
         new OperationPeriod(new Collection(2020, SEASONS.W), new Collection(2020, SEASONS.W))),
 
     // P
@@ -211,7 +211,7 @@ const LINES = deepFreeze({
         new OperationPeriod(new Collection(2000, SEASONS.W), new Collection(2005, SEASONS.W),
             col => !col.isBetween(new Collection(2003, SEASONS.S), new Collection(2005, SEASONS.S))),
         PRODUCTION_SCHEDULE_TYPES.EARLY),
-    PINK: new Line("JUNYA WATANABE COMME des GARÇONS (pink)",
+    PINK: new Line("JUNYA WATANABE COMME des GARÇONS [pink]",
         new OperationPeriod(new Collection(2003, SEASONS.S), new Collection(2014, SEASONS.S))),
 
     // V
@@ -233,24 +233,24 @@ const LINES = deepFreeze({
         new OperationPeriod(new Collection(2014), new Collection(2021, SEASONS.W))),
 
     // Z
-    TWO: new Line("COMME des GARÇONS HOMME HOMME (Aoyama exclusive COMME des GARÇONS two)",
+    TWO: new Line("COMME des GARÇONS HOMME HOMME [Aoyama exclusive COMME des GARÇONS two]",
         new OperationPeriod(new Collection(1999, SEASONS.S), new Collection(2001, SEASONS.W)),
         PRODUCTION_SCHEDULE_TYPES.LATE),
     PEG: new Line("Peggy Moffitt COMME des GARÇONS",
         new OperationPeriod(new Collection(2003, SEASONS.S), new Collection(2005, SEASONS.W))),
     VIV: new Line("Vivienne Westwood COMME des GARÇONS",
         new OperationPeriod(new Collection(2003, SEASONS.W), new Collection(2004, SEASONS.S))),
-    CDGCHG: new Line("COMME des GARÇONS Chrome Hearts (DOVER STREET MARKET GINZA exclusive)",
+    CDGCHG: new Line("COMME des GARÇONS Chrome Hearts [DOVER STREET MARKET GINZA exclusive]",
         new OperationPeriod(new Collection(2012), new Collection(2019))),
 
     // EXCEPTIONS
-    CCBB: new Line("10 corso como COMME des GARÇONS (BE@RBRICK series)"),
+    CCBB: new Line("10 corso como COMME des GARÇONS [BE@RBRICK series]"),
     HPCH: new Line("COMME des GARÇONS HOMME PLUS customized by Chrome Hearts"), // both labels on garment
-    CCSS: new Line("10 corso como COMME des GARÇONS (summer series)"),
-    SHCHRE: new Line("COMME des GARÇONS Chrome Hearts (striped shirt limited edition)"), // only the double name label
+    CCSS: new Line("10 corso como COMME des GARÇONS [summer series]"),
+    SHCHRE: new Line("COMME des GARÇONS Chrome Hearts [striped shirt limited edition]"), // only the double name label
     SHCH: new Line("COMME des GARÇONS SHIRT customized by Chrome Hearts"),  // both labels on garment
-    HPCHRE: new Line("COMME des GARÇONS Chrome Hearts (custom COMME des GARÇONS HOMME PLUS)"), // only the double name label
-    CHLIM: new Line("COMME des GARÇONS Chrome Hearts (Aoyama exclusive limited release)"), // only the double name label
+    HPCHRE: new Line("COMME des GARÇONS Chrome Hearts [custom COMME des GARÇONS HOMME PLUS]"), // only the double name label
+    CHLIM: new Line("COMME des GARÇONS Chrome Hearts [Aoyama exclusive limited release]"), // only the double name label
 });
 
 export default LINES;
