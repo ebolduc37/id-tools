@@ -160,9 +160,12 @@ const inputYY = [
     new InputYY({ productCode: CODE_BLANK, signatureStyle: SIGNATURE_MAIN_III,
                     sizingSystem: SIZING_NUMERICAL, fontType: FONT_SANS_SERIF,
                     laundrySymbolsLocation: LAUNDRY_ABOVE }),
+    new InputYY({ productCode: "HB-T00-000", signatureStyle: SIGNATURE_MAIN_I,
+                    sizingSystem: SIZING_ALPHABETICAL, fontType: FONT_SERIF,
+                    laundrySymbolsLocation: LAUNDRY_ABOVE }),
 ];
 
-let input = inputCDG;
+let input = inputYY;
 
 let count = 1;
 for (let test of input) {

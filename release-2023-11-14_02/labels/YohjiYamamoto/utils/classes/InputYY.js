@@ -214,7 +214,9 @@ class InputYY extends Input {
         if (!Object.values(InputYY.FONT_TYPES).includes(this.fontType)) return false;
         if (!Object.values(InputYY.LAUNDRY_SYMBOLS_LOCATIONS).includes(this.laundrySymbolsLocation)) return false;
 
-        if (this.isSignatureI() || this.isSignatureII())
+        if (this.isSignatureI())
+            return !this.isProductCodeString() && !this.isSizingNumerical() && !this.isFontSansSerif() && !this.isLaundryAbove();
+        if (this.isSignatureII())
             return !this.isSizingNumerical() && !this.isFontSansSerif() && !this.isLaundryAbove();
         if (this.isSizingAlphabetical())
             return !this.isFontSansSerif() && !this.isLaundryAbove();
@@ -244,46 +246,59 @@ class InputYY extends Input {
             str += "\n- another style of label";
         else str += "\n- an invalid signature style"
 
-        if (!this.isSignatureI() || !this.isSignatureII()) {
+        if (!this.isSignatureI()) {
 
-            // Sizing system confirmation
-            if (this.isSizingAlphabetical())
-                str += "\n- an alphabetical sizing notation system";
-            else if (this.isSizingNumerical())
-                str += "\n- a numerical sizing notation system";
-            else if (this.isSizingUnknown())
-                str += "\n- no sizing notation";
-            else str += "\n- an invalid sizing notation system"
+            // Product code confirmation
+            if (this.isProductCodeString())
+                str += `\n- the product code ${this.productCode}`;
+            else if (this.isProductCodeBlank())
+                str += "\n- no product code print";
+            else if (this.isProductCodeUnreadable())
+                str += "\n- the product code print is unreadable";
+            else if (this.isProductCodeUnknown())
+                str += "\n- whether there was a product code print originally is unknown";
+            else
+                str += "\n- an unknown form of product code print"
 
-            if (!this.isSizingAlphabetical()) {
+            if (!this.isSignatureII()) {
 
-                // Font type confirmation
-                if (this.isFontSerif())
-                    str += "\n- a serif typeface on the care label";
-                else if (this.isFontSansSerif())
-                    str += "\n- a sans-serif typeface on the care label";
-                else if (this.isFontUnknown()) {
-                    str += "\n- whether the typeface was originally serif or sans-serif ";
-                    str += "on the care label is unknown";
-                }
-                else str += "\n- an invalid typeface"
-
-                if (!this.isFontSerif()) {
-
-                    // Laundry symbols location confirmation
-                    if (this.isLaundryBelow())
-                        str += "\n- the laundry symbols are located below the composition on the care label";
-                    else if (this.isLaundryAbove())
-                        str += "\n- the laundry symbols are located above the composition on the care label";
-                    else if (this.isLaundryUnknown()) {
-                        str += "\n- whether the laundry symbols are originally located above or below ";
-                        str += "the composition on the care label is unknown";
+                // Sizing system confirmation
+                if (this.isSizingAlphabetical())
+                    str += "\n- an alphabetical sizing notation system";
+                else if (this.isSizingNumerical())
+                    str += "\n- a numerical sizing notation system";
+                else if (this.isSizingUnknown())
+                    str += "\n- no sizing notation";
+                else str += "\n- an invalid sizing notation system"
+    
+                if (!this.isSizingAlphabetical()) {
+    
+                    // Font type confirmation
+                    if (this.isFontSerif())
+                        str += "\n- a serif typeface on the care label";
+                    else if (this.isFontSansSerif())
+                        str += "\n- a sans-serif typeface on the care label";
+                    else if (this.isFontUnknown()) {
+                        str += "\n- whether the typeface was originally serif or sans-serif ";
+                        str += "on the care label is unknown";
                     }
-                    else str += "\n- an invalid laundry symbols location"
-
+                    else str += "\n- an invalid typeface"
+    
+                    if (!this.isFontSerif()) {
+    
+                        // Laundry symbols location confirmation
+                        if (this.isLaundryBelow())
+                            str += "\n- the laundry symbols are located below the composition on the care label";
+                        else if (this.isLaundryAbove())
+                            str += "\n- the laundry symbols are located above the composition on the care label";
+                        else if (this.isLaundryUnknown()) {
+                            str += "\n- whether the laundry symbols are originally located above or below ";
+                            str += "the composition on the care label is unknown";
+                        }
+                        else str += "\n- an invalid laundry symbols location"
+                    }
                 }
             }
-
         }
 
         return str;
@@ -306,6 +321,7 @@ class InputYY extends Input {
 
         if (this.isSignatureI() || this.isSignatureII()) {
             let arr = [];
+            if (this.isSignatureI() && this.isProductCodeString()) arr.push("there should not be a product code on the care label");
             if (this.isSizingNumerical()) arr.push("the sizing notation system should not be numerical");
             if (this.isFontSansSerif()) arr.push("there should not be a sans-serif typefont on the care label");
             if (this.isLaundryAbove()) arr.push("the laundry symbols should not be located above the composition on the care label");

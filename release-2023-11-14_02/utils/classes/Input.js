@@ -146,7 +146,7 @@ class Input {
         // Product code print confirmation
         if (this.isProductCodeString())
             str += `\n- the product code ${this.productCode}`;
-            else if (this.isProductCodeBlank())
+        else if (this.isProductCodeBlank())
             str += "\n- no product code print";
         else if (this.isProductCodeUnreadable())
             str += "\n- the product code print is unreadable";
