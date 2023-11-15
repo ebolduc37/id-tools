@@ -232,8 +232,10 @@ class InputYY extends Input {
      */
     confirmation() {
 
-        // Product code print confirmation
-        let str = this.toInput().confirmation();
+        // Label confirmation
+        let str = "You have entered the following information"
+        if (this.label != null) str += ` for ${this.label}`;
+        str += ":";
 
         // Signature style confirmation
         if (this.isSignatureI())
@@ -310,23 +312,25 @@ class InputYY extends Input {
      */
     validation() {
         
-        // Product code print validation
-        let str = this.toInput().validation();
+        // Label validation
+        let str = "Unfortunately, the information you have entered is not valid"
+        if (this.label != null) str += ` for ${this.label}:`;
+        else str += ":\n-> the label is not specified";
 
-        // Signature style confirmation
+        // Signature style validation
         if (this.signatureStyle == null
             || !Object.values(InputYY.SIGNATURE_STYLES).includes(this.signatureStyle))
-            str += "\n- the signature style is not valid";
-        else str += "\n- the signature style is valid";
+            str += "\n-> the signature style is not valid";
+        else str += "\n- the signature style may be valid";
 
-        if (this.isSignatureI() || this.isSignatureII()) {
+        if (this.isSignatureI()) {
             let arr = [];
-            if (this.isSignatureI() && this.isProductCodeString()) arr.push("there should not be a product code on the care label");
+            if (this.isProductCodeString()) arr.push("there should not be a product code on the care label");
             if (this.isSizingNumerical()) arr.push("the sizing notation system should not be numerical");
             if (this.isFontSansSerif()) arr.push("there should not be a sans-serif typefont on the care label");
             if (this.isLaundryAbove()) arr.push("the laundry symbols should not be located above the composition on the care label");
             for (let i = 0; i < arr.length; i++) {
-                if (i == 0) str += ", but in such case ";
+                if (i == 0) str += "\n-> but in the case above, ";
                 else if (i == 1) {
                     if (arr.length == 2) str += " and ";
                     else str += ", ";
@@ -337,41 +341,63 @@ class InputYY extends Input {
             return str;
         }
 
-        // Sizing system confirmation
+        // Product code print validation
+        if (this.productCode == null || !this.isProductCodeValid())
+            str += "\n-> the form of the product code print is not valid";
+        else str += "\n- the form of the product code print may be valid"
+
+        if (this.isSignatureII()) {
+            let arr = [];
+            if (this.isSizingNumerical()) arr.push("the sizing notation system should not be numerical");
+            if (this.isFontSansSerif()) arr.push("there should not be a sans-serif typefont on the care label");
+            if (this.isLaundryAbove()) arr.push("the laundry symbols should not be located above the composition on the care label");
+            for (let i = 0; i < arr.length; i++) {
+                if (i == 0) str += "\n-> but in the case above, ";
+                else if (i == 1) {
+                    if (arr.length == 2) str += " and ";
+                    else str += ", ";
+                }
+                else str += ", and "
+                str += arr[i];
+            }
+            return str;
+        }
+
+        // Sizing system validation
         if (this.sizingSystem == null
             || !Object.values(InputYY.SIZING_SYSTEMS).includes(this.sizingSystem))
-            str += "\n- the sizing notation system is not valid";
-        else str += "\n- the sizing notation system is valid"
+            str += "\n-> the sizing notation system is not valid";
+        else str += "\n- the sizing notation system may be valid"
 
         if (this.isSizingAlphabetical()) {
             let arr = [];
             if (this.isFontSansSerif()) arr.push("there should not be a sans-serif typefont on the care label");
             if (this.isLaundryAbove()) arr.push("the laundry symbols should not be located above the composition on the care label");
             for (let i = 0; i < arr.length; i++) {
-                if (i == 0) str += ", but in such case ";
+                if (i == 0) str += "\n-> but in the case above, ";
                 else if (i == 1 && arr.length == 2) str += " and ";
                 str += arr[i];
             }
             return str;
         }
 
-        // Font type confirmation
+        // Font type validation
         if (this.fontType == null
             || !Object.values(InputYY.FONT_TYPES).includes(this.fontType))
-            str += "\n- the typeface is invalid";
-        else str += "\n- the typeface is valid"
+            str += "\n-> the typeface is not valid";
+        else str += "\n- the typeface may be valid"
 
         if (this.isFontSerif()) {
             if (this.isLaundryAbove())
-                str += ", but in such case the laundry symbols should not be located above the composition on the care label";
+                str += "\n-> but in the case above, the laundry symbols should not be located above the composition on the care label";
             return str;
         }
 
-        // Laundry symbols location confirmation
+        // Laundry symbols location validation
         if (this.laundrySymbolsLocation == null
             || !Object.values(InputYY.LAUNDRY_SYMBOLS_LOCATIONS).includes(this.laundrySymbolsLocation))
-            str += "\n- the laundry symbols location is invalid";
-        else str += "\n- the laundry symbols location is valid"
+            str += "\n-> the laundry symbols location is not valid";
+        else str += "\n- the laundry symbols location may be valid"
 
         return str;
 

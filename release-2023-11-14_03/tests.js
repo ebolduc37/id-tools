@@ -163,6 +163,12 @@ const inputYY = [
     new InputYY({ productCode: "HB-T00-000", signatureStyle: SIGNATURE_MAIN_I,
                     sizingSystem: SIZING_ALPHABETICAL, fontType: FONT_SERIF,
                     laundrySymbolsLocation: LAUNDRY_ABOVE }),
+    new InputYY({ productCode: "HW-Y11-701", signatureStyle: SIGNATURE_MAIN_III,
+                    sizingSystem: SIZING_NUMERICAL, fontType: FONT_SANS_SERIF,
+                    laundrySymbolsLocation: LAUNDRY_ABOVE }),
+    new InputYY({ productCode: "HB-T00-000", signatureStyle: SIGNATURE_MAIN_II,
+                    sizingSystem: SIZING_ALPHABETICAL, fontType: FONT_SERIF,
+                    laundrySymbolsLocation: LAUNDRY_ABOVE }),
 ];
 
 let input = inputYY;

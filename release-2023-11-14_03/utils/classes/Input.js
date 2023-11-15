@@ -167,13 +167,13 @@ class Input {
         // Label validation
         let str = "Unfortunately, the information you have entered is not valid"
         if (this.label != null) str += ` for ${this.label}:`;
-        else str += ":\n- the label is not specified";
+        else str += ":\n-> the label is not specified";
 
         // Product code print validation
-        if (this.isProductCodeValid())
-            str += "\n- the form of the product code print is valid"
+        if (!this.isProductCodeValid())
+            str += "\n-> the form of the product code print is not valid"
         else
-            str += "\n- the form of the product code print is not valid";
+            str += "\n- the form of the product code print may be valid";
 
         return str;
     }
