@@ -1,7 +1,7 @@
 /**
  * Initialization of GARMENT_ID.
  *
- * Initialization of the COMME des GARÇONS garment IDs and their corresponding garment type.
+ * Initialization of the Yohji Yamamoto garment IDs and their corresponding garment type.
  *
  * @author Etienne Bolduc
  */
@@ -13,20 +13,22 @@
  * @enum {string}
  */
 const GARMENT_ID = Object.freeze({
-	A: "a piece",
+	A: "a miscellaneous piece",
 	B: "a button-up",
 	C: "a coat",
+	D: "a dress or a one-piece",
+	F: "a belt",
+	H: "a hat",
+	I: "a bag",
 	J: "a jacket",
-	K: "a miscellaneous piece",
-	N: "a knitwear piece",
-	O: "a one-piece",
+	K: "a knitwear piece",
+	L: "a scarf",
+	N: "a tie",
 	P: "pants or shorts",
-	S: "a skirt or a suit piece",
-	T: "a top (or track pants)",
-	U: "a dress",
+	S: "a skirt",
+	T: "a top",
 	V: "a vest",
-	X: "a piece",
-	Z: "a piece"
+	Y: "a blouson"
 });
 
 export default GARMENT_ID;
