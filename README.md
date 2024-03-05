@@ -50,9 +50,9 @@ The input data of an item from ___Yohji Yamamoto___ is to be gathered in an inst
 
 | LOGO_STYLES | Logo style |
 | --- | --- |
-| `YY_I` | ![YohjiYamamoto_MAIN_I_black](https://github.com/ebolduc37/identification/assets/44382376/deb6ca72-738a-4c26-967a-1f86fca01640) |
-| `YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
-| `YY_III` | ![YohjiYamamoto_MAIN_III_black](https://github.com/ebolduc37/identification/assets/44382376/dc7c8a5f-e92a-4600-a879-1a282b34c833) |
+| `YY_I` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
+| `YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
+| `YY_III` | ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
 
 ## <a id="access-results"/></a> How to access the raw identification results
 
