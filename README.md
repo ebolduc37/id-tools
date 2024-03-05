@@ -8,20 +8,23 @@ This project was made possible thanks to our supporters. Support us by [subscrib
 
 ## How to identify an item
 
-An item is identified through a collection of input data that is gathered within a single instance of a subclass of `Input` unique to each label, as described in detail down below. A `string` representation confirming the input data and listing all computed occurrences is then returned by applying the function `identification()` to the input object.
+An item is identified through a collection of input data that is gathered within a single instance of a subclass of `Input` unique to each label as described below. A `string` representation confirming the input data and listing all computed occurrences is then returned by applying the function `identification()` to the input object.
 
-To customize the application of the results, please consult [How to access the identification results](#access-results) for more information.
+To customize the application of the results, please consult [How to access the raw identification results](#access-results) for more information.
 
 ### COMME des GARÇONS
 
 #### `InputCDG({ productCode, yearPrint })`
 
-`InputCDG` Javascript `Object` data type that contains two (2) keys/properties:
+The input data of an item from COMME des GARÇONS is to be gathered in an instance of `InputCDG` as exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains two (2) properties:
 
-| Key | Description |
-| --- | --- |
-| `productCode` | `string` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit varius velit maximus efficitur. Proin consequat risus eu efficitur venenatis. Donec finibus tempus libero quis venenatis. Curabitur fringilla lacinia sem. Sed id urna congue, gravida turpis a, porttitor nibh. Sed blandit egestas nisl, quis venenatis lectus cursus nec. Vestibulum luctus finibus nulla, et interdum ex. In rhoncus luctus sodales. Sed maximus tincidunt neque ut euismod. Phasellus mattis risus et aliquet gravida. Duis eu lacinia tortor. Ut vitae quam posuere, finibus dolor vel, blandit leo. Morbi condimentum molestie neque non sollicitudin. Integer ex nibh, mollis sit amet dui eget, scelerisque maximus felis. Vivamus a scelerisque leo, nec ultrices massa. Nam molestie orci in elementum fringilla. |
-| `yearPrint` | `string` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit varius velit maximus efficitur. Proin consequat risus eu efficitur venenatis. Donec finibus tempus libero quis venenatis. Curabitur fringilla lacinia sem. Sed id urna congue, gravida turpis a, porttitor nibh. Sed blandit egestas nisl, quis venenatis lectus cursus nec. Vestibulum luctus finibus nulla, et interdum ex. In rhoncus luctus sodales. Sed maximus tincidunt neque ut euismod. Phasellus mattis risus et aliquet gravida. Duis eu lacinia tortor. Ut vitae quam posuere, finibus dolor vel, blandit leo. Morbi condimentum molestie neque non sollicitudin. Integer ex nibh, mollis sit amet dui eget, scelerisque maximus felis. Vivamus a scelerisque leo, nec ultrices massa. Nam molestie orci in elementum fringilla.<br><br>`NO_YEAR_PRINT_TYPES` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac velit varius velit maximus efficitur. Proin consequat risus eu efficitur venenatis. Donec finibus tempus libero quis venenatis. Curabitur fringilla lacinia sem. Sed id urna congue, gravida turpis a, porttitor nibh. Sed blandit egestas nisl, quis venenatis lectus cursus nec. Vestibulum luctus finibus nulla, et interdum ex. In rhoncus luctus sodales. Sed maximus tincidunt neque ut euismod. Phasellus mattis risus et aliquet gravida. Duis eu lacinia tortor. Ut vitae quam posuere, finibus dolor vel, blandit leo. Morbi condimentum molestie neque non sollicitudin. Integer ex nibh, mollis sit amet dui eget, scelerisque maximus felis. Vivamus a scelerisque leo, nec ultrices massa. Nam molestie orci in elementum fringilla. |
+| Property |  Description | Possible entries |
+| --- | --- | --- |
+| `productCode` | Product code | The 6-to-8-character `string` (with or without a hyphen) at the top of the care label. |
+| `yearPrint` | Production year | The 4-digit `string` following _AD_ on the right side of the care label;<br>`NO_YEAR_PRINT_TYPES.BLANK` if there is no such print;<br>`NO_YEAR_PRINT_TYPES.UNREADABLE` if the print is visible but unreadable;<br>`NO_YEAR_PRINT_TYPES.UNKNOWN` if whether there originally was such a print is unknown.<br> |
+
+> [!CAUTION]
+> Although the code `D-TK9210` occasionally appears on the care label, it does not correspond to the product code.
 
 #### Examples
 
@@ -31,7 +34,7 @@ Here is one.
 
 blabla
 
-## <a id="access-results"/></a> How to access the identification results
+## <a id="access-results"/></a> How to access the raw identification results
 
 ## Contact
 
