@@ -38,7 +38,7 @@ The input data of an item from ___Yohji Yamamoto___ is to be gathered in an inst
 | Property | Possible entries |
 | --- | --- |
 | `productCode` | The hyphenated 8-character `string` on the care label;<br>`NO_PRODUCT_CODE_TYPES.BLANK`;<br>`NO_PRODUCT_CODE_TYPES.UNREADABLE`;<br>`NO_PRODUCT_CODE_TYPES.UNKNOWN`. |
-| `logoStyle` | `LOGO_STYLES.YY_I` if ![YohjiYamamoto_MAIN_I](https://github.com/ebolduc37/identification/assets/44382376/350eec9c-c6ee-4999-9ca1-d2b9aa70e92c)
+| `logoStyle` | `LOGO_STYLES.YY_I` if ![YohjiYamamoto_MAIN_I](https://github.com/ebolduc37/identification/assets/44382376/350eec9c-c6ee-4999-9ca1-d2b9aa70e92c#gh-light-mode-only)
 ;<br>`LOGO_STYLES.YY_II`;<br>`LOGO_STYLES.YY_III`. |
 | `sizingSystem` | `SIZING_SYSTEMS.ALPHABETICAL`;<br>`SIZING_SYSTEMS.NUMERICAL`;<br>`SIZING_SYSTEMS.UNKNOWN`. |
 | `fontType` | `FONT_TYPES.SERIF`;<br>`FONT_TYPES.SANS_SERIF`;<br>`FONT_TYPES.UNKNOWN`. |
