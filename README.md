@@ -50,7 +50,7 @@ The input data of an item from ___Yohji Yamamoto___ is to be gathered in an inst
 
 For reference, you will find in the table below the logo style associated with each possible entry of `logoStyle`. You can find them in large `.png` format in the `assets` folder.
 
-| `logoStyle` entry | Logo style |
+| `logoStyle` entry | Corresponding logo style |
 | --- | --- |
 | `LOGO_STYLES.YY_I` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
 | `LOGO_STYLES.YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
