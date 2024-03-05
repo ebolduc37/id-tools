@@ -2,7 +2,7 @@
 
 ### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
-This JavaScript code implements the identification of items from the labels COMME des GARÇONS and Yohji Yamamoto using basic information provided by the user. Please consult our identification chart for more information.
+This JavaScript code implements the identification of items from the labels ___COMME des GARÇONS___ and ___Yohji Yamamoto___ using basic information provided by the user. Please consult our identification chart for more information.
 
 This project was made possible thanks to our supporters. Support us by [subscribing on Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
 
@@ -14,25 +14,37 @@ To customize the application of the results, please consult [How to access the r
 
 ### COMME des GARÇONS
 
-#### `InputCDG({ productCode, yearPrint })`
+#### `InputCDG ({ productCode, yearPrint })`
 
-The input data of an item from COMME des GARÇONS is to be gathered in an instance of `InputCDG` as exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains two (2) properties:
+The input data of an item from ___COMME des GARÇONS___ is to be gathered in an instance of `InputCDG` exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains two (2) properties:
 
-| Property |  Description | Possible entries |
-| --- | --- | --- |
-| `productCode` | Product code | The 6-to-8-character `string` (with or without a hyphen) at the top of the care label. |
-| `yearPrint` | Production year | The 4-digit `string` following _AD_ on the right side of the care label;<br>`NO_YEAR_PRINT_TYPES.BLANK` if there is no such print;<br>`NO_YEAR_PRINT_TYPES.UNREADABLE` if the print is visible but unreadable;<br>`NO_YEAR_PRINT_TYPES.UNKNOWN` if whether there originally was such a print is unknown.<br> |
+| Property | Possible entries |
+| --- | --- |
+| `productCode` | The hyphenated 6-to-8-character `string` at the top of the care label. |
+| `yearPrint` | The 4-digit `string` following _AD_ on the right of the care label;<br>`NO_YEAR_PRINT_TYPES.BLANK` if there is no such print;<br>`NO_YEAR_PRINT_TYPES.UNREADABLE` if the print is visible but unreadable;<br>`NO_YEAR_PRINT_TYPES.UNKNOWN` if whether there originally was such a print is unknown.<br> |
+
+> [!NOTE]
+> `NO_YEAR_PRINT_TYPES` is a static property of `InputCDG`.
 
 > [!CAUTION]
 > Although the code `D-TK9210` occasionally appears on the care label, it does not correspond to the product code.
 
-#### Examples
-
-Here is one.
-
 ### Yohji Yamamoto
 
-blabla
+#### `InputYY ({ productCode, logoStyle, sizingSystem, fontType, laundrySymbolsLocation })`
+
+The input data of an item from ___Yohji Yamamoto___ is to be gathered in an instance of `InputYY` exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains five (5) properties:
+
+| Property | Possible entries |
+| --- | --- |
+| `productCode` | The hyphenated 8-character `string` on the care label;<br>`NO_PRODUCT_CODE_TYPES.BLANK`;<br>`NO_PRODUCT_CODE_TYPES.UNREADABLE`;<br>`NO_PRODUCT_CODE_TYPES.UNKNOWN`. |
+| `logoStyle` | `LOGO_STYLES.YY_I`;<br>`LOGO_STYLES.YY_II`;<br>`LOGO_STYLES.YY_III`. |
+| `sizingSystem` | `SIZING_SYSTEMS.ALPHABETICAL`;<br>`SIZING_SYSTEMS.NUMERICAL`;<br>`SIZING_SYSTEMS.UNKNOWN`. |
+| `fontType` | `FONT_TYPES.SERIF`;<br>`FONT_TYPES.SANS_SERIF`;<br>`FONT_TYPES.UNKNOWN`. |
+| `laundrySymbolsLocation` | `LAUNDRY_SYMBOLS_LOCATIONS.ABOVE`;<br>`LAUNDRY_SYMBOLS_LOCATIONS.BELOW`;<br>`LAUNDRY_SYMBOLS_LOCATIONS.UNKNOWN`. |
+
+> [!NOTE]
+> `NO_PRODUCT_CODE_TYPES`, `LOGO_STYLES`, `SIZING_SYSTEMS`, `FONT_TYPES`, and `LAUNDRY_SYMBOLS_LOCATIONS` are all static properties of `InputYY`.
 
 ## <a id="access-results"/></a> How to access the raw identification results
 
