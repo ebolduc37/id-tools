@@ -51,7 +51,7 @@ The input data of an item from ___Yohji Yamamoto___ is to be gathered in an inst
 | LOGO_STYLES | Logo style |
 | --- | --- |
 | `YY_I` | ![YohjiYamamoto_MAIN_I_black](https://github.com/ebolduc37/identification/assets/44382376/deb6ca72-738a-4c26-967a-1f86fca01640) |
-| `YY_II` | ![YohjiYamamoto_MAIN_II_black](https://github.com/ebolduc37/identification/assets/44382376/1ee899f0-7200-4974-a35e-8afe131ad154) |
+| `YY_II` | ![YohjiYamamoto_MAIN_II_black](https://github.com/ebolduc37/identification/assets/44382376/1ee899f0-7200-4974-a35e-8afe131ad154#gh-light-mode-only) ![YohjiYamamoto_MAIN_II_white](https://github.com/ebolduc37/identification/assets/44382376/4788850c-0ef2-4b9f-93da-95dec66c2ae9#gh-dark-mode-only) |
 | `YY_III` | ![YohjiYamamoto_MAIN_III_black](https://github.com/ebolduc37/identification/assets/44382376/dc7c8a5f-e92a-4600-a879-1a282b34c833) |
 
 ## <a id="access-results"/></a> How to access the raw identification results
