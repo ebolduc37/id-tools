@@ -14,7 +14,7 @@ To customize the application of the results, please consult [How to access the r
 
 ### COMME des GARÇONS
 
-#### `InputCDG ({ productCode, yearPrint })`
+#### `InputCDG({`<br>`  productCode,`<br>`  yearPrint`<br>`})`
 
 The input data of an item from ___COMME des GARÇONS___ is to be gathered in an instance of `InputCDG` exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains two (2) properties:
 
