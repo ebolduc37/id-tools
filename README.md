@@ -8,7 +8,9 @@ This project was made possible thanks to our supporters. Support us by [subscrib
 
 ## How to identify an item
 
-blabla subclass of `Input` blabla `identification()` blabla `identify()`
+An item is identified through a collection of input data that is gathered within a single instance of a subclass of `Input` unique to each label, as described in detail down below. A `string` representation confirming the input data and listing all computed occurrences is then returned by applying the function `identification()` to the input object.
+
+To customize the application of the results, please consult [How to access the identification results](nothing) for more information.
 
 ### COMME des GARÇONS
 
@@ -28,6 +30,8 @@ Here is one.
 ### Yohji Yamamoto
 
 blabla
+
+## <a id="ref"/></a> How to access the identification results
 
 ## Contact
 
