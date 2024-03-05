@@ -38,14 +38,21 @@ The input data of an item from ___Yohji Yamamoto___ is to be gathered in an inst
 | Property | Possible entries |
 | --- | --- |
 | `productCode` | The hyphenated 8-character `string` on the care label;<br>`NO_PRODUCT_CODE_TYPES.BLANK`;<br>`NO_PRODUCT_CODE_TYPES.UNREADABLE`;<br>`NO_PRODUCT_CODE_TYPES.UNKNOWN`. |
-| `logoStyle` | `LOGO_STYLES.YY_I` if ![YohjiYamamoto_MAIN_I](https://github.com/ebolduc37/identification/assets/44382376/350eec9c-c6ee-4999-9ca1-d2b9aa70e92c#gh-light-mode-only)
-;<br>`LOGO_STYLES.YY_II`;<br>`LOGO_STYLES.YY_III`. |
+| `logoStyle` | `LOGO_STYLES.YY_I` if ;<br>`LOGO_STYLES.YY_II`;<br>`LOGO_STYLES.YY_III`. |
 | `sizingSystem` | `SIZING_SYSTEMS.ALPHABETICAL`;<br>`SIZING_SYSTEMS.NUMERICAL`;<br>`SIZING_SYSTEMS.UNKNOWN`. |
 | `fontType` | `FONT_TYPES.SERIF`;<br>`FONT_TYPES.SANS_SERIF`;<br>`FONT_TYPES.UNKNOWN`. |
 | `laundrySymbolsLocation` | `LAUNDRY_SYMBOLS_LOCATIONS.ABOVE`;<br>`LAUNDRY_SYMBOLS_LOCATIONS.BELOW`;<br>`LAUNDRY_SYMBOLS_LOCATIONS.UNKNOWN`. |
 
 > [!NOTE]
 > `NO_PRODUCT_CODE_TYPES`, `LOGO_STYLES`, `SIZING_SYSTEMS`, `FONT_TYPES`, and `LAUNDRY_SYMBOLS_LOCATIONS` are all static properties of `InputYY`.
+
+#### Logo styles
+
+| LOGO_STYLES | Logo style |
+| --- | --- |
+| `YY_I` | ![YohjiYamamoto_MAIN_I_black](https://github.com/ebolduc37/identification/assets/44382376/deb6ca72-738a-4c26-967a-1f86fca01640) |
+| `YY_II` | ![YohjiYamamoto_MAIN_II_black](https://github.com/ebolduc37/identification/assets/44382376/1ee899f0-7200-4974-a35e-8afe131ad154) |
+| `YY_III` | ![YohjiYamamoto_MAIN_III_black](https://github.com/ebolduc37/identification/assets/44382376/dc7c8a5f-e92a-4600-a879-1a282b34c833) |
 
 ## <a id="access-results"/></a> How to access the raw identification results
 
