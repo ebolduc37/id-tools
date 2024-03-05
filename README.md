@@ -1,4 +1,4 @@
-# Garment identification module in JavaScript
+# Item identification module in JavaScript
 
 ### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
@@ -8,7 +8,7 @@ This project was made possible thanks to our supporters. Support us by [subscrib
 
 ## How to identify an item
 
-blabla
+blabla subclass of `Input` blabla `identification()` blabla `identify()`
 
 ### COMME des GARÇONS
 
