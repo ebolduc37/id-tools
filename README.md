@@ -10,7 +10,7 @@ This project was made possible thanks to our supporters. Support us by [subscrib
 
 An item is identified through a collection of input data that is gathered within a single instance of a subclass of `Input` unique to each label, as described in detail down below. A `string` representation confirming the input data and listing all computed occurrences is then returned by applying the function `identification()` to the input object.
 
-To customize the application of the results, please consult [How to access the identification results](nothing) for more information.
+To customize the application of the results, please consult [How to access the identification results](#access-results) for more information.
 
 ### COMME des GARÇONS
 
@@ -31,7 +31,7 @@ Here is one.
 
 blabla
 
-## <a id="ref"/></a> How to access the identification results
+## <a id="access-results"/></a> How to access the identification results
 
 ## Contact
 
