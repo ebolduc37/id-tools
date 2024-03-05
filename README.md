@@ -14,6 +14,8 @@ To customize the application of the results, please consult [How to access the r
 
 ### COMME des GARÇONS
 
+The software should be able to, in some measure, identify __ALL__ items with a product code from ___COMME des GARÇONS___.
+
 #### `InputCDG({`<br>`  productCode,`<br>`  yearPrint`<br>`})`
 
 The input data of an item from ___COMME des GARÇONS___ is to be gathered in an instance of `InputCDG` exported from `index.js` in the release folder. The instance is constructed from a Javascript `Object` data type that contains two (2) properties:
@@ -30,6 +32,8 @@ The input data of an item from ___COMME des GARÇONS___ is to be gathered in an 
 > Although the code `D-TK9210` occasionally appears on the care label, it does not correspond to the product code.
 
 ### Yohji Yamamoto
+
+The software should be able to, in some measure, identify __EXCLUSIVELY__ mainline items from ___Yohji Yamamoto___, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_.
 
 #### `InputYY({`<br>`  productCode,`<br>`  logoStyle,`<br>`  sizingSystem,`<br>`  fontType,`<br>`  laundrySymbolsLocation`<br>`})`
 
