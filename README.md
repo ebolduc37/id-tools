@@ -36,14 +36,14 @@ The instance is constructed using a Javascript `Object` data type containing two
 
 | Property | Description |
 | :-: | - |
-| [`productCode`](#CDG-productCode) | The product code of the item, which corresponds to the string of characters at the top of the care label. |
-| [`yearPrint`](#CDG-yearPrint) | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof.<br> |
+| [`productCode`](#CDG-productCode) | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
+| [`yearPrint`](#CDG-yearPrint) | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by an a year since 1988 on the right of the care label.<br> |
 
 <a id="CDG-productCode"></a>
 
 ### `productCode`
 
-The `productCode` of an item corresponds to the seemingly random string of 6-9 characters printed at the top of the care label. Its structure depends on the line of clothing and time of production.
+The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the line of clothing and the moment of production.
 
 | Entry type | Description |
 | :-: | --- |
@@ -55,18 +55,68 @@ Although the code `D-TK9210` occasionally appears on the care label, it is not t
 
 ### `yearPrint`
 
-The `yearPrint` of an item corresponds to the production year of the item or lack thereof. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
+The `yearPrint` of an item should contain the information regarding the production year print of the item. The production year print corresponds to the letters "AD" followed by an integer between 1988 and the current year located on the right side of the care label. The lack of production year or certainty in its value can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
 | Entry type | Description |
 | :-: | --- |
 | `string` | Integer between 1988 and the current year following "AD" on the right of the care label. |
-| `BLANK` | `NO_YEAR_PRINT_TYPES` option for when no production year was printed. |
-| `UNREADABLE` | `NO_YEAR_PRINT_TYPES` option for when a production year was printed, but cannot be deciphered. |
-| `UNKNOWN` | `NO_YEAR_PRINT_TYPES` option for when it is unknown whether a production year was printed or not. |
+| `NO_YEAR_PRINT_TYPES.BLANK` | No "AD" followed by an integer printed on the care label. |
+| `NO_YEAR_PRINT_TYPES.UNREADABLE` | Undecipherable integer following "AD" on the right of the care label. |
+| `NO_YEAR_PRINT_TYPES.UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
 
 ---
 
-## <a id="YY"></a> Yohji Yamamoto
+<a id="YY"></a>
+
+## Yohji Yamamoto
+
+The software should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a class that can be imported from `index.js` in the release folder.
+
+
+<!---`InputYY({`<br>`  productCode,`<br>`  logoStyle,`<br>`  sizingSystem,`<br>`  fontType,`<br>`  laundrySymbolsLocation`<br>`})`--->
+
+```
+InputYY({
+  productCode,
+  logoStyle,
+  sizingSystem,
+  fontType,
+  laundrySymbolsLocation
+})
+```
+
+The instance is constructed using a Javascript `Object` data type containing five (5) properties:
+
+| Property | Description |
+| :-: | - |
+| [`productCode`](#YY-productCode) | The product code of the item, which corresponds to the larger string of characters on the care label. |
+| [`logoStyle`](#YY-logoStyle) | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof.<br> |
+
+<a id="YY-productCode"></a>
+
+### `productCode`
+
+The `productCode` of an item corresponds to the seemingly random string of 8 characters printed on the care label.
+
+| Entry type | Description |
+| :-: | --- |
+| `string` | String of 8 characters at the top of the care label. |
+
+<a id="YY-logoStyle"></a>
+
+### `logoStyle`
+
+The `logoStyle` of an item corresponds to the production year of the item. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
+
+| Entry type | Description |
+| :-: | --- |
+| `LOGO_STYLES.YY_I` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
+| `LOGO_STYLES.YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
+| `LOGO_STYLES.YY_III` | ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
+
+---
+
+## Yohji Yamamoto
 
 The software should be able to identify mainline items from __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_.
 
