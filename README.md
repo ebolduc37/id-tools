@@ -16,7 +16,7 @@ To customize the application of the results, something something.
 
 ---
 
-## <a id="CDG"></a> COMME des GARÇONS
+## COMME des GARÇONS <a id="CDG"></a>
 
 The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a class that can be imported from `index.js` in the release folder.
 
@@ -34,10 +34,10 @@ The instance is constructed using a Javascript `Object` data type containing two
 
 | Property | Description |
 | :-: | - |
-| `productCode` | The product code of the item, which corresponds to the string of characters at the top of the care label. |
-| `yearPrint` | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof.<br> |
+| [`productCode`](#CDG-productCode) | The product code of the item, which corresponds to the string of characters at the top of the care label. |
+| [`yearPrint`](#CDG-yearPrint) | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof.<br> |
 
-### `productCode`
+### `productCode` <a id="CDG-productCode"></a>
 
 The `productCode` of an item corresponds to the seemingly random string of 6-9 characters printed at the top of the care label. Its structure depends on the line of clothing and time of production.
 
@@ -47,7 +47,7 @@ The `productCode` of an item corresponds to the seemingly random string of 6-9 c
 
 Although the code `D-TK9210` occasionally appears on the care label, it is not the product code.
 
-### `yearPrint`
+### `yearPrint` <a id="CDG-yearPrint"></a>
 
 The `yearPrint` of an item corresponds to the production year of the item or lack thereof. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
