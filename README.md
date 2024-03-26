@@ -2,7 +2,7 @@
 
 ### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
-This JavaScript code implements the identification of items from the fashion labels __COMME des GARÇONS__ and __Yohji Yamamoto__ using input data provided by the user. Please consult our identification charts for more information on the identification process.
+This JavaScript code implements the identification of items from the fashion labels __COMME des GARÇONS__ and __Yohji Yamamoto__ using some information provided by the user. Please consult our identification charts for more details regarding the identification process.
 
 #### Support us by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
 
@@ -10,7 +10,7 @@ This JavaScript code implements the identification of items from the fashion lab
 
 An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below for [__COMME des GARÇONS__](#CDG) and [__Yohji Yamamoto__](#YY).
 
-Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming its input data and listing all identified occurrences.
+Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of a counterfeit.
 
 ### How to access the raw identification results
 
@@ -43,13 +43,13 @@ InputCDG({
 | Property | Description |
 | :-: | - |
 | [`productCode`](#CDG-productCode) | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
-| [`yearPrint`](#CDG-yearPrint) | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by an a year since 1988 on the right of the care label.<br> |
+| [`yearPrint`](#CDG-yearPrint) | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label.<br> |
 
 <a id="CDG-productCode"></a>
 
 ### `productCode`
 
-The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the line of clothing and the moment of production.
+The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the clothing line and the moment of production.
 
 | Entry | Description |
 | :-: | --- |
