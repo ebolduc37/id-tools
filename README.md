@@ -16,7 +16,9 @@ To customize the application of the results, something something.
 
 ---
 
-## COMME des GARÇONS <a id="CDG"></a>
+<a id="CDG"></a>
+
+## COMME des GARÇONS
 
 The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a class that can be imported from `index.js` in the release folder.
 
