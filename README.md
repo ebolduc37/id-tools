@@ -16,7 +16,7 @@ To customize the application of the results, something something.
 
 ---
 
-## COMME des GARÇONS <a id="CDG"></a>
+## <a id="CDG"></a> COMME des GARÇONS
 
 The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a class that can be imported from `index.js` in the release folder.
 
@@ -60,7 +60,7 @@ The `yearPrint` of an item corresponds to the production year of the item or lac
 
 ---
 
-## Yohji Yamamoto <a id="YY"></a>
+## <a id="YY"></a> Yohji Yamamoto
 
 The software should be able to identify mainline items from __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_.
 
