@@ -1,14 +1,16 @@
-# Item identification module in JavaScript
+# Identification module in JavaScript
 
 ### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
-This JavaScript code implements the identification of items from the labels __COMME des GARÇONS__ and __Yohji Yamamoto__ using basic information provided by the user. Please consult our identification chart for more information.
+This JavaScript code implements the identification of items from the fashion labels __COMME des GARÇONS__ and __Yohji Yamamoto__ using input data provided by the user. Please consult our identification charts for more information on the identification process.
 
-#### Support us by [subscribing on Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
+#### Support us by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
 
 ## How to identify an item
 
-An item is identified through input data gathered within a single instance of a subclass of `Input` unique to each label as described below for [__COMME des GARÇONS__](#CDG) and [__Yohji Yamamoto__](#YY). A `string` representation confirming the input data and listing all computed occurrences can be returned by calling the function `identification()` on the input object.
+An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below for [__COMME des GARÇONS__](#CDG) and [__Yohji Yamamoto__](#YY).
+
+Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming its input data and listing all identified occurrences.
 
 ### How to access the raw identification results
 
@@ -20,10 +22,16 @@ To customize the application of the results, something something.
 
 ## COMME des GARÇONS
 
-The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a class that can be imported from `index.js` in the release folder.
+The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
 
 <!---`InputCDG({`<br>`  productCode,`<br>`  yearPrint`<br>`})`--->
+
+```
+import { InputCDG } from "path/to/release/index.js";
+```
+
+An instance of `InputCDG` is constructed using a Javascript `Object` data type containing two (2) properties:
 
 ```
 InputCDG({
@@ -31,8 +39,6 @@ InputCDG({
   yearPrint
 })
 ```
-
-The instance is constructed using a Javascript `Object` data type containing two (2) properties:
 
 | Property | Description |
 | :-: | - |
@@ -45,7 +51,7 @@ The instance is constructed using a Javascript `Object` data type containing two
 
 The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the line of clothing and the moment of production.
 
-| Entry type | Description |
+| Entry | Description |
 | :-: | --- |
 | `string` | String of 6-9 characters at the top of the care label. |
 
@@ -57,7 +63,7 @@ Although the code `D-TK9210` occasionally appears on the care label, it is not t
 
 The `yearPrint` of an item should contain the information regarding the production year print of the item. The production year print corresponds to the letters "AD" followed by an integer between 1988 and the current year located on the right side of the care label. The lack of production year or certainty in its value can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
-| Entry type | Description |
+| Entry | Description |
 | :-: | --- |
 | `string` | Integer between 1988 and the current year following "AD" on the right of the care label. |
 | `NO_YEAR_PRINT_TYPES.BLANK` | No "AD" followed by an integer printed on the care label. |
@@ -70,7 +76,7 @@ The `yearPrint` of an item should contain the information regarding the producti
 
 ## Yohji Yamamoto
 
-The software should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a class that can be imported from `index.js` in the release folder.
+The software should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
 
 <!---`InputYY({`<br>`  productCode,`<br>`  logoStyle,`<br>`  sizingSystem,`<br>`  fontType,`<br>`  laundrySymbolsLocation`<br>`})`--->
@@ -85,7 +91,7 @@ InputYY({
 })
 ```
 
-The instance is constructed using a Javascript `Object` data type containing five (5) properties:
+An instance of `InputYY` is constructed using a Javascript `Object` data type containing five (5) properties:
 
 | Property | Description |
 | :-: | - |
@@ -108,7 +114,7 @@ The `productCode` of an item corresponds to the seemingly random string of 8 cha
 
 The `logoStyle` of an item corresponds to the production year of the item. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
-| Entry type | Description |
+| Entry | Description |
 | :-: | --- |
 | `LOGO_STYLES.YY_I` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
 | `LOGO_STYLES.YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
