@@ -34,37 +34,31 @@ The instance is constructed using a Javascript `Object` data type containing two
 
 | Property | Description |
 | :-: | - |
-| `productCode` | The product code of the item, corresponding to the string of characters at the top of the care label. |
-| `yearPrint` | The production year of the item or lack thereof, corresponding to what follows "AD" on the right of the care label.<br> |
+| `productCode` | The product code of the item, which corresponds to the string of characters at the top of the care label. |
+| `yearPrint` | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof.<br> |
 
+### `productCode`
 
-### Product code
+The `productCode` of an item corresponds to the seemingly random string of 6-9 characters printed at the top of the care label. Its structure depends on the line of clothing and time of production.
 
-The product code of an item corresponds to the seemingly random string of 6-to-9 characters found at the top of the care label. Its structure depends on the line and production period.
-
-| `productCode` entry | Description |
+| Entry type | Description |
 | :-: | --- |
-| `string` | String of 6-to-9 characters at the top of the care label. |
+| `string` | String of 6-9 characters at the top of the care label. |
 
 Although the code `D-TK9210` occasionally appears on the care label, it is not the product code.
 
-### Year print
+### `yearPrint`
 
-`NO_YEAR_PRINT_TYPES` is a static property of `InputCDG`.
+The `yearPrint` of an item corresponds to the production year of the item or lack thereof. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
-| `yearPrint` entry | Description |
+| Entry type | Description |
 | :-: | --- |
-| `string` | The 4-digit `string` following "AD" on the right of the care label. |
-| `NO_YEAR_PRINT_TYPES.BLANK` | If there is no such print. |
-| `NO_YEAR_PRINT_TYPES.UNREADABLE` | If the print is visible but unreadable. |
-| `NO_YEAR_PRINT_TYPES.UNKNOWN` | If whether there originally was such a print is unknown. |
-
-
-
-
+| `string` | Integer between 1988 and the current year following "AD" on the right of the care label. |
+| `BLANK` | `NO_YEAR_PRINT_TYPES` option for when no production year was printed. |
+| `UNREADABLE` | `NO_YEAR_PRINT_TYPES` option for when a production year was printed, but cannot be deciphered. |
+| `UNKNOWN` | `NO_YEAR_PRINT_TYPES` option for when it is unknown whether a production year was printed or not. |
 
 ---
-
 
 ## Yohji Yamamoto <a id="YY"></a>
 
