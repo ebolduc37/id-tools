@@ -8,22 +8,29 @@ This JavaScript code implements the identification of items from the fashion lab
 
 ## How to identify an item
 
-An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below for [__COMME des GARÇONS__](#CDG) and [__Yohji Yamamoto__](#YY).
+An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
 
-### First option: generate a `string` representation (simple)
+#### `Input`
+
+| Label | Subclass | Characteristic properties for identification |
+| :-: | :-: | - |
+| [__COMME des GARÇONS__](#CDG) | `InputCDG` | `productCode`; `yearPrint`. |
+| [__Yohji Yamamoto__](#YY) | `InputYY` | `productCode`; `logoStyle`; `sizingSystem`; `fontType`; `laundrySymbolsLocation`. |
+
+### First option (simple): generate a `string` representation
 
 Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of a counterfeit.
 
-### Second option: access the identification data (advanced)
+### Second option (advanced): access the identification data
 
 A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
 
 Calling on an `Input` object the function `identify()` will return an array of [`Identification`](#Identification) objects, i.e., `Identification[]`, if at least one match is found and `null` otherwise. An instance of the `Identification` class has a large number of properties which are described below. Note that all members of an array returned by `identify()` will share the same `input` and `label`.
 
 <a id="Identification"></a>
-### `Identification`
+#### `Identification`
 
-| Property | Return type | Description |
+| Property | Type | Description |
 | :-: | :-: | - |
 | `input` | `Input` | Input data used for identification. |
 | `label` | `string` | Name of the label. |
@@ -35,19 +42,19 @@ Calling on an `Input` object the function `identify()` will return an array of [
 | `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
 
 <a id="Line"></a>
-### `Line`
+#### `Line`
 
-| Property | Return type | Description |
+| Property | Type | Description |
 | :-: | :-: | - |
 | `name` | `string` | Name of the clothing line. |
 | `collectionList` | [`Collection[]`](#Collection) | Array of matching collections. |
 
 <a id="Collection"></a>
-### `Collection`
+#### `Collection`
 
-| Property | Return type | Description |
+| Property | Type | Description |
 | :-: | :-: | - |
-| `year` | `number` | Year of the collection; production year if `season == null`. |
+| `year` | `number` | Year of the collection; production year if `season` is `null`. |
 | `season` | `string` | Season of the collection; `null` if none. |
 | `title` | `string` | Title of the collection; `null` if none. |
 | `text` | `string` | Other information; `null` if none. |
@@ -66,14 +73,13 @@ The software should be able to identify all items with a product code from __COM
 import { InputCDG } from "path/to/release/index.js";
 ```
 
-An instance of `InputCDG` is constructed using a Javascript `Object` data type containing two (2) properties:
+An instance of `InputCDG` is constructed using a Javascript `Object` data type with two (2) properties, i.e., `productCode` and `yearPrint`.
 
 ```
-InputCDG({
-  productCode,
-  yearPrint
-})
+input = new InputCDG({ productCode: ... , yearPrint: ... })
 ```
+
+#### `InputCDG`
 
 | Property | Type | Description |
 | :-: | :-: | - |
