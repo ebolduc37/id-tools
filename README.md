@@ -10,20 +10,21 @@ This JavaScript code implements the identification of items from the fashion lab
 
 An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
 
-#### Subclasses of `Input` and their properties according to the label
+<a id="Input"></a>
+#### `Input` subclasses and their instance properties according to the label
 
 | Label | Subclass | List of properties |
 | - | - | - |
-| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `productCode`<br>- `yearPrint` |
-| [__Yohji Yamamoto__](#YY) | `InputYY` | - `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
+| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `label`<br>- `productCode`<br>- `yearPrint` |
+| [__Yohji Yamamoto__](#YY) | `InputYY` | - `label`<br>- `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
 
-Once an instance of a subclass of `Input` has been properly constructed according to an item's characteristics, the item can be identified. The results of the identification process can take two forms.
+To construct an instance of a subclass of `Input`, the constructor simply takes as its argument an `Object` with the same properties as those listed above according to the label. Once an instance has been properly constructed according to an item's characteristics, the item can be identified. The results of the identification process can take two forms.
 
 ### First option: generate a `string` representation (simple)
 
 Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the item being a counterfeit.
 
-The following is an example of an item identified in such a manner.
+Here is an example of the format.
 
 ```
 You have entered the following input information for COMME des GARÇONS.
@@ -39,15 +40,16 @@ COMME des GARÇONS HOMME PLUS
 
 ### Second option: access the identification data (advanced)
 
-A customized application of the identification results may be desirable in some contexts, in which case a comprehensive access to the identification data is required.
+A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
 
-Calling on an `Input` object the function `identify()` will return an array of `Identification` objects, i.e., `Identification[]`, if at least one match is found and `null` otherwise. An instance of the `Identification` class has a large number of properties which are described below. Note that all members of an array returned by `identify()` will share the same `input` and `label`.
+Calling on an `Input` object the function `identify()` will return an array of [`Identification`](#Identification) objects, i.e., `Identification[]`, if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below, along with associated classes [`Line`](#Line) and [`Collection`](#Collection). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
 
-#### `Identification`
+<a id="Identification"></a>
+#### `Identification` class and its instance properties
 
 | Property | Type | Description |
 | - | - | - |
-| `input` | `Input` | Input data used for identification. |
+| `input` | [`Input`](#Input) | Input data used for identification. |
 | `label` | `string` | Name of the label. |
 | `framework` | `string` | Name of the identification framework. |
 | `exception` | `boolean` | `true` if the results are exceptions to the identification framework; `false` otherwise. |
@@ -57,7 +59,7 @@ Calling on an `Input` object the function `identify()` will return an array of `
 | `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
 
 <a id="Line"></a>
-#### `Line`
+#### `Line` class and its instance properties
 
 | Property | Type | Description |
 | :-: | :-: | - |
@@ -65,11 +67,11 @@ Calling on an `Input` object the function `identify()` will return an array of `
 | `collectionList` | [`Collection[]`](#Collection) | Array of matching collections. |
 
 <a id="Collection"></a>
-#### `Collection`
+#### `Collection` class and its instance properties
 
 | Property | Type | Description |
 | :-: | :-: | - |
-| `year` | `number` | Year of the collection; production year if `season` is `null`. |
+| `year` | `number` | Year of the collection; production year if `season == null`. |
 | `season` | `string` | Season of the collection; `null` if none. |
 | `title` | `string` | Title of the collection; `null` if none. |
 | `text` | `string` | Other information; `null` if none. |
@@ -79,7 +81,7 @@ Calling on an `Input` object the function `identify()` will return an array of `
 <a id="CDG"></a>
 ## COMME des GARÇONS
 
-The software should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
+The current version should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
 
 <!---`InputCDG({`<br>`  productCode,`<br>`  yearPrint`<br>`})`--->
@@ -129,7 +131,7 @@ The `yearPrint` of an item should contain the information regarding the producti
 <a id="YY"></a>
 ## Yohji Yamamoto
 
-The software should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a subclass of `Input` that can be imported from `index.js` in the release folder.
+The current version should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
 
 <!---`InputYY({`<br>`  productCode,`<br>`  logoStyle,`<br>`  sizingSystem,`<br>`  fontType,`<br>`  laundrySymbolsLocation`<br>`})`--->
