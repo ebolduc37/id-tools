@@ -10,28 +10,43 @@ This JavaScript code implements the identification of items from the fashion lab
 
 An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
 
-#### `Input`
+#### Subclasses of `Input` and their properties according to the label
 
-| Label | Subclass | Characteristic properties for identification |
-| :-: | :-: | - |
-| [__COMME des GARÇONS__](#CDG) | `InputCDG` | `productCode`; `yearPrint`. |
-| [__Yohji Yamamoto__](#YY) | `InputYY` | `productCode`; `logoStyle`; `sizingSystem`; `fontType`; `laundrySymbolsLocation`. |
+| Label | Subclass | List of properties |
+| - | - | - |
+| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `productCode`<br>- `yearPrint` |
+| [__Yohji Yamamoto__](#YY) | `InputYY` | - `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
 
-### First option (simple): generate a `string` representation
+Once an instance of a subclass of `Input` has been properly constructed according to an item's characteristics, the item can be identified. The results of the identification process can take two forms.
 
-Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of a counterfeit.
+### First option: generate a `string` representation (simple)
 
-### Second option (advanced): access the identification data
+Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the item being a counterfeit.
 
-A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
+The following is an example of an item identified in such a manner.
 
-Calling on an `Input` object the function `identify()` will return an array of [`Identification`](#Identification) objects, i.e., `Identification[]`, if at least one match is found and `null` otherwise. An instance of the `Identification` class has a large number of properties which are described below. Note that all members of an array returned by `identify()` will share the same `input` and `label`.
+```
+You have entered the following input information for COMME des GARÇONS.
 
-<a id="Identification"></a>
+Product code: PB-11001M
+Year print: AD1994
+
+According to the monthly identification framework of COMME des GARÇONS, the item should be a button-up in size M from...
+
+COMME des GARÇONS HOMME PLUS
+-> Spring/Summer 1995 • Work
+```
+
+### Second option: access the identification data (advanced)
+
+A customized application of the identification results may be desirable in some contexts, in which case a comprehensive access to the identification data is required.
+
+Calling on an `Input` object the function `identify()` will return an array of `Identification` objects, i.e., `Identification[]`, if at least one match is found and `null` otherwise. An instance of the `Identification` class has a large number of properties which are described below. Note that all members of an array returned by `identify()` will share the same `input` and `label`.
+
 #### `Identification`
 
 | Property | Type | Description |
-| :-: | :-: | - |
+| - | - | - |
 | `input` | `Input` | Input data used for identification. |
 | `label` | `string` | Name of the label. |
 | `framework` | `string` | Name of the identification framework. |
@@ -84,7 +99,7 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 | Property | Type | Description |
 | :-: | :-: | - |
 | [`productCode`](#CDG-productCode) | `string` | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
-| [`yearPrint`](#CDG-yearPrint) | `string`,<br>`NO_YEAR_PRINT_TYPES` | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
+| [`yearPrint`](#CDG-yearPrint) | `string`;<br>`NO_YEAR_PRINT_TYPES` | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
 
 <a id="CDG-productCode"></a>
 ### `productCode`
