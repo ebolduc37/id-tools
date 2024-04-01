@@ -62,7 +62,7 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 #### `Line` class instance properties
 
 | Property | Type | Description |
-| :-: | :-: | - |
+| - | - | - |
 | `name` | `string` | Name of the clothing line. |
 | `collectionList` | [`Collection[]`](#Collection) | Array of matching collections. |
 
@@ -70,20 +70,19 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 #### `Collection` class instance properties
 
 | Property | Type | Description |
-| :-: | :-: | - |
-| `year` | `number` | Year of the collection; production year if `season == null`. |
-| `season` | `string` | Semiannual season of the collection; `null` if production year. |
+| - | - | - |
+| `year` | `number` | Year of the collection. |
+| `season` | `string` | Semiannual season of the collection, i.e., `Spring/Summer` or `Autumn/Winter`; `null` if none. |
 | `title` | `string` | Title of the collection; `null` if none. |
 | `text` | `string` | Other information; `null` if none. |
 
 <a id="Collection-seasonal-methods"></a>
-#### `Collection` class seasonal identification methods
+#### `Collection` class instance seasonal identification methods
 
 | Method | Return type | Description |
-| :-: | :-: | - |
+| - | - | - |
 | `isS()` | `boolean` | `true` if the instance's semiannual season is `Spring/Summer`; `false` otherwise. |
 | `isW()` | `boolean` | `true` if the instance's semiannual season is `Autumn/Winter`; `false` otherwise. |
-| `isProductionYear()` | `boolean` | `true` if production year; `false` otherwise. |
 
 ---
 
@@ -92,27 +91,24 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 <a id="CDG"></a>
 ## COMME des GARÇONS
 
-The current version should be able to identify all items with a product code from __COMME des GARÇONS__. The input data of an item from __COMME des GARÇONS__ is gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
-
-
-<!---`InputCDG({`<br>`  productCode,`<br>`  yearPrint`<br>`})`--->
+The current version should be able to identify all items with a product code from __COMME des GARÇONS__. The characteristics of an item from __COMME des GARÇONS__ must be gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
 ```
 import { InputCDG } from "path/to/release/index.js";
 ```
 
-An instance of `InputCDG` is constructed using a Javascript `Object` data type with two (2) properties, i.e., `productCode` and `yearPrint`.
+To construct an instance of `InputCDG`, the constructor must take as its argument an `Object` with two (2) properties as examplified below.
 
 ```
 input = new InputCDG({ productCode: ... , yearPrint: ... })
 ```
 
-#### `InputCDG`
+#### `InputCDG` class instance properties
 
-| Property | Type | Description |
-| :-: | :-: | - |
-| [`productCode`](#CDG-productCode) | `string` | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
-| [`yearPrint`](#CDG-yearPrint) | `string`;<br>`NO_YEAR_PRINT_TYPES` | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
+| Property | List of possible types | Description |
+| - | - | - |
+| [`productCode`](#CDG-productCode) | - `string` | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
+| [`yearPrint`](#CDG-yearPrint) | <ul style="list-style-position:inside;padding-left:0;"><li>`string`</li><li>`NO_YEAR_PRINT_TYPES`</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
 
 <a id="CDG-productCode"></a>
 #### `productCode`
@@ -120,7 +116,7 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the clothing line and the moment of production.
 
 | Entry type | Description |
-| :-: | --- |
+| - | --- |
 | `string` | String of 6-9 characters at the top of the care label. |
 
 Although the code `D-TK9210` occasionally appears on the care label, it is not the product code.
@@ -131,7 +127,7 @@ Although the code `D-TK9210` occasionally appears on the care label, it is not t
 The `yearPrint` of an item should contain the information regarding the production year print of the item. The production year print corresponds to the letters "AD" followed by an integer between 1988 and the current year located on the right side of the care label. The lack of production year or certainty in its value can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
 | Entry type | Description |
-| :-: | --- |
+| - | --- |
 | `string` | Integer between 1988 and the current year following "AD" on the right of the care label. |
 | `NO_YEAR_PRINT_TYPES.BLANK` | No "AD" followed by an integer printed on the care label. |
 | `NO_YEAR_PRINT_TYPES.UNREADABLE` | Undecipherable integer following "AD" on the right of the care label. |
@@ -143,9 +139,6 @@ The `yearPrint` of an item should contain the information regarding the producti
 ## Yohji Yamamoto
 
 The current version should be able to identify most items from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an item from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a subclass of `Input` that can be imported from `index.js` in the release folder.
-
-
-<!---`InputYY({`<br>`  productCode,`<br>`  logoStyle,`<br>`  sizingSystem,`<br>`  fontType,`<br>`  laundrySymbolsLocation`<br>`})`--->
 
 ```
 InputYY({
@@ -160,7 +153,7 @@ InputYY({
 An instance of `InputYY` is constructed using a Javascript `Object` data type containing five (5) properties:
 
 | Property | Description |
-| :-: | - |
+| - | - |
 | [`productCode`](#YY-productCode) | The product code of the item, which corresponds to the larger string of characters on the care label. |
 | [`logoStyle`](#YY-logoStyle) | The production year of the item, which corresponds to what follows "AD" on the right of the care label, or lack thereof. |
 
@@ -171,7 +164,7 @@ An instance of `InputYY` is constructed using a Javascript `Object` data type co
 The `productCode` of an item corresponds to the seemingly random string of 8 characters printed on the care label.
 
 | Entry type | Description |
-| :-: | --- |
+| - | --- |
 | `string` | String of 8 characters at the top of the care label. |
 
 <a id="YY-logoStyle"></a>
