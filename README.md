@@ -54,8 +54,8 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 | `framework` | `string` | Name of the identification framework. |
 | `exception` | `boolean` | `true` if the results are exceptions to the identification framework; `false` otherwise. |
 | `codeStylized` | `string` | Stylized product code. |
-| `garmentType` | `string` | Garment type. |
-| `size` | `string` | Garment size; `null` if none. |
+| `garmentType` | `string` | Garment type; `a piece` by default. |
+| `size` | `string` | Garment size notation; `null` if none. |
 | `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
 
 <a id="Line"></a>
@@ -72,9 +72,18 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 | Property | Type | Description |
 | :-: | :-: | - |
 | `year` | `number` | Year of the collection; production year if `season == null`. |
-| `season` | `string` | Biannual season of the collection; `null` if production year. |
+| `season` | `string` | Semiannual season of the collection; `null` if production year. |
 | `title` | `string` | Title of the collection; `null` if none. |
 | `text` | `string` | Other information; `null` if none. |
+
+<a id="Collection-seasonal-methods"></a>
+#### `Collection` class seasonal identification methods
+
+| Method | Return type | Description |
+| :-: | :-: | - |
+| `isS()` | `boolean` | `true` if the instance's semiannual season is `Spring/Summer`; `false` otherwise. |
+| `isW()` | `boolean` | `true` if the instance's semiannual season is `Autumn/Winter`; `false` otherwise. |
+| `isProductionYear()` | `boolean` | `true` if production year; `false` otherwise. |
 
 ---
 
