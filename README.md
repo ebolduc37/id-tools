@@ -11,16 +11,16 @@ This JavaScript code implements the identification of items from the fashion lab
 An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
 
 <a id="Input"></a>
-#### `Input` subclasses and their instance properties according to the label
+#### `Input` subclasses instance properties according to the label
 
 | Label | Subclass | List of properties |
 | - | - | - |
-| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `label`<br>- `productCode`<br>- `yearPrint` |
-| [__Yohji Yamamoto__](#YY) | `InputYY` | - `label`<br>- `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
+| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `productCode`<br>- `yearPrint` |
+| [__Yohji Yamamoto__](#YY) | `InputYY` | - `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
 
 To construct an instance of a subclass of `Input`, the constructor simply takes as its argument an `Object` with the same properties as those listed above according to the label. Once an instance has been properly constructed according to an item's characteristics, the item can be identified. The results of the identification process can take two forms.
 
-### First option: generate a `string` representation (simple)
+## First option: generate a `string` representation (simple)
 
 Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the item being a counterfeit.
 
@@ -38,14 +38,14 @@ COMME des GARÇONS HOMME PLUS
 -> Spring/Summer 1995 • Work
 ```
 
-### Second option: access the identification data (advanced)
+## Second option: access the identification data (advanced)
 
 A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
 
-Calling on an `Input` object the function `identify()` will return an array of [`Identification`](#Identification) objects, i.e., `Identification[]`, if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below, along with associated classes [`Line`](#Line) and [`Collection`](#Collection). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
+Calling on an `Input` object the function `identify()` will return an array [`Identification[]`](#Identification) if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below. Also described are associated classes [`Line`](#Line) and [`Collection`](#Collection) and enum [`SEASONS`](#SEASONS). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
 
 <a id="Identification"></a>
-#### `Identification` class and its instance properties
+#### `Identification` class instance properties
 
 | Property | Type | Description |
 | - | - | - |
@@ -59,7 +59,7 @@ Calling on an `Input` object the function `identify()` will return an array of [
 | `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
 
 <a id="Line"></a>
-#### `Line` class and its instance properties
+#### `Line` class instance properties
 
 | Property | Type | Description |
 | :-: | :-: | - |
@@ -67,16 +67,18 @@ Calling on an `Input` object the function `identify()` will return an array of [
 | `collectionList` | [`Collection[]`](#Collection) | Array of matching collections. |
 
 <a id="Collection"></a>
-#### `Collection` class and its instance properties
+#### `Collection` class instance properties
 
 | Property | Type | Description |
 | :-: | :-: | - |
 | `year` | `number` | Year of the collection; production year if `season == null`. |
-| `season` | `string` | Season of the collection; `null` if none. |
+| `season` | `string` | Biannual season of the collection; `null` if production year. |
 | `title` | `string` | Title of the collection; `null` if none. |
 | `text` | `string` | Other information; `null` if none. |
 
 ---
+
+# Label-specific information
 
 <a id="CDG"></a>
 ## COMME des GARÇONS
@@ -104,7 +106,7 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 | [`yearPrint`](#CDG-yearPrint) | `string`;<br>`NO_YEAR_PRINT_TYPES` | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
 
 <a id="CDG-productCode"></a>
-### `productCode`
+#### `productCode`
 
 The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the clothing line and the moment of production.
 
@@ -115,7 +117,7 @@ The `productCode` of an item should denote the seemingly random string of 6-9 ch
 Although the code `D-TK9210` occasionally appears on the care label, it is not the product code.
 
 <a id="CDG-yearPrint"></a>
-### `yearPrint`
+#### `yearPrint`
 
 The `yearPrint` of an item should contain the information regarding the production year print of the item. The production year print corresponds to the letters "AD" followed by an integer between 1988 and the current year located on the right side of the care label. The lack of production year or certainty in its value can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
@@ -155,7 +157,7 @@ An instance of `InputYY` is constructed using a Javascript `Object` data type co
 
 <a id="YY-productCode"></a>
 
-### `productCode`
+#### `productCode`
 
 The `productCode` of an item corresponds to the seemingly random string of 8 characters printed on the care label.
 
@@ -165,7 +167,7 @@ The `productCode` of an item corresponds to the seemingly random string of 8 cha
 
 <a id="YY-logoStyle"></a>
 
-### `logoStyle`
+#### `logoStyle`
 
 The `logoStyle` of an item corresponds to the production year of the item. The production year is the integer between 1988 and the current year following "AD" printed on the right side of the care label. The lack of production year can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
 
@@ -177,7 +179,7 @@ The `logoStyle` of an item corresponds to the production year of the item. The p
 
 ---
 
-## Contact
+# Contact
 
 Don't hesitate to contact us if you have any questions or suggestions.
 
