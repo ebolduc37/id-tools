@@ -108,9 +108,9 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 | Property | List of possible types | Description |
 | - | - | - |
 | `productCode` | <ul><li>`string`</li></ul> | Product code of the item, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | <ul><li>`string`</li><li>[`NoYearPrintType`](#CDG-NO_YEAR_PRINT_TYPES)</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NO_YEAR_PRINT_TYPES` otherwise. |
+| `yearPrint` | <ul><li>`string`</li><li>[`NoYearPrintType`](#CDG-NoYearPrintType)</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NoYearPrintType` otherwise. |
 
-<a id="CDG-NO_YEAR_PRINT_TYPES"></a>
+<a id="CDG-NoYearPrintType"></a>
 #### `NoYearPrintType` enum keys
 
 | Key | Description |
