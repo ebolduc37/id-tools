@@ -22,20 +22,20 @@ To construct an instance of a subclass of `Input`, the constructor simply takes 
 
 ## First option: generate a `string` representation (simple)
 
-Calling on an `Input` object the function `identification()` will return a `string` representation of the object confirming the corresponding item's characteristics and listing all the possible clothing lines and collections such item may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the item being a counterfeit.
+Returning a `string` representation of an `Input` object—or, equivalently, calling the `toString()` method on such object—will return a confirmation of the corresponding item's characteristics and a list of all the possible clothing lines and collections it may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the item being a counterfeit.
 
 Here is an example of the format.
 
 ```
-You have entered the following input information for COMME des GARÇONS.
+The following information has been entered for an item from COMME des GARÇONS...
+> Product code: PB-11001M
+> Year print: AD1994
 
-Product code: PB-11001M
-Year print: AD1994
+According to the monthly identification framework of COMME des GARÇONS,
+the item should be a button-up in size M from the following...
 
-According to the monthly identification framework of COMME des GARÇONS, the item should be a button-up in size M from...
-
-COMME des GARÇONS HOMME PLUS
--> Spring/Summer 1995 • Work
++ COMME des GARÇONS HOMME PLUS
+  - Spring/Summer 1995 • Work
 ```
 
 ## Second option: access the identification data (advanced)
@@ -105,7 +105,7 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 
 #### `InputCDG` class instance properties
 
-| Property | List of possible types | Description |
+| Property | Possible types | Description |
 | - | - | - |
 | `productCode` | <ul><li>`string`</li></ul> | Product code of the item, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
 | `yearPrint` | <ul><li>`string`</li><li>[`NoYearPrintType`](#CDG-NoYearPrintType)</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NoYearPrintType` otherwise. |
