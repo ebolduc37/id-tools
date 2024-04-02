@@ -32,7 +32,7 @@ The following information has been entered for an item from COMME des GARÇONS..
 > Year print: AD1994
 
 According to the monthly identification framework of COMME des GARÇONS,
-the item should be a button-up in size M from the following...
+the item should be a button-up in size M from...
 
 + COMME des GARÇONS HOMME PLUS
   - Spring/Summer 1995 • Work
@@ -53,8 +53,9 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 | `label` | `string` | Name of the label. |
 | `framework` | `string` | Name of the identification framework. |
 | `exception` | `boolean` | `true` if the results are exceptions to the identification framework; `false` otherwise. |
+| `counterfeit` | `boolean` | `true` if the item may be a counterfeit; `false` otherwise. |
 | `codeStylized` | `string` | Stylized product code. |
-| `garmentType` | `string` | Garment type; `a piece` by default. |
+| `garmentType` | `string` | Garment type. |
 | `size` | `string` | Garment size notation; `null` if none. |
 | `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
 
