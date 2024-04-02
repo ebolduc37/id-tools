@@ -11,12 +11,12 @@ This JavaScript code implements the identification of items from the fashion lab
 An item is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
 
 <a id="Input"></a>
-#### `Input` subclasses instance properties according to the label
+#### `Input` subclasses instance and non-instance properties according to the label
 
-| Label | Subclass | List of properties |
-| - | - | - |
-| [__COMME des GARÇONS__](#CDG) | `InputCDG` | - `productCode`<br>- `yearPrint` |
-| [__Yohji Yamamoto__](#YY) | `InputYY` | - `productCode`<br>- `logoStyle`<br>- `sizingSystem`<br>- `fontType`<br>- `laundrySymbolsLocation` |
+| Label | Subclass | Instance properties | Non-instance properties |
+| - | - | - | - |
+| [__COMME des GARÇONS__](#CDG) | `InputCDG` | <ul><li>`productCode`</li><li>`yearPrint`</li></ul> | <ul><li>`NoYearPrintType`</li></ul> |
+| [__Yohji Yamamoto__](#YY) | `InputYY` | <ul><li>`productCode`</li><li>`logoStyle`</li><li>`sizingSystem`</li><li>`fontType`</li><li>`laundryLocation`</li></ul>| <ul><li>`NoProductCodeType`</li><li>`LogoStyle`</li><li>`SizingSystem`</li><li>`FontType`</li><li>`LaundryLocation`</li></ul> |
 
 To construct an instance of a subclass of `Input`, the constructor simply takes as its argument an `Object` with the same properties as those listed above according to the label. Once an instance has been properly constructed according to an item's characteristics, the item can be identified. The results of the identification process can take two forms.
 
@@ -42,7 +42,7 @@ COMME des GARÇONS HOMME PLUS
 
 A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
 
-Calling on an `Input` object the function `identify()` will return an array [`Identification[]`](#Identification) if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below. Also described are associated classes [`Line`](#Line) and [`Collection`](#Collection) and enum [`SEASONS`](#SEASONS). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
+Calling on an `Input` object the function `identify()` will return an array [`Identification[]`](#Identification) if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below. Also described are associated classes [`Line`](#Line) and [`Collection`](#Collection). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
 
 <a id="Identification"></a>
 #### `Identification` class instance properties
@@ -97,7 +97,7 @@ The current version should be able to identify all items with a product code fro
 import { InputCDG } from "path/to/release/index.js";
 ```
 
-To construct an instance of `InputCDG`, the constructor must take as its argument an `Object` with two (2) properties as examplified below.
+To construct an instance of `InputCDG`, the constructor must take as its argument an `Object` with two (2) properties as exemplified below.
 
 ```
 input = new InputCDG({ productCode: ... , yearPrint: ... })
@@ -107,31 +107,17 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 
 | Property | List of possible types | Description |
 | - | - | - |
-| [`productCode`](#CDG-productCode) | - `string` | Product code of the item, which corresponds to the string of 6-9 characters at the top of the care label. |
-| [`yearPrint`](#CDG-yearPrint) | <ul style="list-style-position:inside;padding-left:0;"><li>`string`</li><li>`NO_YEAR_PRINT_TYPES`</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label. |
+| `productCode` | <ul><li>`string`</li></ul> | Product code of the item, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | <ul><li>`string`</li><li>[`NO_YEAR_PRINT_TYPES`](#CDG-NO_YEAR_PRINT_TYPES)</li></ul> | Information regarding the production year print of the item, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NO_YEAR_PRINT_TYPES` otherwise. |
 
-<a id="CDG-productCode"></a>
-#### `productCode`
+<a id="CDG-NO_YEAR_PRINT_TYPES"></a>
+#### `NO_YEAR_PRINT_TYPES` enum keys
 
-The `productCode` of an item should denote the seemingly random string of 6-9 characters located at the top of the care label or elsewhere. Its structure depends on the clothing line and the moment of production.
-
-| Entry type | Description |
-| - | --- |
-| `string` | String of 6-9 characters at the top of the care label. |
-
-Although the code `D-TK9210` occasionally appears on the care label, it is not the product code.
-
-<a id="CDG-yearPrint"></a>
-#### `yearPrint`
-
-The `yearPrint` of an item should contain the information regarding the production year print of the item. The production year print corresponds to the letters "AD" followed by an integer between 1988 and the current year located on the right side of the care label. The lack of production year or certainty in its value can take three (3) forms, i.e., `BLANK`, `UNREADABLE`, and `UNKNOWN`, that are grouped in the enum `NO_YEAR_PRINT_TYPES`, which is a static property of `InputCDG`.
-
-| Entry type | Description |
-| - | --- |
-| `string` | Integer between 1988 and the current year following "AD" on the right of the care label. |
-| `NO_YEAR_PRINT_TYPES.BLANK` | No "AD" followed by an integer printed on the care label. |
-| `NO_YEAR_PRINT_TYPES.UNREADABLE` | Undecipherable integer following "AD" on the right of the care label. |
-| `NO_YEAR_PRINT_TYPES.UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
+| Key | Description |
+| - | - |
+| `BLANK` | No "AD" followed by an integer printed on the care label. |
+| `INDEFINITE` | Indefinite integer following "AD" on the right of the care label. |
+| `UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
 
 ---
 
