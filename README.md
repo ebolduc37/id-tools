@@ -1,63 +1,83 @@
 # Identification module in JavaScript
 
-### [Try it out on our website!](https://www.myclothingarchive.net/id-tools)
+[Try it out on our website!](https://www.myclothingarchive.net/id-tools)
 
-This JavaScript code implements the identification of garments from the fashion labels __COMME des GARÇONS__ and __Yohji Yamamoto__ using some information provided by the user. Please consult our identification charts for more details regarding the identification process.
+#### Supported labels:
+- __COMME des GARÇONS__
+- __Yohji Yamamoto__
 
-#### Support us by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
+This JavaScript module implements the identification of garments for different fashion labels using small, finite sets of characteristics. WHAT IS IDENTIFICATION???
 
+Please consult our identification charts for more details regarding the identification process.
+
+| Table of content |
+| :- |
+| <ul><li>[How to identify a piece of garment](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning identification results](#returning)<ul><li>[Option 1 (simple): generating a string representation using identify()](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using idList()](#returning-2)</li></ul></li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
+
+### Support this project by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
+
+---
+
+<a id="how-to"></a>
 ## How to identify a piece of garment
 
-A garment is identified through a small set of label-specific characteristics. This information must be gathered in an instance of a subclass of `Input` as described below since each label has its own unique set of characteristics used for identification.
+<a id="preparing"></a>
+### Preparing for identification
 
-<a id="Input"></a>
-#### `Input` subclasses instance and non-instance properties according to the label
+A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys, which are described for each label in the [Label-specific information](#label-specific) section. The garment can be identified once the `Object` has been initialized according to the garment's characteristics with the right keys and values.
 
-| Label | Subclass | Instance properties | Non-instance properties |
-| - | - | - | - |
-| [`COMME des GARÇONS`](#CDG) | `InputCDG` | <ul><li>`label`</li><li>`productCode`</li><li>`yearPrint`</li></ul> | <ul><li>`NoYearPrintType`</li></ul> |
-| [`Yohji Yamamoto`](#YY) | `InputYY` | <ul><li>`label`</li><li>`productCode`</li><li>`logoStyle`</li><li>`sizingSystem`</li><li>`fontType`</li><li>`laundryLocation`</li></ul>| <ul><li>`NoProductCodeType`</li><li>`LogoStyle`</li><li>`SizingSystem`</li><li>`FontType`</li><li>`LaundryLocation`</li></ul> |
+<a id="returning"></a>
+### Returning identification results
 
-To construct an instance of a subclass of `Input`, the constructor simply takes as its argument an `Object` with the same properties as those listed above according to the label. Once an instance has been properly constructed according to a garment's characteristics, the garment can be identified. The results of the identification process can take two forms.
+The identification results of a specified element can be returned as a string representation, for simplicity, or raw identification data, for malleability.
 
-## First option: generate a `string` representation (simple)
+<a id="returning-1"></a>
+#### Option 1 (simple): generating a string representation using `identify()`
 
-Returning a `string` representation of an `Input` object—or, equivalently, calling the `toString()` method on such object—will return a confirmation of the corresponding garment's characteristics and a list of all the possible clothing lines and collections it may be a part of. The `string` will also yield other information that can be extracted from such characteristics, e.g., the garment type and the possibility of the garment being a counterfeit.
+The `identify()` method returns a `string` containing a confirmation of the specified element's characteristics data and the list of all possible clothing lines and collections it may be a part of. The resulting `string` will also yield further information that can be extracted from such characteristics data, such as the garment type and the possibility of a counterfeit.
 
-Here is an example of the format.
+##### Example:
 
 ```
-The following information has been entered for a garment from COMME des GARÇONS...
-> Product code: PB-11001M
+import { identify, CDG } from "path/to/release/index.js";
+
+const garmentInfo = { label: CDG.Label, productCode: "GJ-10009S", yearPrint: "1994" };
+const idString = identify(garment);
+
+console.log(idString)
+```
+##### Expected output:
+```
+> Label: COMME des GARÇONS
+> Product code: GJ-10009S
 > Year print: AD1994
 
-According to the monthly identification framework of COMME des GARÇONS,
-the garment should be a button-up in size M from...
+According to the monthly identification framework of COMME des GARÇONS, the garment should be a jacket in size S from the following:
 
-+ COMME des GARÇONS HOMME PLUS
-  - Spring/Summer 1995 • Work
+COMME des GARÇONS
+> Spring/Summer 1995, titled "Transcending Gender"
 ```
 
-## Second option: access the identification data (advanced)
+<a id="returning-2"></a>
+#### Option 2 (advanced): accessing the raw identification data using `idList()`
 
-A customized application of the identification results may be desirable in some contexts, in which case comprehensive access to the identification data is required.
+A customized manipulation of the identification results may be desirable in certain contexts, in which case comprehensive access to raw identification data is required.
 
-Calling on an `Input` object the function `identify()` will return an array [`Identification[]`](#Identification) if at least one match is found and `null` if none. Instances of the `Identification` class have a large number of properties which are described below. Also described are associated classes [`Line`](#Line) and [`Collection`](#Collection). Note that all members of an array returned by `identify()`, while sharing the same `input` data and `label`, are separated according to the identification `framework` used and `exception` status.
+The `idList()` method returns the raw identification data resulting from the specified element in the form of an array of [`Identification`](#Identification) items. Each item contains the specified element's characteristics data (`input`) and, based on the label (`label`) and the <ins>identification framework</ins> (`framework`) employed and its <ins>exception status</ins> (`exception`), the list of all possible clothing lines and collections it may be a part of (`lineList`) along with other information that can be extracted from such characteristics, such as the stylized product code (`codeStylized`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of it being a counterfeit (`counterfeit`).
+
+The set of properties held by instances of the [`Identification`](#Identification) class are listed below. As a part of this list, the [`Line`](#Line) class is also described, together with the [`Collection`](#Collection) class.
 
 <a id="Identification"></a>
-#### `Identification` class instance properties
-
-| Property | Type | Description |
-| - | - | - |
-| `input` | [`Input`](#Input) | Input data used for identification. |
-| `label` | `string` | Name of the label. |
-| `framework` | `string` | Name of the identification framework. |
-| `exception` | `boolean` | `true` if the results are exceptions to the identification framework; `false` otherwise. |
-| `counterfeit` | `boolean` | `true` if the garment may be a counterfeit; `false` otherwise. |
-| `codeStylized` | `string` | Stylized product code. |
-| `garmentType` | `string` | Garment type. |
-| `size` | `string` | Garment size notation; `null` if none. |
-| `lineList` | [`Line[]`](#Line) | Array of clothing lines with matching collections. |
+##### `Identification` class instance properties:
+- (`Object`) `input` - Characteristics data used for the identification.
+- (`string`) `label` - Name of the label.
+- (`string`) `framework` - Name of the identification framework.
+- (`boolean`) `exception` - Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise.
+- ([`Line[]`](#Line)) `lineList` - Array of all possible clothing lines and collections a garment with such characteristics may be a part of.
+- (`string`) `codeStylized` - Stylized product code.
+- (`string`) `garmentType` - Garment type.
+- (`string`) `garmentSize` - Garment size notation; `null` if none.
+- (`boolean`) `counterfeit` - Counterfeit status: `true` if the garment may be a counterfeit; `false` otherwise.
 
 <a id="Line"></a>
 #### `Line` class instance properties
@@ -87,10 +107,11 @@ Calling on an `Input` object the function `identify()` will return an array [`Id
 
 ---
 
-# Label-specific information
+<a id="label-specific"></a>
+## Label-specific information
 
 <a id="CDG"></a>
-## COMME des GARÇONS
+### COMME des GARÇONS
 
 The current version should be able to identify all garments with a product code from __COMME des GARÇONS__. The characteristics of a garment from __COMME des GARÇONS__ must be gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
@@ -123,7 +144,7 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 ---
 
 <a id="YY"></a>
-## Yohji Yamamoto
+### Yohji Yamamoto
 
 The current version should be able to identify most garments from the main womenswear and menswear line of __Yohji Yamamoto__, i.e., from the lines _Yohji Yamamoto_ and _Yohji Yamamoto POUR HOMME_. The input data of an garment from __Yohji Yamamoto__ is gathered in an instance of `InputYY`, a subclass of `Input` that can be imported from `index.js` in the release folder.
 
