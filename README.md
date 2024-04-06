@@ -162,9 +162,9 @@ The namespace for the __COMME des GARÇONS__ label (`CDG`) provides access to th
 
 | Key | Description |
 | :- | :- |
-| `BLANK` | (`string`) No year print originally printed on the care label. |
-| `UNCLEAR` | (`string`) Unclear integer following _AD_ on the care label. |
-| `UNKNOWN` | (`string`) Uncertainty whether _AD_ followed by an integer was originally printed on the care label. |
+| `BLANK` | No year print originally printed on the care label. |
+| `UNCLEAR` | Unclear integer following _AD_ on the care label. |
+| `UNKNOWN` | Uncertainty whether _AD_ followed by an integer was originally printed on the care label. |
 
 __Example:__
 ```
@@ -254,36 +254,36 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
   <tr>
     <td rowspan="3"> <code>YY</code> </td>
     <td> <code>1</code> </td>
-    <td> (`string`) No year print originally printed on the care label. </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png" media="(prefers-color-scheme: dark)"><img src="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png"></picture> </td>
   </tr>
   <tr>
     <td> <code>2</code> </td>
-    <td> (`string`) No year print originally printed on the care label. </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png" media="(prefers-color-scheme: dark)"><img src="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png"></picture> </td>
   </tr>
   <tr>
     <td> <code>3</code> </td>
-    <td> (`string`) No year print originally printed on the care label. </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png" media="(prefers-color-scheme: dark)"><img src="./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png"></picture> </td>
   </tr>
 </table>
 
 | Key[ID] | Description |
 | :- | :- |
-| `YY[1]` | (`string`) No year print originally printed on the care label. |
-| `YY[2]` | (`string`) No year print originally printed on the care label. |
-| `YY[3]` | (`string`) No year print originally printed on the care label. |
+| `YY[1]` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
+| `YY[2]` | ![YY_2](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![YY_2](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
+| `YY[3]` | ![YY_3](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
 
 | Key | Description |
 | :- | :- |
-| `YY` | ([`enum`](#YY-LogoStyle-YY)) No year print originally printed on the care label. |
+| `YY` | ([`enum`](#YY-LogoStyle-YY)) Yohji Yamamoto signature logo on the clothing line label over the years. |
 
 <a id="YY-LogoStyle-YY"></a>
 ###### `LogoStyle.YY` properties
 
 | Key | Description |
 | :- | :- |
-| `1` | (`string`) No year print originally printed on the care label. |
-| `2` | (`string`) No year print originally printed on the care label. |
-| `3` | (`string`) No year print originally printed on the care label. |
+| `1` | ![YY_1](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![YY_1](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
+| `2` | ![YY_2](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![YY_2](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
+| `3` | ![YY_3](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
 
 <a id="YY-SizingSystem"></a>
 ##### `SizingSystem` properties
