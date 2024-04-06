@@ -22,7 +22,7 @@ __Support this project by [subscribing to our Patreon](https://www.patreon.com/b
 <a id="preparing"></a>
 ### Preparing for identification
 
-A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys. Consult the [_Label-specific information_](#label-specific) section to know the set of keys to enter for each label.
+A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to a label-specific set of keys. Consult the [_Label-specific information_](#label-specific) section to know the set of keys to enter for each label.
 
 <a id="returning"></a>
 ### Returning the identification results
@@ -61,7 +61,7 @@ COMME des GARÇONS
 The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and label (`label`) and, according to the identification framework (`framework`) and exception status (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
 
 <a id="Identification"></a>
-##### `Identification` parameters
+##### `Identification` properties
   
 | Key | Description |
 | :- | :- |
@@ -78,7 +78,7 @@ The `extract()` method returns the raw identification data according to the spec
 As stated above, the list of all possible clothing lines and corresponding collections (`lineList`) takes the form of an array of [`Line`](#Line) items. Each item contains the name of the clothing line (`name`) and the list of corresponding collections (`collectionList`).
 
 <a id="Line"></a>
-##### `Line` parameters
+##### `Line` properties
 
 | Key | Description |
 | :- | :- |
@@ -88,7 +88,7 @@ As stated above, the list of all possible clothing lines and corresponding colle
 As stated above, the list of corresponding collections (`collectionList`) takes the form of an array of [`Collection`](#Collection) items. Each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
 
 <a id="Collection"></a>
-##### `Collection` parameters
+##### `Collection` properties
 
 | Key | Description |
 | :- | :- |
@@ -114,63 +114,44 @@ __Expected output:__
 ---
 
 <a id="label-specific"></a>
-## Label-specific information
+## Label-specific characteristics
+
+Recall that a garment is identified through a small set of label-specific characteristics. Keeping track of these characteristics and their acceptable values gets tedious considering how severely the identification process differs between labels. Luckily, many of these are limited to small sets of qualitative options, allowing for the use of enum types to simplify the classification of garments. As such, each label has a corresponding namespace providing access to useful enums and variables to be used as values when putting together the characteristics data of a garment in an `Object`. This section describes such namespaces and the label-specific sets of keys required for identification.
 
 <a id="CDG"></a>
 ### COMME des GARÇONS
 
-#### Values to enter
+#### Namespace
 
-| Key | Characteristic value |
-| :- | :- |
-| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
-| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | (`string` &#124; [`CDG.NoYearPrintType`](#CDG-NoYearPrintType)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrintType` enum otherwise. |
-
-| Key | Characteristic value |
-| :- | :- |
-| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
-| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | (`string` or [`CDG.NoYearPrintType`](#CDG-NoYearPrintType)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrintType` enum otherwise. |
-
-| Key | Characteristic value |
-| :- | :- |
-| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
-| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | (`string` &#124; [`NoYearPrintType`](#CDG-NoYearPrintType)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrintType` enum otherwise. |
-
-| Key | Characteristic value |
-| :- | :- |
-| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
-| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | (`string` or [`NoYearPrintType`](#CDG-NoYearPrintType)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrintType` enum otherwise. |
-
-| Key | Characteristic value |
-| :- | :- |
-| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
-| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | (`string`) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of [`NoYearPrintType`](#CDG-NoYearPrintType) enum otherwise. |
-
-<a id="CDG-NoYearPrintType"></a>
-__`NoYearPrintType` enum__
+<a id="CDG-namespace-prop"></a>
+##### `CDG` properties
 
 | Key | Description |
 | :- | :- |
-| `BLANK` | No "AD" followed by an integer printed on the care label. |
-| `INDEFINITE` | Indefinite integer following "AD" on the right of the care label. |
-| `UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
+| `Label` | (`string`) `COMME des GARÇONS` |
+| `NoYearPrint` | <ul><li>`BLANK`: No "AD" followed by an integer printed on the care label.</li><li>`INDEFINITE`: No "AD" followed by an integer printed on the care label.</li><li>`UNKNOWN`: No "AD" followed by an integer printed on the care label.</li></ul> |
+
+| Key | Description |
+| :- | :- |
+| `Label` | (`string`) `COMME des GARÇONS` |
+| [`NoYearPrint`](#CDG-NoYearPrint) | (`enum`) Lack of information about the year print.|
+
+| Key | Description |
+| :- | :- |
+| `Label` | (`string`) `COMME des GARÇONS` |
+| `NoYearPrint` | ([`CDG.NoYearPrint`](#CDG-NoYearPrint)) Lack of information about the year print.|
 
 <table>
   <tr>
-    <td> <b>Enum</b> </td>
     <td> <b>Key</b> </td>
+    <td> <b>Description</b> </td>
   </tr>
   <tr>
-    <td> &#8212; </td>
     <td> <code>Label</code> </td>
+    <td> (<code>string</code>) `COMME des GARÇONS` </td>
   </tr>
   <tr>
-    <td rowspan="3"> <code>NoYearPrintType</code> </td>
+    <td rowspan="3"> <code>NoYearPrint</code> </td>
     <td> <code>BLANK</code> </td>
   </tr>
   <tr>
@@ -180,6 +161,48 @@ __`NoYearPrintType` enum__
     <td> <code>UNKNOWN</code> </td>
   </tr>
 </table>
+
+<a id="CDG-NoYearPrint"></a>
+##### __`NoYearPrint` properties__
+
+| Key | Description |
+| :- | :- |
+| `BLANK` | (`string`) No "AD" followed by an integer printed on the care label. |
+| `INDEFINITE` | (`string`) Indefinite integer following "AD" on the right of the care label. |
+| `UNKNOWN` | (`string`) Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
+
+
+#### Values to enter
+
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrint). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string` &#124; [`CDG.NoYearPrint`](#CDG-NoYearPrint)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrint` enum otherwise. |
+
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrint). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string` or [`CDG.NoYearPrint`](#CDG-NoYearPrint)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrint` enum otherwise. |
+
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrint). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string` &#124; [`NoYearPrint`](#CDG-NoYearPrint)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrint` enum otherwise. |
+
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrint). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string` or [`NoYearPrint`](#CDG-NoYearPrint)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of `NoYearPrint` enum otherwise. |
+
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrint). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string`) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of [`NoYearPrint`](#CDG-NoYearPrint) enum otherwise. |
 
 ---
 
