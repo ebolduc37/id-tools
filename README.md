@@ -6,13 +6,13 @@ __Working labels:__
 - __COMME des GARÇONS__
 - __Yohji Yamamoto__
 
-This JavaScript module implements the identification of garments from different fashion labels. Using a small, finite set of label-specific characteristics, it is often possible to narrow down the possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information, such as the garment type and the possibility of counterfeit. This module is an attempt at formalizing this process. Please consult our identification charts for more details about the identification process.
+This JavaScript module implements the identification of garments from different fashion labels. Using a small, finite set of label-specific characteristics, it is often possible to extract the possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information, such as the garment type and the possibility of counterfeit. This module is an attempt at formalizing this process. Please consult our identification charts for more details about the identification process.
 
 __Support this project by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).__
 
 | Table of contents |
 | :- |
-| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): generating a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "idList()"](#returning-2)</li></ul></li></ul></li><li>[Raw identification results-related classes](#raw-classes)<ul><li>["Identification"](#Identification)</li><li>["Line"](#Line)</li><li>["Collection"](#Collection)</li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
+| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): obtaining a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "extract()"](#returning-2)</li></ul></li></ul></li><li>[Identification data-related classes](#data-classes)<ul><li>["Identification"](#Identification)</li><li>["Line"](#Line)</li><li>["Collection"](#Collection)</li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
 
 ---
 
@@ -22,15 +22,15 @@ __Support this project by [subscribing to our Patreon](https://www.patreon.com/b
 <a id="preparing"></a>
 ### Preparing for identification
 
-A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys, which are described for each label in the [_Label-specific information_](#label-specific) section. The garment can be identified once the object has been initialized according to the garment's characteristics with the right keys and values.
+A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys. Consult the [_Label-specific information_](#label-specific) section to know the set of keys to enter for each label.
 
 <a id="returning"></a>
 ### Returning the identification results
 
-The identification results of a specified element can be returned simply as a string representation or as the raw identification data, for more malleability.
+The identification results of a specified set of characteristics can be returned as a string representation or as raw identification data, for more malleability.
 
 <a id="returning-1"></a>
-#### Option 1 (simple): generating a string representation using `identify()`
+#### Option 1 (simple): obtaining a string representation using `identify()`
 
 The `identify()` method returns a `string` that confirms the specified element's characteristics and, based on the label and the employed identification framework and its exception status, lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
 
@@ -56,22 +56,24 @@ COMME des GARÇONS
 ```
 
 <a id="returning-2"></a>
-#### Option 2 (advanced): accessing the raw identification data using `idList()`
+#### Option 2 (advanced): accessing the raw identification data using `extract()`
 
-A customized manipulation of the identification results may be desirable in certain contexts, in which case comprehensive access to raw identification data is required.
+Manipulating the identification results may be desirable in certain contexts, in which case comprehensive access to the raw identification data is required.
 
-The `idList()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and, based on the label (`label`) and the employed <ins>identification framework</ins> (`framework`) and its <ins>exception status</ins> (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
+The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and, __based on__ the label (`label`) and the employed __identification framework__ (`framework`) and its __exception status__ (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
 
-The set of parameters of instances of the [`Identification`](#Identification) class, [`Line`](#Line) class, and [`Collection`](#Collection) class are listed in the [_Raw identification results-related classes_](#raw-classes) section.
+The list of clothing lines and corresponding collections takes the form of an array of [`Line`](#Line) items, where each item contains the name of the line (`name`) and the list of collections (`collectionList`). In turn, this list of collections takes the form of an array of [`Collection`](#Collection) items, where each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
+
+Consult the [_Identification data-related classes_](#data-classes) section for a proper documentation of the [`Identification`](#Identification) class, [`Line`](#Line) class, and [`Collection`](#Collection) class and their parameters.
 
 __Example:__
 ```
-import { idList, CDG } from "path/to/release/index.js";
+import { extract, CDG } from "path/to/release/index.js";
 
 const garmentData = { label: CDG.Label, productCode: "GJ-10009S", yearPrint: "1994" };
-const idData = idList(garmentData);
+const idList = extract(garmentData);
 
-console.log(JSON.stringify(idData));
+console.log(JSON.stringify(idList));
 ```
 __Expected output:__
 ```
@@ -87,7 +89,7 @@ __Expected output:__
     "framework": "monthly",
     "exception": false,
     "lineList": [{
-      "name":"COMME des GARÇONS",
+      "name": "COMME des GARÇONS",
       "collectionList": [{
         "year": 1995,
         "season": "Spring/Summer",
@@ -101,8 +103,8 @@ __Expected output:__
 
 ---
 
-<a id="raw-classes"></a>
-## Raw identification results-related classes
+<a id="data-classes"></a>
+## Identification data-related classes
 
 <a id="Identification"></a>
 ### `Identification`
