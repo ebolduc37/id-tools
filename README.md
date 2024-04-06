@@ -1,52 +1,49 @@
 # Identification module in JavaScript
 
-[Try it out on our website!](https://www.myclothingarchive.net/id-tools)
+[> Try it out on our website! <](https://www.myclothingarchive.net/id-tools)
 
-#### Supported labels:
+__Working labels:__
 - __COMME des GARÇONS__
 - __Yohji Yamamoto__
 
-This JavaScript module implements the identification of garments for different fashion labels using small, finite sets of characteristics. WHAT IS IDENTIFICATION???
+This JavaScript module implements the identification of garments from different fashion labels. Using a small, finite set of label-specific characteristics, it is often possible to narrow down the possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information, such as the garment type and the possibility of counterfeit. This module is an attempt at formalizing this process. Please consult our identification charts for more details about the identification process.
 
-Please consult our identification charts for more details regarding the identification process.
+__Support this project by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).__
 
-| Table of content |
+| Table of contents |
 | :- |
-| <ul><li>[How to identify a piece of garment](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning identification results](#returning)<ul><li>[Option 1 (simple): generating a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "idList()"](#returning-2)</li></ul></li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
-
-### Support this project by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).
+| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): generating a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "idList()"](#returning-2)</li></ul></li></ul></li><li>[Raw identification results-related classes](#raw-classes)<ul><li>["Identification"](#Identification)</li><li>["Line"](#Line)</li><li>["Collection"](#Collection)</li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
 
 ---
 
 <a id="how-to"></a>
-## How to identify a piece of garment
+## How to identify a piece of garment with the identification module
 
 <a id="preparing"></a>
 ### Preparing for identification
 
-A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys, which are described for each label in the [Label-specific information](#label-specific) section. The garment can be identified once the object has been initialized according to the garment's characteristics with the right keys and values.
+A garment is identified through a small set of label-specific characteristics. This information must be entered in an `Object` as values to the applicable label-specific set of keys, which are described for each label in the [_Label-specific information_](#label-specific) section. The garment can be identified once the object has been initialized according to the garment's characteristics with the right keys and values.
 
 <a id="returning"></a>
-### Returning identification results
+### Returning the identification results
 
 The identification results of a specified element can be returned simply as a string representation or as the raw identification data, for more malleability.
 
 <a id="returning-1"></a>
 #### Option 1 (simple): generating a string representation using `identify()`
 
-The `identify()` method returns a `string` that confirms the specified element's characteristics and, based on the label and the employed identification framework and its exception status, lists all possible clothing lines and corresponding collections a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of being counterfeit.
+The `identify()` method returns a `string` that confirms the specified element's characteristics and, based on the label and the employed identification framework and its exception status, lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
 
-##### Example:
-
+__Example:__
 ```
 import { identify, CDG } from "path/to/release/index.js";
 
-const garmentInfo = { label: CDG.Label, productCode: "GJ-10009S", yearPrint: "1994" };
-const idString = identify(garment);
+const garmentData = { label: CDG.Label, productCode: "GJ-10009S", yearPrint: "1994" };
+const idString = identify(garmentData);
 
-console.log(idString)
+console.log(idString);
 ```
-##### Expected output:
+__Expected output:__
 ```
 > Label: COMME des GARÇONS
 > Product code: GJ-10009S
@@ -63,22 +60,52 @@ COMME des GARÇONS
 
 A customized manipulation of the identification results may be desirable in certain contexts, in which case comprehensive access to raw identification data is required.
 
-The `idList()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and, based on the label (`label`) and the employed <ins>identification framework</ins> (`framework`) and its <ins>exception status</ins> (`exception`), the list of all possible clothing lines and corresponding collections a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of being counterfeit (`counterfeit`).
+The `idList()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and, based on the label (`label`) and the employed <ins>identification framework</ins> (`framework`) and its <ins>exception status</ins> (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
 
-The set of parameters held by instances of the [`Identification`](#Identification) class, the [`Line`](#Line) class, and the [`Collection`](#Collection) class are listed below.
+The set of parameters of instances of the [`Identification`](#Identification) class, [`Line`](#Line) class, and [`Collection`](#Collection) class are listed in the [_Raw identification results-related classes_](#raw-classes) section.
+
+__Example:__
+```
+import { idList, CDG } from "path/to/release/index.js";
+
+const garmentData = { label: CDG.Label, productCode: "GJ-10009S", yearPrint: "1994" };
+const idData = idList(garmentData);
+
+console.log(JSON.stringify(idData));
+```
+__Expected output:__
+```
+[{"input":{"label":"COMME des GARÇONS","productCode":"GJ-10009S","yearPrint":"1994"},"label":"COMME des GARÇONS","framework":"monthly","exception":false,"lineList":[{"name":"COMME des GARÇONS","collectionList":[{"year":1995,"season":"Spring/Summer","title":"Transcending Gender"}]}],"stylizedCode":"GJ-10009S","garmentType":"a jacket","garmentSize":"S","counterfeit":false}]
+```
+<!--[
+  {
+    "input": {
+      "label": "COMME des GARÇONS",
+      "productCode": "GJ-10009S",
+      "yearPrint": "1994"},
+    "label": "COMME des GARÇONS",
+    "framework": "monthly",
+    "exception": false,
+    "lineList": [{
+      "name":"COMME des GARÇONS",
+      "collectionList": [{
+        "year": 1995,
+        "season": "Spring/Summer",
+        "title": "Transcending Gender"}]}],
+    "stylizedCode": "GJ-10009S",
+    "garmentType": "a jacket",
+    "garmentSize": "S",
+    "counterfeit": false
+  }
+]-->
+
+---
+
+<a id="raw-classes"></a>
+## Raw identification results-related classes
 
 <a id="Identification"></a>
 ### `Identification`
-#### Instance properties:
-- `input` - (`Object`) Characteristics data used for identification.
-- `label` - (`string`) Name of the garment label.
-- `framework` - (`string`) Name of the identification framework.
-- `exception` - (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise.
-- `lineList` - ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections a garment with such characteristics may be from under such identification framework and exception status.
-- `stylizedCode` - (`string`) Stylized product code.
-- `garmentType` - (`string`) Garment type.
-- `garmentSize` - (`string`) Garment size notation; `null` if none.
-- `counterfeit` - (`boolean`) Possibility of counterfeit: `true` if the characteristics have been seen on a counterfeit; `false` otherwise.
 
 | Parameter | Description |
 | :- | :- |
@@ -86,17 +113,14 @@ The set of parameters held by instances of the [`Identification`](#Identificatio
 | `label` | (`string`) Name of the garment label. |
 | `framework` | (`string`) Name of the identification framework. |
 | `exception` | (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise. |
-| `lineList` | ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections a garment with such characteristics may be from under such identification framework and exception status. |
+| `lineList` | ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from under such identification framework and exception status. |
 | `stylizedCode` | (`string`) Stylized product code. |
 | `garmentType` | (`string`) Garment type. |
 | `garmentSize` | (`string`) Garment size notation; `null` if none. |
-| `counterfeit` | (`boolean`) Possibility of a counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
+| `counterfeit` | (`boolean`) Possibility of counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
 
 <a id="Line"></a>
 ### `Line`
-#### Instance properties:
-- `name` - (`string`) Name of the clothing line.
-- `collectionList` - ([`Collection[]`](#Collection)) Array of `Collection` items.
 
 | Parameter | Description |
 | :- | :- |
@@ -105,26 +129,13 @@ The set of parameters held by instances of the [`Identification`](#Identificatio
 
 <a id="Collection"></a>
 ### `Collection`
-#### Instance properties:
-- `year` - (`number`) Year of the collection.
-- `season` - (`string`) Semiannual season of the collection, i.e., `Spring/Summer` or `Autumn/Winter`; `null` if none.
-- `title` - (`string`) Title of the collection; `null` if none.
-- `text` - (`string`) Other information; `null` if none.
 
 | Parameter | Description |
 | :- | :- |
 | `year` | (`number`) Year of the collection. |
-| `season` | (`string`) Semiannual season of the collection, i.e., `Spring/Summer` or `Autumn/Winter`; `null` if none. |
+| `season` | (`string`) Semiannual season of the collection: `Spring/Summer` or `Autumn/Winter`; `null` if none. |
 | `title` | (`string`) Title of the collection; `null` if none. |
 | `text` | (`string`) Other information; `null` if none. |
-
-<a id="Collection-seasonal-methods"></a>
-### `Collection` class instance seasonal identification methods
-
-| Method | Return type | Description |
-| - | - | - |
-| `isS()` | `boolean` | `true` if the instance's semiannual season is `Spring/Summer`; `false` otherwise. |
-| `isW()` | `boolean` | `true` if the instance's semiannual season is `Autumn/Winter`; `false` otherwise. |
 
 ---
 
