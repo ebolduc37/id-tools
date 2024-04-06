@@ -2,11 +2,11 @@
 
 [> Try it out on our website! <](https://www.myclothingarchive.net/id-tools)
 
-__Working labels:__
+__Serviceable labels:__
 - __COMME des GARÇONS__
 - __Yohji Yamamoto__
 
-This JavaScript module implements the identification of garments from different fashion labels. Using a small, finite set of label-specific characteristics, it is often possible to extract the possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information, such as the garment type and the possibility of counterfeit. This module is an attempt at formalizing this process. Please consult our identification charts for more details about the identification process.
+This JavaScript module implements the identification of garments from different fashion labels. It is usually feasible to extract valuable information from a small, finite set of label-specific characteristics, such as the possible clothing lines and corresponding collections that a garment with such characteristics may be from, the garment type, the possibility of counterfeit, etc. This module attempts to formalize this process for certain fashion labels coveted by buyers and collectors. Please consult our identification charts for more details on the identification process.
 
 __Support this project by [subscribing to our Patreon](https://www.patreon.com/bePatron?u=36066750) or [donating on PayPal](https://www.paypal.com/donate/?hosted_button_id=AP5AP2WBUNNQL).__
 
@@ -32,7 +32,7 @@ The identification results of a specified set of characteristics can be returned
 <a id="returning-1"></a>
 #### Option 1 (simple): obtaining a string representation using `identify()`
 
-The `identify()` method returns a `string` that confirms the specified element's characteristics and—based on the label, the identification framework, and the exception status—lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
+The `identify()` method returns a `string` that confirms the specified element's characteristics and, according to the possible identification frameworks and exception statuses, lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
 
 __Example:__
 ```
@@ -58,18 +58,18 @@ COMME des GARÇONS
 <a id="returning-2"></a>
 #### Option 2 (advanced): accessing the raw identification data using `extract()`
 
-The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and—based on the label (`label`), the identification framework (`framework`), and the exception status (`exception`)—the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
+The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and label (`label`) and, according to the identification framework (`framework`) and exception status (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
 
 <a id="Identification"></a>
-__`Identification`__
+__`Identification`__ parameters
   
-| Parameter | Description |
+| Key | Description |
 | :- | :- |
 | `input` | (`Object`) Characteristics data used for identification. |
 | `label` | (`string`) Name of the garment label. |
 | `framework` | (`string`) Name of the identification framework. |
 | `exception` | (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise. |
-| `lineList` | ([`Line[]`](#Line)) Based on the label, the identification framework, and the exception status, array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from. |
+| `lineList` | ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from, according to the identification framework and exception status. |
 | `stylizedCode` | (`string`) Stylized product code. |
 | `garmentType` | (`string`) Garment type. |
 | `garmentSize` | (`string`) Garment size notation; `null` if none. |
@@ -78,9 +78,9 @@ __`Identification`__
 As stated above, the list of all possible clothing lines and corresponding collections (`lineList`) takes the form of an array of [`Line`](#Line) items. Each item contains the name of the clothing line (`name`) and the list of corresponding collections (`collectionList`).
 
 <a id="Line"></a>
-__`Line`__
+__`Line`__ parameters
 
-| Parameter | Description |
+| Key | Description |
 | :- | :- |
 | `name` | (`string`) Name of the clothing line. |
 | `collectionList` | ([`Collection[]`](#Collection)) Array of corresponding collections. |
@@ -88,9 +88,9 @@ __`Line`__
 As stated above, the list of corresponding collections (`collectionList`) takes the form of an array of [`Collection`](#Collection) items. Each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
 
 <a id="Collection"></a>
-__`Collection`__
+__`Collection`__ parameters
 
-| Parameter | Description |
+| Key | Description |
 | :- | :- |
 | `year` | (`number`) Year of the collection. |
 | `season` | (`string`) Semiannual season of the collection: `Spring/Summer` or `Autumn/Winter`; `null` if none. |
@@ -140,48 +140,46 @@ __Expected output:__
 <a id="CDG"></a>
 ### COMME des GARÇONS
 
-The current version should be able to identify all garments with a product code from __COMME des GARÇONS__. The characteristics of a garment from __COMME des GARÇONS__ must be gathered in an instance of `InputCDG`, a subclass of `Input` that can be imported from `index.js` in the release folder.
+#### Values to enter
 
-```
-import { InputCDG } from "path/to/release/index.js";
-```
-
-To construct an instance of `InputCDG`, the constructor must take as its argument an `Object` with two (2) properties as exemplified below.
-
-```
-input = new InputCDG({ productCode: ... , yearPrint: ... })
-```
-
-#### `InputCDG` class instance properties
-
-| Property | Possible types | Description |
-| - | - | - |
-| `productCode` | <ul><li>`string`</li></ul> | Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
-| `yearPrint` | <ul><li>`string`</li><li>[`NoYearPrintType`](#CDG-NoYearPrintType)</li></ul> | Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NoYearPrintType` otherwise. |
+| Key | Characteristic value |
+| :- | :- |
+| `label` | (`string`) `COMME des GARÇONS`, which can be returned using [`CDG.Label`](#CDG-NoYearPrintType). |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the seemingly random string of 6-9 characters typically located at the top of the care label, as a `string`. Its structure depends on the clothing line and the moment of production. Although the code `D-TK9210` occasionally appears on the care label, it is not the product code. |
+| `yearPrint` | (`string`&#124;[`CDG.NoYearPrintType`](#CDG-NoYearPrintType)) Information regarding the production year print of the garment, which corresponds to the letters "AD" followed by a year since 1988 on the right of the care label, as a `string` if the year has a definite integer value; as a value of enum `NoYearPrintType` otherwise. |
 
 <a id="CDG-NoYearPrintType"></a>
-#### `NoYearPrintType` enum keys
+__`NoYearPrintType` enum__
 
 | Key | Description |
-| - | - |
+| :- | :- |
 | `BLANK` | No "AD" followed by an integer printed on the care label. |
 | `INDEFINITE` | Indefinite integer following "AD" on the right of the care label. |
 | `UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
 
 <table>
   <tr>
-    <th>Month</th>
-    <th>Savings</th>
-    <th>Savings for holiday!</th>
+    <td> <b>Enum</b> </td>
+    <td> <b>Key</b> </td>
+    <td> <b>Description</b> </td>
   </tr>
   <tr>
-    <td>January</td>
-    <td>$100</td>
-    <td rowspan="2">$50</td>
+    <td> &#8212; </td>
+    <td> <code>Label</code> </td>
+    <td> <code>COMME des GARÇONS</code> </td>
   </tr>
   <tr>
-    <td>February</td>
-    <td>$80</td>
+    <td rowspan="3"> <code>NoYearPrintType</code> </td>
+    <td> <code>BLANK</code> </td>
+    <td> No "AD" followed by an integer printed on the care label. </td>
+  </tr>
+  <tr>
+    <td> <code>INDEFINITE</code> </td>
+    <td> Indefinite integer following "AD" on the right of the care label. </td>
+  </tr>
+  <tr>
+    <td> <code>UNKNOWN</code> </td>
+    <td> Uncertainty regarding whether "AD" followed by an integer was printed on the care label. </td>
   </tr>
 </table>
 
