@@ -12,7 +12,7 @@ __Support this project by [subscribing to our Patreon](https://www.patreon.com/b
 
 | Table of contents |
 | :- |
-| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): obtaining a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "extract()"](#returning-2)</li></ul></li></ul></li><li>[Identification data-related classes](#data-classes)<ul><li>["Identification"](#Identification)</li><li>["Line"](#Line)</li><li>["Collection"](#Collection)</li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
+| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): obtaining a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "extract()"](#returning-2)</li></ul></li></ul></li><li>[Label-specific information](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
 
 ---
 
@@ -32,7 +32,7 @@ The identification results of a specified set of characteristics can be returned
 <a id="returning-1"></a>
 #### Option 1 (simple): obtaining a string representation using `identify()`
 
-The `identify()` method returns a `string` that confirms the specified element's characteristics and, based on the label and the employed identification framework and its exception status, lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
+The `identify()` method returns a `string` that confirms the specified element's characteristics and—based on the label, the identification framework, and the exception status—lists all possible clothing lines and corresponding collections that a garment with such characteristics may be from, along with other information that can be extracted from such characteristics, such as the stylized product code, the garment type, the garment size, and the possibility of counterfeit.
 
 __Example:__
 ```
@@ -58,13 +58,44 @@ COMME des GARÇONS
 <a id="returning-2"></a>
 #### Option 2 (advanced): accessing the raw identification data using `extract()`
 
-Manipulating the identification results may be desirable in certain contexts, in which case comprehensive access to the raw identification data is required.
+The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and—based on the label (`label`), the identification framework (`framework`), and the exception status (`exception`)—the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
 
-The `extract()` method returns the raw identification data according to the specified element's characteristics in the form of an array of [`Identification`](#Identification) items. Each item contains a copy of the specified element (`input`) and, __based on__ the label (`label`) and the employed __identification framework__ (`framework`) and its __exception status__ (`exception`), the list of all possible clothing lines and corresponding collections that a garment with such characteristics may be from (`lineList`), along with other information that can be extracted from such characteristics, such as the stylized product code (`stylizedCode`), the garment type (`garmentType`), the garment size (`garmentSize`), and the possibility of counterfeit (`counterfeit`).
+<a id="Identification"></a>
+__`Identification`__
+  
+| Parameter | Description |
+| :- | :- |
+| `input` | (`Object`) Characteristics data used for identification. |
+| `label` | (`string`) Name of the garment label. |
+| `framework` | (`string`) Name of the identification framework. |
+| `exception` | (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise. |
+| `lineList` | ([`Line[]`](#Line)) Based on the label, the identification framework, and the exception status, array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from. |
+| `stylizedCode` | (`string`) Stylized product code. |
+| `garmentType` | (`string`) Garment type. |
+| `garmentSize` | (`string`) Garment size notation; `null` if none. |
+| `counterfeit` | (`boolean`) Possibility of counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
 
-The list of clothing lines and corresponding collections takes the form of an array of [`Line`](#Line) items, where each item contains the name of the line (`name`) and the list of collections (`collectionList`). In turn, this list of collections takes the form of an array of [`Collection`](#Collection) items, where each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
+As stated above, the list of all possible clothing lines and corresponding collections (`lineList`) takes the form of an array of [`Line`](#Line) items. Each item contains the name of the clothing line (`name`) and the list of corresponding collections (`collectionList`).
 
-Consult the [_Identification data-related classes_](#data-classes) section for a proper documentation of the [`Identification`](#Identification) class, [`Line`](#Line) class, and [`Collection`](#Collection) class and their parameters.
+<a id="Line"></a>
+__`Line`__
+
+| Parameter | Description |
+| :- | :- |
+| `name` | (`string`) Name of the clothing line. |
+| `collectionList` | ([`Collection[]`](#Collection)) Array of corresponding collections. |
+
+As stated above, the list of corresponding collections (`collectionList`) takes the form of an array of [`Collection`](#Collection) items. Each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
+
+<a id="Collection"></a>
+__`Collection`__
+
+| Parameter | Description |
+| :- | :- |
+| `year` | (`number`) Year of the collection. |
+| `season` | (`string`) Semiannual season of the collection: `Spring/Summer` or `Autumn/Winter`; `null` if none. |
+| `title` | (`string`) Title of the collection; `null` if none. |
+| `text` | (`string`) Other information; `null` if none. |
 
 __Example:__
 ```
@@ -103,44 +134,6 @@ __Expected output:__
 
 ---
 
-<a id="data-classes"></a>
-## Identification data-related classes
-
-<a id="Identification"></a>
-### `Identification`
-
-| Parameter | Description |
-| :- | :- |
-| `input` | (`Object`) Characteristics data used for identification. |
-| `label` | (`string`) Name of the garment label. |
-| `framework` | (`string`) Name of the identification framework. |
-| `exception` | (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise. |
-| `lineList` | ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from under such identification framework and exception status. |
-| `stylizedCode` | (`string`) Stylized product code. |
-| `garmentType` | (`string`) Garment type. |
-| `garmentSize` | (`string`) Garment size notation; `null` if none. |
-| `counterfeit` | (`boolean`) Possibility of counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
-
-<a id="Line"></a>
-### `Line`
-
-| Parameter | Description |
-| :- | :- |
-| `name` | (`string`) Name of the clothing line. |
-| `collectionList` | ([`Collection[]`](#Collection)) Array of `Collection` items. |
-
-<a id="Collection"></a>
-### `Collection`
-
-| Parameter | Description |
-| :- | :- |
-| `year` | (`number`) Year of the collection. |
-| `season` | (`string`) Semiannual season of the collection: `Spring/Summer` or `Autumn/Winter`; `null` if none. |
-| `title` | (`string`) Title of the collection; `null` if none. |
-| `text` | (`string`) Other information; `null` if none. |
-
----
-
 <a id="label-specific"></a>
 ## Label-specific information
 
@@ -174,6 +167,23 @@ input = new InputCDG({ productCode: ... , yearPrint: ... })
 | `BLANK` | No "AD" followed by an integer printed on the care label. |
 | `INDEFINITE` | Indefinite integer following "AD" on the right of the care label. |
 | `UNKNOWN` | Uncertainty regarding whether "AD" followed by an integer was printed on the care label. |
+
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+    <th>Savings for holiday!</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+    <td rowspan="2">$50</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$80</td>
+  </tr>
+</table>
 
 ---
 
@@ -220,6 +230,46 @@ The `logoStyle` of a garment corresponds to the production year of the garment. 
 | `LOGO_STYLES.YY_I` | ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_white.png#gh-dark-mode-only) ![Y_I](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_I_black.png#gh-light-mode-only) |
 | `LOGO_STYLES.YY_II` | ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_white.png#gh-dark-mode-only) ![Y_II](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_II_black.png#gh-light-mode-only) |
 | `LOGO_STYLES.YY_III` | ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_white.png#gh-dark-mode-only) ![Y_III](./assets/YohjiYamamoto/small/YohjiYamamoto_MAIN_III_black.png#gh-light-mode-only) |
+
+---
+
+Consult the [_Identification data-related classes_](#data-classes) section for a proper documentation of the [`Identification`](#Identification) class, [`Line`](#Line) class, and [`Collection`](#Collection) class and their parameters.
+
+<a id="data-classes"></a>
+## Identification data-related classes
+
+<a id="Identification"></a>
+### `Identification`
+
+| Parameter | Description |
+| :- | :- |
+| `input` | (`Object`) Characteristics data used for identification. |
+| `label` | (`string`) Name of the garment label. |
+| `framework` | (`string`) Name of the identification framework. |
+| `exception` | (`boolean`) Exception status: `true` if the results are exceptions to the identification framework; `false` otherwise. |
+| `lineList` | ([`Line[]`](#Line)) Array of all possible clothing lines and corresponding collections that a garment with such characteristics may be from under such identification framework and exception status. |
+| `stylizedCode` | (`string`) Stylized product code. |
+| `garmentType` | (`string`) Garment type. |
+| `garmentSize` | (`string`) Garment size notation; `null` if none. |
+| `counterfeit` | (`boolean`) Possibility of counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
+
+<a id="Line"></a>
+### `Line`
+
+| Parameter | Description |
+| :- | :- |
+| `name` | (`string`) Name of the clothing line. |
+| `collectionList` | ([`Collection[]`](#Collection)) Array of `Collection` items. |
+
+<a id="Collection"></a>
+### `Collection`
+
+| Parameter | Description |
+| :- | :- |
+| `year` | (`number`) Year of the collection. |
+| `season` | (`string`) Semiannual season of the collection: `Spring/Summer` or `Autumn/Winter`; `null` if none. |
+| `title` | (`string`) Title of the collection; `null` if none. |
+| `text` | (`string`) Other information; `null` if none. |
 
 ---
 
