@@ -99,7 +99,7 @@ In turn, the list of all possible clothing lines and corresponding collections (
 Finally, the list of corresponding collections (`collectionList`) takes the form of an array of [`Collection`](#Collection) items, where each item contains the year of the collection (`year`) and possibly the season (`season`), the title (`title`), and other information (`text`).
 
 <a id="Identification"></a>
-##### `Identification` properties
+##### `Identification` class properties
   
 | Key | Description |
 | :- | :- |
@@ -114,7 +114,7 @@ Finally, the list of corresponding collections (`collectionList`) takes the form
 | `counterfeit` | (`boolean`) Possibility of counterfeit: `true` if such characteristics have been observed on a counterfeit before; `false` otherwise. |
 
 <a id="Line"></a>
-##### `Line` properties
+##### `Line` class properties
 
 | Key | Description |
 | :- | :- |
@@ -122,7 +122,7 @@ Finally, the list of corresponding collections (`collectionList`) takes the form
 | `collectionList` | ([`Collection[]`](#Collection)) Array of corresponding collections. |
 
 <a id="Collection"></a>
-##### `Collection` properties
+##### `Collection` class properties
 
 | Key | Description |
 | :- | :- |
@@ -186,7 +186,7 @@ The current version should be able to identify all pieces of garments from the _
 
 Garments from the __COMME des GARÇONS__ label (`label`) are characterized by their product code (`productCode`) and year print (`yearPrint`).
 
-##### Garment characteristics properties
+##### Garment characteristics object properties
 
 | Key | Description |
 | :- | :- |
@@ -200,7 +200,7 @@ Garments from the __COMME des GARÇONS__ label (`label`) are characterized by th
 The namespace for the __COMME des GARÇONS__ label (`CDG`) provides access to the name of the label as a string (`CDG.Label`) and the possible statuses of the year print when there is no year defined (`CDG.NoYearPrint`).
 
 <a id="CDG-namespace-prop"></a>
-##### `CDG` properties
+##### `CDG` namespace properties
 
 | Key | Description |
 | :- | :- |
@@ -208,12 +208,12 @@ The namespace for the __COMME des GARÇONS__ label (`CDG`) provides access to th
 | `NoYearPrint`| ([`enum`](#CDG-NoYearPrint)) Status of the year print when there is no year defined. |
 
 <a id="CDG-NoYearPrint"></a>
-##### `NoYearPrint` properties
+##### `NoYearPrint` enum properties
 
 | Key | Description |
 | :- | :- |
 | `BLANK` | No year was originally printed on the care label. |
-| `UNCLEAR` | Unclear integer following _AD_ on the care label. |
+| `UNREADABLE` | Unreadable integer following _AD_ on the care label. |
 | `UNKNOWN` | Uncertainty whether _AD_ followed by an integer was originally printed on the care label. |
 
 __Example:__
@@ -223,7 +223,7 @@ import { identify, CDG } from "path/to/release/index.js";
 const garmentData = {
   label: CDG.Label,
   productCode: "GJ-10009S",
-  yearPrint: CDG.NoYearPrint.UNCLEAR
+  yearPrint: CDG.NoYearPrint.UNREADABLE
 };
 
 const idString = identify(garmentData);
@@ -233,7 +233,7 @@ __Expected output:__
 ```
 > Label: COMME des GARÇONS
 > Product code: GJ-10009S
-> Year print: unclear
+> Year print: unreadable
 
 According to the monthly identification framework of COMME des GARÇONS, the garment should be a jacket in size S from one of the following:
 
@@ -261,7 +261,7 @@ The current version should be able to identify all pieces of garments from the m
 
 Garments from the __Yohji Yamamo__ label (`label`) are characterized by their product code (`productCode`), logo style (`logoStyle`), sizing system (`sizingSystem`), font type (`fontType`), and laundry symbols position (`laundryPosition`).
 
-##### Garment characteristics properties
+##### Garment characteristics object properties
 
 | Key | Description |
 | :- | :- |
@@ -278,7 +278,7 @@ Garments from the __Yohji Yamamo__ label (`label`) are characterized by their pr
 The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the name of the label as a string (`YY.Label`), the possible statuses of the product code print when there is no product code defined (`YY.NoProductCode`), the possible options of logo style on the clothing line tag (`YY.LogoStyle`), of garment sizing system (`YY.SizingSystem`), of font type (`YY.FontType`), and of laundry symbols position (`YY.LaundryPosition`).
 
 <a id="YY-namespace-prop"></a>
-##### `YY` properties
+##### `YY` namespace properties
 
 | Key | Description |
 | :- | :- |
@@ -290,16 +290,16 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
 | `LaundryPosition`| ([`enum`](#YY-LaundryPosition)) Laundry symbols position options. |
 
 <a id="YY-NoProductCode"></a>
-##### `NoProductCode` properties
+##### `NoProductCode` enum properties
 
 | Key | Description |
 | :- | :- |
 | `BLANK` | No product code was originally printed on the care label. |
-| `UNCLEAR` | Unclear product code on the care label. |
+| `UNREADABLE` | Unreadable product code on the care label. |
 | `UNKNOWN` | Uncertainty whether a product code was originally printed on the care label. |
 
 <a id="YY-LogoStyle"></a>
-##### `LogoStyle` properties
+##### `LogoStyle` enum properties
 
 <table>
   <tr>
@@ -329,7 +329,7 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
 | `YY[3]` | ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |-->
 
 <a id="YY-SizingSystem"></a>
-##### `SizingSystem` properties
+##### `SizingSystem` enum properties
 
 | Key | Description |
 | :- | :- |
@@ -338,7 +338,7 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
 | `UNKNOWN` | Uncertainty about the garment sizing system. |
 
 <a id="YY-FontType"></a>
-##### `FontType` properties
+##### `FontType` enum properties
 
 | Key | Description |
 | :- | :- |
@@ -347,7 +347,7 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
 | `UNKNOWN` | Uncertainty about the font type on the care label. |
 
 <a id="YY-LaundryPosition"></a>
-##### `LaundryPosition` properties
+##### `LaundryPosition` enum properties
 
 | Key | Description |
 | :- | :- |
