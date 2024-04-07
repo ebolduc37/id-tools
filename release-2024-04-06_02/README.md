@@ -270,7 +270,7 @@ Garments from the __Yohji Yamamo__ label (`label`) are characterized by their pr
 | `logoStyle` | ([`LogoStyle`](#YY-LogoStyle)) Logo style on the clothing line tag. |
 | `sizingSystem` | ([`SizingSystem`](#YY-SizingSystem)) Garment sizing system used. |
 | `fontType` | ([`FontType`](#YY-FontType)) Font type used on the care label. |
-| `laundryPosition` | ([`LaundryPosition`](#YY-LaundryPosition)) Laundry symbols position relative to the product code on the care label. |
+| `laundryPosition` | ([`LaundryPosition`](#YY-LaundryPosition)) Laundry symbols position relative to the fabric composition on the care label. |
 
 <a id="YY-namespace"></a>
 #### Namespace
@@ -351,9 +351,9 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
 
 | Key | Description |
 | :- | :- |
-| `BELOW` | Laundry symbols positioned below the product code on the care label. |
-| `ABOVE` | Laundry symbols positioned above the product code on the care label. |
-| `UNKNOWN` | Uncertainty about the position of the laundry symbols relative to the product code on the care label. |
+| `BELOW` | Laundry symbols positioned below the fabric composition on the care label. |
+| `ABOVE` | Laundry symbols positioned above the fabric composition on the care label. |
+| `UNKNOWN` | Uncertainty about the position of the laundry symbols relative to the fabric composition on the care label. |
 
 __Example:__
 ```
