@@ -1,63 +1,59 @@
 /**
- * ISSEY MIYAKE INC. framework identification.
+ * A-NET INC. framework identification.
  *
  * Evaluation of the occurrences of possible collections by following
- * the ISSEY MIYAKE INC. identification framework.
+ * the A-NET INC. identification framework.
  *
  * @author Etienne Bolduc
  */
 
 // Imports
-import { Collection, Identification, OperationPeriod } from "../../../utils/index.js";
+import { Collection, Identification } from "../../../utils/index.js";
 import { InputIM } from "../utils/index.js";
 
 // Constants
 import { ALL_COLLECTIONS, IMI_FABRIC_TYPE_ID as FABRIC_TYPE_ID,
-    IMI_GARMENT_TYPE_ID as GARMENT_TYPE_ID, IMI_LINE_ID as LINE_ID,
+    IMI_GARMENT_TYPE_ID as GARMENT_TYPE_ID, ANET_LINE_ID as LINE_ID,
     IMI_SEASON_ID as SEASON_ID, LINE } from "../constants/index.js";
 const Season = Collection.Season;
-const REGEX_IMI = /^[A-Z]{2}\d{2}[A-Z]{2}\d{3}\d?$/;
-const FRAMEWORK_IMI = "ISSEY MIYAKE INC.";
-const MANUFACTURER_IMI = "ISSEY MIYAKE INC., which may also appear as "
-                            + "株式会社 イッセイ ミヤケ on the care label,";
+const REGEX_ANET = /^[A-Z]{2}\d{2}[A-Z]{2}\d{3}$/;
+const FRAMEWORK_ANET = "A-NET INC.";
+const MANUFACTURER_ANET = "A-NET INC., which may also appear as "
+                            + "株式会社 エイ・ネット on the care label,";
 
-const SIZING_ALPHABETICAL_END = new Collection(2002, Season.S);
-const SIZING_ALPHABETICAL_END_EXCEPTIONS = {
-    PP: new Collection(1993, Season.S),
-    //CL: new Collection(1990, Season.W),
+const SIZING_NUMERICAL_END_EXCEPTIONS = {
+    FH: new Collection(2000, Season.S),
+    KT: new Collection(2000, Season.S),
 };
-const SIZING_NUMERICAL_START = new Collection(2000, Season.W);
-const SIZING_NUMERICAL_START_EXCEPTIONS = {
-    PP: new Collection(1993, Season.W),
-    //CL: new Collection(1991, Season.S),
+const SIZING_ALPHABETICAL_START_EXCEPTIONS = {
+    FH: new Collection(2000, Season.S),
+    KT: new Collection(2000, Season.S),
 };
-const FONT_WEIRD_END = new Collection(1994, Season.S);
-const FONT_SLAB_END = new Collection(2000, Season.W);
-const FONT_SANS_DEBUT = new Collection(2000, Season.S);
-
+const FONT_SLAB_END = new Collection(2003, Season.S);
+const FONT_SANS_DEBUT = new Collection(2000, Season.W);
 
 
 /**
- * Evaluate if the input data corresponds to the ISSEY MIYAKE INC. framework.
- * @return {boolean} True if the input data corresponds to the ISSEY MIYAKE INC. framework; false otherwise.
+ * Evaluate if the input data corresponds to the A-NET INC. framework.
+ * @return {boolean} True if the input data corresponds to the A-NET INC. framework; false otherwise.
  */
-InputIM.prototype.isIMI = function() {
+InputIM.prototype.isANET = function() {
 
     // Returning false if the product code is not a valid input
     if (!this.isValid()) return false;
 
     // Returning false if the font style is not sans serif
-    if (!this.isLogoHelvetica() && !this.isLogoUnspecified()) return false;
+    if (!this.isLogoUnspecified()) return false;
 
-    // Returning false if the manufacturer is not a ISSEY MIYAKE INC.
-    if (!this.isManufacturerIMI() && !this.isManufacturerUnspecified()) return false;
+    // Returning false if the manufacturer is not a A-NET INC.
+    if (!this.isManufacturerANET() && !this.isManufacturerUnspecified()) return false;
 
     // Initializing useful parameters
     const productCode = this.getProductCodeStandardized();
 
     // Returning false if the product code does not fit the regular expression of the framework
     // or is not the empty string
-    if (!REGEX_IMI.test(productCode)) return false;
+    if (!REGEX_ANET.test(productCode)) return false;
 
     // Returning false if the line ID is not valid
     const lineID = productCode.slice(0, 2);
@@ -75,20 +71,23 @@ InputIM.prototype.isIMI = function() {
     const garmentTypeID = productCode[5];
     if (!(garmentTypeID in GARMENT_TYPE_ID)) return false;
 
+    // Exception for FINAL HOME where no numerical sizing and sans serif font type can occur
+    if (lineID === "FH" && this.isSizingNumerical() && this.isFontSansSerif()) return false;
+
     // Returning true otherwise
     return true
 };
 
 /**
  * Identification of the occurrences of possible collections from the input data
- * by following the ISSEY MIYAKE INC. framework.
+ * by following the A-NET INC. framework.
  * @return {Identification[]} Identification of the occurrences of possible collections.
  */
-InputIM.prototype.extract_IMI = function() {
+InputIM.prototype.extract_ANET = function() {
 
     // Returning empty array if the product code is not a
-    // valid ISSEY MIYAKE INC. framework input
-    if (!this.isIMI()) return [];
+    // valid A-NET INC. framework input
+    if (!this.isANET()) return [];
 
     // Initializing useful parameters
     const productCode = this.getProductCodeStandardized();
@@ -96,8 +95,8 @@ InputIM.prototype.extract_IMI = function() {
     // Initializing the identification object
     let identification = new Identification({
         label: Identification.Label.IM,
-        framework: FRAMEWORK_IMI,
-        manufacturer: MANUFACTURER_IMI,
+        framework: FRAMEWORK_ANET,
+        manufacturer: MANUFACTURER_ANET,
         input: this.copy()
     });
 
@@ -120,13 +119,12 @@ InputIM.prototype.extract_IMI = function() {
         // Initialize the set of candidates
         let candidates = ALL_COLLECTIONS.map(col => col.copy());
 
-        // Limiting the set of candidates to the collections of ISSEY MIYAKE INC.
-        candidates = candidates.filter(col => col.isAfterOrIn(new Collection(1991, Season.S)));
+        // Limiting the set of candidates to the collections of A-NET INC.
+        candidates = candidates.filter(col => col.isAfterOrIn(new Collection(1997, Season.S)));
 
         // Limiting the set of candidates to the collections with the right last digit of the year
         let yearLastDigitException = col => false;
-        if (productCode.slice(0,3) === "PP0")
-            yearLastDigitException = col => col.isEqualTo(new Collection(1993, Season.S)) || col.isEqualTo(new Collection(1993));
+        if (productCode.slice(0,4) === "FH55") yearLastDigitException = col => true;
         candidates = candidates.filter(col => col.year%10 == yearLastDigit || yearLastDigitException(col));
 
         // Limiting the set of candidates to the collections with the right logo style if specified
@@ -136,25 +134,19 @@ InputIM.prototype.extract_IMI = function() {
         }
 
         // Limiting the set of candidates to the collections with the right sizing system
-        if (this.isSizingAlphabetical()) {
-            let sizingAlphabeticalEnd = SIZING_ALPHABETICAL_END;
-            if (lineID in SIZING_ALPHABETICAL_END_EXCEPTIONS)
-            sizingAlphabeticalEnd = SIZING_ALPHABETICAL_END_EXCEPTIONS[lineID];
-            candidates = candidates.filter(col => col.isBeforeOrIn(sizingAlphabeticalEnd));
+        if (this.isSizingNumerical()) {
+            if (lineID in SIZING_NUMERICAL_END_EXCEPTIONS)
+                candidates = candidates.filter(col => col.isBeforeOrIn(SIZING_NUMERICAL_END_EXCEPTIONS[lineID]));
+            else continue;
         }
-        else if (this.isSizingNumerical()) {
-            let sizingNumericalStart = SIZING_NUMERICAL_START;
-            if (lineID in SIZING_NUMERICAL_START_EXCEPTIONS)
-                sizingNumericalStart = SIZING_NUMERICAL_START_EXCEPTIONS[lineID];
-            candidates = candidates.filter(col => col.isAfterOrIn(sizingNumericalStart));
-        }
+        else if (this.isSizingAlphabetical() && lineID in SIZING_ALPHABETICAL_START_EXCEPTIONS)
+            candidates = candidates.filter(col => col.isAfterOrIn(SIZING_ALPHABETICAL_START_EXCEPTIONS[lineID]));
 
         // Limiting the set of candidates to the collections with the right font type
-        if (this.isFontSlabSerif())
+        if (this.isFontSlabSerif() || productCode.slice(0,4) === "FH55")
             candidates = candidates.filter(col => col.isBeforeOrIn(FONT_SLAB_END));
         else if (this.isFontSansSerif())
-            //candidates = candidates.filter(col => !col.isBetween(new Collection(1994, Season.W), new Collection(1999, Season.W)));
-            candidates = candidates.filter(col => col.isBeforeOrIn(FONT_WEIRD_END) || col.isAfterOrIn(FONT_SANS_DEBUT));
+            candidates = candidates.filter(col => col.isAfterOrIn(FONT_SANS_DEBUT));
 
         // Initializing the season ID filter
         let filterSeasonID = SEASON_ID[seasonID];
