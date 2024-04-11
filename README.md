@@ -263,7 +263,6 @@ ISSEY MIYAKE
 ------------>
 
 <a id="IM"></a>
-
 ### ISSEY MIYAKE
 
 The current version should be able to identify all pieces of garments from the __ISSEY MIYAKE__ label.
@@ -340,7 +339,8 @@ The namespace for the __ISSEY MIYAKE__ label (`IM`) provides access to the name 
   </tr>
   <tr>
     <td colspan="2"> <code>UNSPECIFIED</code> </td>
-    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>
+    <!--<td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>-->
+    <td> Unspecified clothing line tag. </td>
   </tr>
 </table>
 
