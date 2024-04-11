@@ -305,43 +305,37 @@ The namespace for the __ISSEY MIYAKE__ label (`IM`) provides access to the name 
   <tr>
     <td rowspan="2"> <code>IM</code> </td>
     <td> <code>BW</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_BW.jpg"</picture> </td>
+    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_BW.jpg"></picture> </td>
   </tr>
   <tr>
     <td> <code>WB</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_WB.jpg"</picture> </td>
+    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_WB.jpg"></picture> </td>
   </tr>
   </tr>
   <tr>
     <td rowspan="2"> <code>ME</code> </td>
     <td> <code>BW</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_BW.jpg"</picture> </td>
+    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_BW.jpg"></picture> </td>
   </tr>
   <tr>
     <td> <code>WB</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_WB.jpg"</picture> </td>
+    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_WB.jpg"></picture> </td>
   </tr>
   </tr>
   <tr>
     <td colspan="2"> <code>BRUSH</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_BRUSH.png" media="(prefers-color-scheme:light)"><img src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_BRUSH_invert.png"></picture> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_BRUSH_invert.png" media="(prefers-color-scheme:dark)"><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_BRUSH.png"></picture> </td>
   </tr>
   </tr>
   <tr>
     <td colspan="2"> <code>ROUND</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_ROUND.png" media="(prefers-color-scheme:light)"><img src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_ROUND_invert.png"></picture> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_ROUND_invert.png" media="(prefers-color-scheme:dark)"><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_ROUND.png"></picture> </td>
   </tr>
   <tr>
     <td colspan="2"> <code>UNSPECIFIED</code> </td>
-    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>
+    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>
   </tr>
 </table>
-
-<!--| Key[ID] | Description |
-| :- | :- |
-| `YY[1]` | ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
-| `YY[2]` | ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
-| `YY[3]` | ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |-->
 
 <a id="IM-Manufacturer"></a>
 ##### `Manufacturer` enum properties
@@ -464,23 +458,17 @@ The namespace for the __Yohji Yamamoto__ label (`YY`) provides access to the nam
   <tr>
     <td rowspan="3"> <code>YY</code> </td>
     <td> <code>1</code> </td>
-    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_1_white.png" media="(prefers-color-scheme:dark)"><img src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_1_black.png"></picture> </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_1_invert.png" media="(prefers-color-scheme:dark)"><img width="250" src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_1.png"></picture> </td>
   </tr>
   <tr>
     <td> <code>2</code> </td>
-    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_2_white.png" media="(prefers-color-scheme:dark)"><img src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_2_black.png"></picture> </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_2_invert.png" media="(prefers-color-scheme:dark)"><img width="250" src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_2.png"></picture> </td>
   </tr>
   <tr>
     <td> <code>3</code> </td>
-    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_3_white.png" media="(prefers-color-scheme:dark)"><img src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_3_black.png"></picture> </td>
+    <td> <picture><source srcset="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_3_invert.png" media="(prefers-color-scheme:dark)"><img width="250" src="./assets/YohjiYamamoto/README/LogoStyle/YY/YohjiYamamoto_LogoStyle_YY_3.png"></picture> </td>
   </tr>
 </table>
-
-<!--| Key[ID] | Description |
-| :- | :- |
-| `YY[1]` | ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
-| `YY[2]` | ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
-| `YY[3]` | ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |-->
 
 <a id="YY-SizingSystem"></a>
 ##### `SizingSystem` enum properties
