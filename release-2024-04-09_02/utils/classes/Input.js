@@ -294,7 +294,7 @@ class Input {
         // Individual identification frameworks
         else for (let id of results) str += `\n\n${id.result()}`;
 
-        str += "\n\nBrought to you by My Clothing Archive.";
+        str += "\n\nCreated by My Clothing Archive.";
         str += "\nSubscribe to our Patreon!";
 
         return str;
