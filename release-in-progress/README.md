@@ -4,6 +4,7 @@
 
 __Serviceable labels:__
 - __COMME des GARÇONS__
+- __ISSEY MIYAKE__
 - __Yohji Yamamoto__
 
 This JavaScript module implements the identification of garments from different fashion labels. It is usually feasible to extract valuable information from a small, finite set of label-specific characteristics, such as the possible clothing lines and corresponding collections that a garment with such characteristics may be from, the garment type, the possibility of counterfeit, etc. This module attempts to formalize this process for certain fashion labels coveted by buyers and collectors. Please consult our identification charts for more details on the identification process.
@@ -12,7 +13,7 @@ __Support this project by [subscribing to our Patreon](https://www.patreon.com/b
 
 | Table of contents |
 | :- |
-| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): obtaining a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "extract()"](#returning-2)</li></ul></li></ul></li><li>[Label-specific characteristics](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
+| <ul><li>[How to identify a piece of garment with the identification module](#how-to)<ul><li>[Preparing for identification](#preparing)</li><li>[Returning the identification results](#returning)<ul><li>[Option 1 (simple): obtaining a string representation using "identify()"](#returning-1)</li><li>[Option 2 (advanced): accessing the raw identification data using "extract()"](#returning-2)</li></ul></li></ul></li><li>[Label-specific characteristics](#label-specific)<ul><li>[COMME des GARÇONS](#CDG)</li><li>[ISSEY MIYAKE](#IM)</li><li>[Yohji Yamamoto](#YY)</li></ul></li></ul> |
 
 ---
 
@@ -243,6 +244,157 @@ COMME des GARÇONS
 > any Spring/Summer collection between Spring/Summer 1989 and Spring/Summer 2002
 ```
 
+
+
+<!-----------
+-------------
+-------------
+
+ISSEY MIYAKE
+
+-------------
+-------------
+------------>
+
+<a id="IM"></a>
+### ISSEY MIYAKE
+
+The current version should be able to identify all pieces of garments from the __ISSEY MIYAKE__ label.
+
+<a id="IM-key"></a>
+#### Key characteristics for identification
+
+Garments from the __ISSEY MIYAKE__ label (`label`) are characterized by their product code (`productCode`), logo style (`logoStyle`), manufacturer (`manufacturer`), sizing system (`sizingSystem`), and font type (`fontType`).
+
+##### Garment characteristics object properties
+
+| Key | Description |
+| :- | :- |
+| `label` | (`string`) Name of the label, i.e., `ISSEY MIYAKE`, which can be returned using [`Label`](#IM-namespace-prop) from the namespace. |
+| `productCode` | (`string`) Product code of the garment, which corresponds to the larger, seemingly random string of 7-10 characters typically found on the care label. Its structure depends on the manufacturer and moment of production. |
+| `logoStyle` | ([`LogoStyle`](#IM-LogoStyle)) Logo style on the clothing line tag. |
+| `manufacturer` | ([`Manufacturer`](#IM-Manufacturer)) Manufacturer, which corresponds to the name of the company typically found at the bottom of the care label. |
+| `sizingSystem` | ([`SizingSystem`](#IM-SizingSystem)) Garment sizing system used. |
+| `fontType` | ([`FontType`](#IM-FontType)) Font type used on the care label. |
+
+<a id="IM-namespace"></a>
+#### Namespace
+
+The namespace for the __ISSEY MIYAKE__ label (`IM`) provides access to the name of the label as a string (`IM.Label`), the possible options of logo style on the clothing line tag (`IM.LogoStyle`), of manufacturer (`IM.Manufacturer`), of garment sizing system (`IM.SizingSystem`), and of font type (`IM.FontType`).
+
+<a id="IM-namespace-prop"></a>
+##### `IM` namespace properties
+
+| Key | Description |
+| :- | :- |
+| `Label` | (`string`) Name of the label, i.e., `ISSEY MIYAKE`. |
+| `LogoStyle`| ([`enum`](#IM-LogoStyle)) Logo style options on the clothing line tag. |
+| `Manufacturer`| ([`enum`](#IM-Manufacturer)) Manufacturer options. |
+| `SizingSystem`| ([`enum`](#IM-SizingSystem)) Garment sizing system options. |
+| `FontType`| ([`enum`](#IM-FontType)) Font type options. |
+
+<a id="IM-LogoStyle"></a>
+##### `LogoStyle` enum properties
+
+<table>
+  <tr>
+    <td> <b>Key</b> </td>
+    <td> <b>ID</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <code>IM</code> </td>
+    <td> <code>BW</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_BW.jpg"</picture> </td>
+  </tr>
+  <tr>
+    <td> <code>WB</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_IM_WB.jpg"</picture> </td>
+  </tr>
+  </tr>
+  <tr>
+    <td rowspan="2"> <code>ME</code> </td>
+    <td> <code>BW</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_BW.jpg"</picture> </td>
+  </tr>
+  <tr>
+    <td> <code>WB</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/ME/IsseyMiyake_LogoStyle_ME_WB.jpg"</picture> </td>
+  </tr>
+  </tr>
+  <tr>
+    <td colspan="2"> <code>BRUSH</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_BRUSH.png" media="(prefers-color-scheme:light)"><img src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_BRUSH_invert.png"></picture> </td>
+  </tr>
+  </tr>
+  <tr>
+    <td colspan="2"> <code>ROUND</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_ROUND.png" media="(prefers-color-scheme:light)"><img src="./assets/IsseyMiyake/README/LogoStyle/IM/IsseyMiyake_LogoStyle_ROUND_invert.png"></picture> </td>
+  </tr>
+  <tr>
+    <td colspan="2"> <code>UNSPECIFIED</code> </td>
+    <td> <picture><source srcset="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>
+  </tr>
+</table>
+
+<!--| Key[ID] | Description |
+| :- | :- |
+| `YY[1]` | ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_1](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
+| `YY[2]` | ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_2](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |
+| `YY[3]` | ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-dark-mode-only) ![YY_3](./assets/YohjiYamamoto/README/LogoStyle/YY/name#gh-light-mode-only) |-->
+
+<a id="IM-Manufacturer"></a>
+##### `Manufacturer` enum properties
+
+| Key | Description |
+| :- | :- |
+| `IMI` | ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] |
+| `ANET` | A-NET INC. [Japanese: 株式会社 エイ・ネット] |
+| `IMII` | ISSEY MIYAKE INT'L. INC. [Japanese: ㈱ イッセイ ミヤケ インターナショナル] |
+| `ON_LIMITS` | ISSEY MIYAKE ON LIMITS INC. [Japanese: ㈱ イッセイ ミヤケ オンリミット] |
+| `UNSPECIFIED` | Unspecified manufacturer. |
+
+<a id="IM-SizingSystem"></a>
+##### `SizingSystem` enum properties
+
+| Key | Description |
+| :- | :- |
+| `NUMERICAL` | Numerical garment sizing system. |
+| `ALPHABETICAL` | Alphabetical garment sizing system. |
+| `UNSPECIFIED` | Unspecified garment sizing system. |
+
+<a id="IM-FontType"></a>
+##### `FontType` enum properties
+
+| Key | Description |
+| :- | :- |
+| `SANS_SERIF` | Sans serif font type on the care label. |
+| `SLAB_SERIF` | Slab serif font type on the care label. |
+| `UNSPECIFIED` | Unspecified font type on the care label. |
+
+__Example:__
+```
+import { identify, IM } from "path/to/release/index.js";
+
+const garmentData = {
+  label: IM.Label,
+  logoStyle: IM.LogoStyle.???,
+  manufacturer: IM.Manufacturer.???,
+  productCode: "???",
+  sizingSystem: IM.SizingSystem.???,
+  fontType: IM.FontType.???,
+};
+
+const idString = identify(garmentData);
+console.log(idString);
+```
+__Expected output:__
+```
+TO FILL
+```
+
+
+
 <!-----------
 -------------
 -------------
@@ -261,7 +413,7 @@ The current version should be able to identify all pieces of garments from the m
 <a id="YY-key"></a>
 #### Key characteristics for identification
 
-Garments from the __Yohji Yamamo__ label (`label`) are characterized by their product code (`productCode`), logo style (`logoStyle`), sizing system (`sizingSystem`), font type (`fontType`), and laundry symbols position (`laundryPosition`).
+Garments from the __Yohji Yamamoto__ label (`label`) are characterized by their product code (`productCode`), logo style (`logoStyle`), sizing system (`sizingSystem`), font type (`fontType`), and laundry symbols position (`laundryPosition`).
 
 ##### Garment characteristics object properties
 
