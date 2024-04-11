@@ -78,6 +78,9 @@ According to the monthly identification framework of COMME des GARÇONS, the gar
 
 COMME des GARÇONS
 > Spring/Summer 1995, titled "Transcending Gender"
+
+Created by My Clothing Archive.
+Subscribe to our Patreon!
 ```
 
 <!-----------
@@ -242,6 +245,9 @@ According to the monthly identification framework of COMME des GARÇONS, the gar
 
 COMME des GARÇONS
 > any Spring/Summer collection between Spring/Summer 1989 and Spring/Summer 2002
+
+Created by My Clothing Archive.
+Subscribe to our Patreon!
 ```
 
 
@@ -372,11 +378,11 @@ import { identify, IM } from "path/to/release/index.js";
 
 const garmentData = {
   label: IM.Label,
-  logoStyle: IM.LogoStyle.???,
-  manufacturer: IM.Manufacturer.???,
-  productCode: "???",
-  sizingSystem: IM.SizingSystem.???,
-  fontType: IM.FontType.???,
+  productCode: "IM02-FD012",
+  logoStyle: IM.LogoStyle.IM_BW,
+  manufacturer: IM_MANUFACTURER_IMI,
+  sizingSystem: IM_SIZING_ALPHABETICAL,
+  fontType: IM_FONT_SLAB_SERIF
 };
 
 const idString = identify(garmentData);
@@ -384,7 +390,20 @@ console.log(idString);
 ```
 __Expected output:__
 ```
-TO FILL
+> Label: ISSEY MIYAKE
+> Logo style: black ISSEY MIYAKE over white background
+> Manufacturer: ISSEY MIYAKE INC.
+> Product code: IM02-FD012
+> Sizing system: alphabetical
+> Font type: slab serif
+
+According to the ISSEY MIYAKE INC. identification framework of ISSEY MIYAKE, the garment should be a jacket produced by ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] from the following:
+
+ISSEY MIYAKE [by Naoki Takizawa]
+> Spring/Summer 2000
+
+Created by My Clothing Archive.
+Subscribe to our Patreon!
 ```
 
 
@@ -526,6 +545,9 @@ According to the regular identification framework of Yohji Yamamoto, the garment
 
 Yohji Yamamoto
 > Autumn/Winter 1998-1999
+
+Created by My Clothing Archive.
+Subscribe to our Patreon!
 ```
 
 ---

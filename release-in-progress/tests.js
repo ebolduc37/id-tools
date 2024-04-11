@@ -356,7 +356,7 @@ for (let test of input) {
     ++count;
 }
 
-let readme = false;
+let readme = true;
 
 if (readme) {
     console.log(identify({
@@ -374,6 +374,13 @@ if (readme) {
         productCode: "GJ-10009S",
         yearPrint: CDG.NoYearPrint.UNREADABLE
     }));
+    console.log(identify({
+        label: IM.Label,
+        productCode: "IM02-FD012",
+        logoStyle: IM_LOGO_IM_BW,
+        manufacturer: IM_MANUFACTURER_IMI,
+        sizingSystem: IM_SIZING_ALPHABETICAL,
+        fontType: IM_FONT_SLAB_SERIF }))
     console.log(identify({
         label: YY.Label,
         logoStyle: YY.LogoStyle.YY[3],
