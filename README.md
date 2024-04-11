@@ -263,6 +263,7 @@ ISSEY MIYAKE
 ------------>
 
 <a id="IM"></a>
+
 ### ISSEY MIYAKE
 
 The current version should be able to identify all pieces of garments from the __ISSEY MIYAKE__ label.
