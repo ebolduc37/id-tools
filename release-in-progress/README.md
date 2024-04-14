@@ -339,7 +339,8 @@ The namespace for the __ISSEY MIYAKE__ label (`IM`) provides access to the name 
   </tr>
   <tr>
     <td colspan="2"> <code>UNSPECIFIED</code> </td>
-    <td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>
+    <!--<td> <picture><img width="250" src="./assets/IsseyMiyake/README/LogoStyle/IsseyMiyake_LogoStyle_UNSPECIFIED.jpg"></picture> </td>-->
+    <td> Unspecified clothing line tag. </td>
   </tr>
 </table>
 
