@@ -14,12 +14,12 @@
  */
 const GARMENT_TYPE_ID = Object.freeze({
 
-    1: "a top", // lighter tops
-    2: "an outer covering",
+    1: "a top", // lighter tops, first layer
+    2: "an over piece", // dress and weird aw87 jacket, second layer
     3: "a jacket or a bag", // or light jacket or blouson maybe
     4: "pants",
     5: "a skirt",
-    6: "a coat", // seen swimsuit/trunks with 6
+    6: "a coat or trunks", // seen swimsuit/trunks with 6
     7: "a jumpsuit",
     8: "a top", // any top, from T-shirts to sweaters - combination of 1-2
 });
