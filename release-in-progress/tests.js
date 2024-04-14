@@ -381,6 +381,12 @@ const inputIM = [
     { label: IM.Label, productCode: "TC94FF102", logoStyle: IM_LOGO_UNSPECIFIED,
         manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_NUMERICAL,
         fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "LG51419", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_IMII, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "GG13079", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_IMII, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
 ];
 
 let input = inputIM;

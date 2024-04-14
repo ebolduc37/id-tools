@@ -398,7 +398,7 @@ __Expected output:__
 > Sizing system: alphabetical
 > Font type: slab serif
 
-According to the ISSEY MIYAKE INC. identification framework of ISSEY MIYAKE, the garment should be a jacket produced by ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] from the following:
+According to the ISSEY MIYAKE INC. identification framework of ISSEY MIYAKE, the garment should be a jacket made of woven fabric produced by ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] from the following:
 
 ISSEY MIYAKE [by Naoki Takizawa]
 > Spring/Summer 2000
