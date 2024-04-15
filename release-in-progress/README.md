@@ -400,8 +400,8 @@ __Expected output:__
 
 According to the ISSEY MIYAKE INC. identification framework of ISSEY MIYAKE, the garment should be a jacket made of woven fabric produced by ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] from the following:
 
-ISSEY MIYAKE [by Naoki Takizawa]
-> Spring/Summer 2000
+ISSEY MIYAKE
+> Spring/Summer 2000 by Naoki Takizawa
 
 Created by My Clothing Archive.
 Subscribe to our Patreon!
