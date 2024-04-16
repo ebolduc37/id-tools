@@ -13,21 +13,21 @@
  * @enum {string}
  */
 const GARMENT_TYPE_ID = Object.freeze({
-	A: "a piece",
+	A: null,
 	B: "a button-up",
 	C: "a coat",
 	J: "a jacket",
 	K: "a miscellaneous piece",
 	N: "a knitwear piece",
-	O: "a one-piece",
-	OP: "a one-piece",
+	O: "a dress or a one-piece",
+	OP: "a dress or a one-piece",
 	P: "pants or shorts",
 	S: "a skirt or a suit piece",
 	T: "a top (or track pants)",
 	U: "a jumpsuit",
 	V: "a vest",
-	X: "a piece",
-	Z: "a piece"
+	X: null,
+	Z: null,
 });
 
 export default GARMENT_TYPE_ID;

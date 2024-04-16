@@ -12,7 +12,7 @@ import { InputCDG } from "../utils/index.js";
 
 // Constants
 import { GARMENT_TYPE_ID, LINE } from "../constants/index.js";
-const REGEX_CDGCDG = /^[SW]\d\d?[A-Z]\d{3}$/;
+const REGEX_CDGCDG = /^[SW]\d\d?[A-Z](\d|[A-Z])\d{2}$/;
 const YEAR_ID_CDGCDG = { BOUNDS: [1, 20], OFFSET: 1998 };
 
 /**
@@ -34,11 +34,23 @@ InputCDG.prototype.isCdgcdg = function() {
     if (this.isYearPrintNumeric()) return false;
 
     // Returning false if the year ID is out of bounds
-    const yearID = (!isNumeric(productCode[2])) ? parseInt(productCode[1]) : parseInt(productCode.slice(1, 3));
+    //const yearID = (!isNumeric(productCode[2])) ? parseInt(productCode[1]) : parseInt(productCode.slice(1, 3));
+    let yearID_index = 1;
+    let garmentTypeID_index = 2;
+    let yearID = parseInt(productCode[yearID_index]);
+    if (isNumeric(productCode[yearID_index+1])) {
+        yearID = parseInt(productCode.slice(yearID_index, yearID_index+2));
+        ++garmentTypeID_index;
+    }
     if (!(YEAR_ID_CDGCDG.BOUNDS[0] <= yearID && yearID <= YEAR_ID_CDGCDG.BOUNDS[1])) return false;
 
     // Returning false if the garment ID is not valid
-    const garmentTypeID = (!isNumeric(productCode[2])) ? productCode[2] : productCode[3];
+    //const garmentTypeID = (!isNumeric(productCode[2])) ? productCode[2] : productCode[3];
+    let garmentTypeID = productCode[garmentTypeID_index];
+    if (!isNumeric(productCode[garmentTypeID_index+1])) {
+        garmentTypeID = productCode.slice(garmentTypeID_index, garmentTypeID_index+2);
+    }
+
     if (!(garmentTypeID in GARMENT_TYPE_ID)) return false;
 
     // Returning true otherwise
@@ -66,10 +78,19 @@ InputCDG.prototype.extract_Cdgcdg = function() {
     });
 
     // Initializing useful parameters
-    const garmentTypeID = (productCode.length === 6) ? productCode[2] : productCode[3];
-    const yearID = (productCode.length === 6) ? parseInt(productCode[1]) : parseInt(productCode.slice(1, 3));
     const season = Collection.Season[productCode[0]];
+    let yearID_index = 1;
+    let garmentTypeID_index = 2;
+    let yearID = parseInt(productCode[yearID_index]);
+    if (isNumeric(productCode[yearID_index+1])) {
+        yearID = parseInt(productCode.slice(yearID_index, yearID_index+2));
+        ++garmentTypeID_index;
+    }
     const col = new Collection(yearID + YEAR_ID_CDGCDG.OFFSET, season);
+    let garmentTypeID = productCode[garmentTypeID_index];
+    if (!isNumeric(productCode[garmentTypeID_index+1])) {
+        garmentTypeID = productCode.slice(garmentTypeID_index, garmentTypeID_index+2);
+    }
 
     // Initializing and assigning the occurrence
     identification.lineList = [LINE.CDGCDG.forIdentification([col])];

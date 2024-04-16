@@ -208,29 +208,29 @@ InputIM.prototype.extract_IMI = function() {
         // Designers for the ISSEY MIYAKE line
         if (name === LINE.IM.name) {
             candidates.filter(col => DESIGNERS.IM["NT"].includes(col)).forEach((col) => {
-                col.text = "by Naoki Takizawa";
+                col.text = "(by Naoki Takizawa)";
             });
             candidates.filter(col => DESIGNERS.IM["DF"].includes(col)).forEach((col) => {
-                col.text = "by Dai Fujiwara";
+                col.text = "(by Dai Fujiwara)";
             });
             candidates.filter(col => DESIGNERS.IM["YM"].includes(col)).forEach((col) => {
-                col.text = "by Yoshiyuki Miyamae";
+                col.text = "(by Yoshiyuki Miyamae)";
             });
             candidates.filter(col => DESIGNERS.IM["SK"].includes(col)).forEach((col) => {
-                col.text = "by Satoshi Kondo";
+                col.text = "(by Satoshi Kondo)";
             });
         }
 
         // Designers for the ISSEY MIYAKE MEN line
-        if (name === LINE.ME.name || name === LINE.IMM.name) {
+        if (name === LINE.ME.name) { // || name === LINE.IMM.name) {
             candidates.filter(col => DESIGNERS.ME["NT"].includes(col)).forEach((col) => {
-                col.text = "by Naoki Takizawa";
+                col.text = "(by Naoki Takizawa)";
             });
             candidates.filter(col => DESIGNERS.ME["DF"].includes(col)).forEach((col) => {
-                col.text = "by Dai Fujiwara";
+                col.text = "(by Dai Fujiwara)";
             });
             candidates.filter(col => DESIGNERS.ME["YT"].includes(col)).forEach((col) => {
-                col.text = "by Yusuke Takahashi";
+                col.text = "(by Yusuke Takahashi)";
             });
         }
         //    candidates.filter(col => LINE.ME.logoList["IM_WB"].includes(col)).forEach((col) => {

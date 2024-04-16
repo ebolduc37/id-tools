@@ -77,7 +77,7 @@ __Expected output:__
 According to the monthly identification framework of COMME des GARÇONS, the garment should be a jacket in size S from the following:
 
 COMME des GARÇONS
-> Spring/Summer 1995, titled "Transcending Gender"
+> Spring/Summer 1995 · Transcending Gender
 
 Created by My Clothing Archive.
 Subscribe to our Patreon!
@@ -400,8 +400,8 @@ __Expected output:__
 
 According to the ISSEY MIYAKE INC. identification framework of ISSEY MIYAKE, the garment should be a jacket made of woven fabric produced by ISSEY MIYAKE INC. [Japanese: 株式会社 イッセイ ミヤケ] from the following:
 
-ISSEY MIYAKE [by Naoki Takizawa]
-> Spring/Summer 2000
+ISSEY MIYAKE
+> Spring/Summer 2000 (by Naoki Takizawa)
 
 Created by My Clothing Archive.
 Subscribe to our Patreon!

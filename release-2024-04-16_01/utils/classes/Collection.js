@@ -69,7 +69,7 @@ class Collection {
             if (this.title != null && this.title != "") str += `\n> ${this.title}`
             else str += `\n> *Untitled*`;
         }
-        else if (this.title != null && this.title != "") str += `, titled "${this.title}"`;
+        else if (this.title != null && this.title != "") str += ` · ${this.title}`;
         if (this.text != null && this.text != "") str += ` ${this.text}`;
         return str;
     }

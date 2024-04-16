@@ -8,7 +8,7 @@
  */
 
 // Imports
-import { Collection, Identification } from "../../../utils/index.js";
+import { Collection, Identification, OperationPeriod } from "../../../utils/index.js";
 import { InputIM } from "../utils/index.js";
 
 // Constants
@@ -52,6 +52,21 @@ const FONT_PROTO_SANS_END = new Collection(1994, Season.S);
 // Slab serif type ending and sans serif beginning
 const FONT_SLAB_END = new Collection(2000, Season.W);
 const FONT_SANS_DEBUT = new Collection(2000, Season.S);
+
+// List of designers other than Issey Miyake for the main lines
+const DESIGNERS = {
+    IM: {
+        NT: new OperationPeriod(new Collection(2000, Season.S), new Collection(2007, Season.S)),
+        DF: new OperationPeriod(new Collection(2007, Season.W), new Collection(2011, Season.W)),
+        YM: new OperationPeriod(new Collection(2012, Season.S), new Collection(2019, Season.W)),
+        SK: new OperationPeriod(new Collection(2020, Season.S))
+    },
+    ME: {
+        NT: new OperationPeriod(new Collection(1994, Season.S), new Collection(2007, Season.S)),
+        DF: new OperationPeriod(new Collection(2007, Season.W), new Collection(2011, Season.W)),
+        YT: new OperationPeriod(new Collection(2012, Season.S), new Collection(2020, Season.S))
+    }
+}
 
 
 
@@ -139,6 +154,7 @@ InputIM.prototype.extract_IMI = function() {
     for (let line of LINE_ID[lineID]) {
 
         // Initializing useful parameters
+        const name = line.name;
         const operationPeriod = line.operationPeriod;
 
         // Initialize the set of candidates
@@ -150,7 +166,7 @@ InputIM.prototype.extract_IMI = function() {
         // Limiting the set of candidates to the collections with the right last digit of the year
         let yearLastDigitException = col => false;
         if (productCode.slice(2, 4) === "55") yearLastDigitException = col => true;
-        else if (productCode.slice(0,3) === "PP0" && line.name === LINE.IM.name)
+        else if (productCode.slice(0,3) === "PP0" && name === LINE.IM.name)
             yearLastDigitException = col => col.isEqualTo(new Collection(1993, Season.S)) || col.isEqualTo(new Collection(1993));
         candidates = candidates.filter(col => col.year%10 == yearLastDigit || yearLastDigitException(col));
 
@@ -163,14 +179,14 @@ InputIM.prototype.extract_IMI = function() {
         // Limiting the set of candidates to the collections with the right sizing system
         if (this.isSizingAlphabetical()) {
             let sizingAlphabeticalEnd = SIZING_ALPHABETICAL_END;
-            if (line.name in SIZING_ALPHABETICAL_END_EXCEPTIONS)
-            sizingAlphabeticalEnd = SIZING_ALPHABETICAL_END_EXCEPTIONS[line.name];
+            if (name in SIZING_ALPHABETICAL_END_EXCEPTIONS)
+            sizingAlphabeticalEnd = SIZING_ALPHABETICAL_END_EXCEPTIONS[name];
             candidates = candidates.filter(col => col.isBeforeOrIn(sizingAlphabeticalEnd));
         }
         else if (this.isSizingNumerical()) {
             let sizingNumericalStart = SIZING_NUMERICAL_START;
-            if (line.name in SIZING_NUMERICAL_START_EXCEPTIONS)
-                sizingNumericalStart = SIZING_NUMERICAL_START_EXCEPTIONS[line.name];
+            if (name in SIZING_NUMERICAL_START_EXCEPTIONS)
+                sizingNumericalStart = SIZING_NUMERICAL_START_EXCEPTIONS[name];
             candidates = candidates.filter(col => col.isAfterOrIn(sizingNumericalStart));
         }
 
@@ -188,6 +204,39 @@ InputIM.prototype.extract_IMI = function() {
 
         // Limiting the set of candidates to the collections within the operation period
         candidates = candidates.filter(col => operationPeriod.includes(col));
+
+        // Designers for the ISSEY MIYAKE line
+        if (name === LINE.IM.name) {
+            candidates.filter(col => DESIGNERS.IM["NT"].includes(col)).forEach((col) => {
+                col.text = "(by Naoki Takizawa)";
+            });
+            candidates.filter(col => DESIGNERS.IM["DF"].includes(col)).forEach((col) => {
+                col.text = "(by Dai Fujiwara)";
+            });
+            candidates.filter(col => DESIGNERS.IM["YM"].includes(col)).forEach((col) => {
+                col.text = "(by Yoshiyuki Miyamae)";
+            });
+            candidates.filter(col => DESIGNERS.IM["SK"].includes(col)).forEach((col) => {
+                col.text = "(by Satoshi Kondo)";
+            });
+        }
+
+        // Designers for the ISSEY MIYAKE MEN line
+        if (name === LINE.ME.name) { // || name === LINE.IMM.name) {
+            candidates.filter(col => DESIGNERS.ME["NT"].includes(col)).forEach((col) => {
+                col.text = "(by Naoki Takizawa)";
+            });
+            candidates.filter(col => DESIGNERS.ME["DF"].includes(col)).forEach((col) => {
+                col.text = "(by Dai Fujiwara)";
+            });
+            candidates.filter(col => DESIGNERS.ME["YT"].includes(col)).forEach((col) => {
+                col.text = "(by Yusuke Takahashi)";
+            });
+        }
+        //    candidates.filter(col => LINE.ME.logoList["IM_WB"].includes(col)).forEach((col) => {
+        //        col.text = "[white ISSEY MIYAKE over black background]";
+        //    });
+        //}
 
         // Adding the occurrence to the array of occurences if non-empty
         if (candidates.length !== 0) lineList.push(line.forIdentification(candidates));

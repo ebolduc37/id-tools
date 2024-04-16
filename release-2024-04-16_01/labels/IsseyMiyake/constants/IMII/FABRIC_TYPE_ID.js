@@ -32,7 +32,7 @@ const FABRIC_TYPE_ID = Object.freeze({
 	S: "specialty weave fabric",
 	T: "lightweight knit fabric",
 	V: "specialty weave fabric", // double sided muslin woven?
-	Y: "heavyweight knit fabric", // or maybe french terry or jersey
+	Y: "heavyweight knit fabric or leather", // or maybe french terry or jersey
 	//Z: "knitted"
 });
 

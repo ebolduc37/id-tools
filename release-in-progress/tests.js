@@ -391,7 +391,7 @@ const inputIM = [
     { label: IM.Label, productCode: "ME01FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
         manufacturer: IM_MANUFACTURER_IMI, sizingSystem: IM_SIZING_UNSPECIFIED,
         fontType: IM_FONT_UNSPECIFIED },
-    { label: IM.Label, productCode: "IM54FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+    { label: IM.Label, productCode: "ME63FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
         manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
         fontType: IM_FONT_UNSPECIFIED },
 ];

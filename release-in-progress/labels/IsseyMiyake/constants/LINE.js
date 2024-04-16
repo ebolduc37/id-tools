@@ -107,15 +107,15 @@ const LINE = deepFreeze({
 			new OperationPeriod(new Collection(2006, Season.W), new Collection(2020, Season.W))),
 
 	ME: new Line("ISSEY MIYAKE MEN",
-		new OperationPeriod(new Collection(1976), new Collection(2020, Season.W),
-			col => !col.isBetween(new Collection(1990, Season.S), new Collection(1995, Season.S))
-				&& !col.isBetween(new Collection(2002, Season.W), new Collection(2011, Season.W))),
+		new OperationPeriod(new Collection(1976), new Collection(2020, Season.W)),
+			//col => !col.isBetween(new Collection(1990, Season.S), new Collection(1995, Season.S))
+			//	&& !col.isBetween(new Collection(2002, Season.W), new Collection(2011, Season.W))),
 			LOGO_LIST_ME),
-	IMM: new Line("ISSEY MIYAKE [MEN]",
-		new OperationPeriod(new Collection(1990, Season.S), new Collection(2011, Season.W),
-			col => !col.isBetween(new Collection(1995, Season.W), new Collection(2002, Season.S))),
-			LOGO_LIST_ME),
-	ML: new Line("ISSEY MIYAKE [MEN] WHITE LABEL",
+	//IMM: new Line("ISSEY MIYAKE [MEN]",
+	//	new OperationPeriod(new Collection(1990, Season.S), new Collection(2011, Season.W),
+	//		col => !col.isBetween(new Collection(1995, Season.W), new Collection(2002, Season.S))),
+	//		LOGO_LIST_ME),
+	ML: new Line("ISSEY MIYAKE MEN WHITE LABEL",
 			new OperationPeriod(new Collection(2002, Season.W), new Collection(2004, Season.S)),
 			LOGO_LIST_ME),
 

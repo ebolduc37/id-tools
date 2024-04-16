@@ -19,14 +19,15 @@ const GARMENT_TYPE_ID = Object.freeze({
 	J: "a jacket",
 	K: "a miscellaneous piece",
 	N: "a knitwear piece",
-	O: "a one-piece",
+	O: "a dress or a one-piece",
+	OP: "a dress or a one-piece",
 	P: "pants or shorts",
 	S: "a skirt or a suit piece",
 	T: "a top (or track pants)",
 	U: "a jumpsuit",
 	V: "a vest",
 	X: null,
-	Z: null
+	Z: null,
 });
 
 export default GARMENT_TYPE_ID;

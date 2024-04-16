@@ -77,7 +77,7 @@ const LINE = deepFreeze({
         ProductionSchedule.LATE),
 
     // E
-    RKCDG: new LineCDG("Rei Kawakubo [COMME des GARÇONS under Canadian trademark]",
+    RKCDG: new LineCDG("Rei Kawakubo [COMME des GARÇONS under canadian trademark]",
         new OperationPeriod(new Collection(1984, Season.S), new Collection(1995, Season.W)),
         ProductionSchedule.EARLY),
     GAN: new LineCDG("GANRYU COMME des GARÇONS",
@@ -89,9 +89,9 @@ const LINE = deepFreeze({
         ProductionSchedule.LATE),
     SHIRT: new LineCDG("COMME des GARÇONS SHIRT",
         new OperationPeriod(new Collection(1988))),
-    FOREVER: new LineCDG("COMME des GARÇONS SHIRT [FOREVER]",
+    FOREVER: new LineCDG("COMME des GARÇONS SHIRT FOREVER",
         new OperationPeriod(new Collection(2010))),
-    SHIRTGIRL: new LineCDG("COMME des GARÇONS SHIRT [GIRL]",
+    SHIRTGIRL: new LineCDG("COMME des GARÇONS SHIRT GIRL",
         new OperationPeriod(new Collection(2010, Season.S), new Collection(2014, Season.W))),
     SHIRTBOY: new LineCDG("COMME des GARÇONS SHIRT BOY",
         new OperationPeriod(new Collection(2015, Season.W), new Collection(2016, Season.S))),
@@ -215,7 +215,7 @@ const LINE = deepFreeze({
         new OperationPeriod(new Collection(2000, Season.W), new Collection(2005, Season.W),
             col => !col.isBetween(new Collection(2003, Season.S), new Collection(2005, Season.S))),
         ProductionSchedule.EARLY),
-    PINK: new LineCDG("JUNYA WATANABE COMME des GARÇONS [pink]",
+    PINK: new LineCDG("pink JUNYA WATANABE COMME des GARÇONS MAN",
         new OperationPeriod(new Collection(2003, Season.S), new Collection(2014, Season.S))),
 
     // V
@@ -230,7 +230,7 @@ const LINE = deepFreeze({
         new OperationPeriod(new Collection(2005, Season.W))),
 
     // X
-    RKHP: new LineCDG("Rei Kawakubo [COMME des GARÇONS HOMME PLUS under Canadian trademark]",
+    RKHP: new LineCDG("Rei Kawakubo [COMME des GARÇONS HOMME PLUS under canadian trademark]",
         new OperationPeriod(new Collection(1985, Season.S), new Collection(1995, Season.W)),
         ProductionSchedule.EARLY),
     JWD: new LineCDG("JUNYA WATANABE COMME des GARÇONS denim",

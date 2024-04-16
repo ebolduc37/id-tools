@@ -54,6 +54,7 @@ const inputCDG = [
     { label: CDG.Label, productCode: "SE-T902", yearPrint: CDG_YEAR_BLANK },
     { label: CDG.Label, productCode: "XB-08000M", yearPrint: "1994" },
     { label: CDG.Label, productCode: "PB-B018", yearPrint: "2017" },
+    { label: CDG.Label, productCode: "S9OP15", yearPrint: CDG_YEAR_BLANK },
 ];
 
 const YY_CODE_BLANK = YY.NoProductCode.BLANK;
@@ -387,9 +388,15 @@ const inputIM = [
     { label: IM.Label, productCode: "GG13079", logoStyle: IM_LOGO_UNSPECIFIED,
         manufacturer: IM_MANUFACTURER_IMII, sizingSystem: IM_SIZING_UNSPECIFIED,
         fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "ME01FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_IMI, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "ME63FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
 ];
 
-let input = inputIM;
+let input = inputCDG;
 
 let count = 1;
 for (let test of input) {
