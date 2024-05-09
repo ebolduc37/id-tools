@@ -55,6 +55,7 @@ const inputCDG = [
     { label: CDG.Label, productCode: "XB-08000M", yearPrint: "1994" },
     { label: CDG.Label, productCode: "PB-B018", yearPrint: "2017" },
     { label: CDG.Label, productCode: "S9OP15", yearPrint: CDG_YEAR_BLANK },
+    { label: CDG.Label, productCode: "GB-J024", yearPrint: "2017" },
 ];
 
 const YY_CODE_BLANK = YY.NoProductCode.BLANK;
@@ -394,6 +395,27 @@ const inputIM = [
     { label: IM.Label, productCode: "ME63FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
         manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
         fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "CL43FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "CL43FJ000", logoStyle: IM_LOGO_IM_WB,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "CL63FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_UNSPECIFIED,
+        fontType: IM_FONT_UNSPECIFIED },
+    { label: IM.Label, productCode: "ME63FJ000", logoStyle: IM_LOGO_UNSPECIFIED,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_NUMERICAL,
+        fontType: IM_FONT_SLAB_SERIF },
+    { label: IM.Label, productCode: "EG36395", logoStyle: IM_LOGO_BRUSH,
+        manufacturer: IM_MANUFACTURER_ON_LIMITS, sizingSystem: IM_SIZING_ALPHABETICAL,
+        fontType: IM_FONT_SANS_SERIF },
+    { label: IM.Label, productCode: "ZC36103", logoStyle: IM_LOGO_ROUND,
+        manufacturer: IM_MANUFACTURER_UNSPECIFIED, sizingSystem: IM_SIZING_ALPHABETICAL,
+        fontType: IM_FONT_SANS_SERIF },
+    { label: IM.Label, productCode: "0GH11025", logoStyle: IM_LOGO_IM_WB,
+        manufacturer: IM_MANUFACTURER_ON_LIMITS, sizingSystem: IM_SIZING_ALPHABETICAL,
+        fontType: IM_FONT_SLAB_SERIF },
 ];
 
 let input = inputCDG;

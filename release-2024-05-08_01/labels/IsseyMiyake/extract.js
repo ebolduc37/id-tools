@@ -27,6 +27,7 @@ InputIM.prototype.extract = function() {
     identificationList.push(this.extract_ANET());
     identificationList.push(this.extract_CFCL());
     identificationList.push(this.extract_IMII());
+    identificationList.push(this.extract_OLasIMII());
     identificationList.push(this.extract_OL83());
     identificationList.push(this.extract_OL83F());
     //identificationList.push(this.extract_OL85());

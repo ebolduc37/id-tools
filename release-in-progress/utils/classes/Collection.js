@@ -113,7 +113,8 @@ class Collection {
      * @return {boolean} True if the instance could have been produced in that year; false otherwise.
      */
     isProducedIn(year) {
-        return this.year === year || this.isEqualTo(new Collection(year + 1, Collection.Season.S));
+        //return this.year === year || this.isEqualTo(new Collection(year + 1, Collection.Season.S));
+        return  this.year === year || (this.year === year + 1 && !this.hasNoSeason());
     }
 
     /**

@@ -30,6 +30,9 @@ const LOGO_LIST_ME = {
 	"ME_WB": new OperationPeriod(new Collection(1998, Season.W), new Collection(2020, Season.W),
 		col => !col.isBetween(new Collection(2002, Season.W), new Collection(2011, Season.W))),
 };
+const LOGO_LIST_CL = {
+	"IM_WB": new OperationPeriod(new Collection(1994, Season.W), new Collection(1994, Season.W))
+}
 
 /**
  * Enum for all ISSEY MIYAKE lines with their operation period.
@@ -53,7 +56,8 @@ const LINE = deepFreeze({
 			new OperationPeriod(new Collection(2021, Season.S))),
 
 	CL: new Line("COTTON LABEL ISSEY MIYAKE",
-			new OperationPeriod(new Collection(1995, Season.S), new Collection(1996, Season.W))),
+			new OperationPeriod(new Collection(1994, Season.W), new Collection(1996, Season.W)),
+			LOGO_LIST_CL),
 
 	DT: new Line("DUETRIO",
 			new OperationPeriod(new Collection(1986, Season.W), new Collection(1989, Season.W))),
@@ -81,7 +85,8 @@ const LINE = deepFreeze({
 			LOGO_LIST_IM),
 	WL: new Line("ISSEY MIYAKE WHITE LABEL",
 			new OperationPeriod(new Collection(2002, Season.W), new Collection(2004, Season.W)),
-			LOGO_LIST_IM),
+			//LOGO_LIST_IM),
+			),
 
 	SP: new Line("ISSEY SPORT",
 			new OperationPeriod(new Collection(1975, Season.W), new Collection(1983, Season.W))),
@@ -116,8 +121,9 @@ const LINE = deepFreeze({
 	//		col => !col.isBetween(new Collection(1995, Season.W), new Collection(2002, Season.S))),
 	//		LOGO_LIST_ME),
 	ML: new Line("ISSEY MIYAKE MEN WHITE LABEL",
-			new OperationPeriod(new Collection(2002, Season.W), new Collection(2004, Season.S)),
-			LOGO_LIST_ME),
+			new OperationPeriod(new Collection(2002, Season.W), new Collection(2004, Season.W)), // initially had S/S '04 but A/W for safety
+			//LOGO_LIST_ME),
+			),
 
 	MI: new Line("ISSEY MIYAKE me",
 			new OperationPeriod(new Collection(2000, Season.W))),

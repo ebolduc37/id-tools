@@ -28,8 +28,7 @@ const LINE_ID = deepFreeze({
      F: [LINE.ZU],
      G: [LINE.IM,
           LINE.PE],
-     H: [LINE.ME,
-          LINE.IMM],
+     H: [LINE.ME],//LINE.IMM],
      I: [LINE.PLIN],
      J: [LINE.IM],
      K: [LINE.PLJE],
@@ -42,7 +41,9 @@ const LINE_ID = deepFreeze({
           LINE.IS],
      T: [LINE.WCIM],
      V: [LINE.PE],
-     W: [LINE.WCIM]
+     W: [LINE.WCIM],
+     Z: [LINE.IM,
+          LINE.ME],
 });
 
 export default LINE_ID;

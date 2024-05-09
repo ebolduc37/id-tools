@@ -25,7 +25,8 @@ const LINE_ID = deepFreeze({
 
      _: [LINE.CDG.newUpperBound(new Collection(1982, Season.S)).newProductionSchedule(ProductionSchedule.LATE)],
 
-     1: [LINE.BLK],
+     1: [LINE.CDGCDG.newBounds(new Collection(2005, Season.W), new Collection(2005, Season.W)),
+          LINE.BLK],
 
      2: [LINE.POCKET],
 

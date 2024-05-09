@@ -48,7 +48,8 @@ const SEASON_ID = Object.freeze({
 				col.isEqualTo(new Collection(2021, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
-	E: col => 	col.isEqualTo(new Collection(1995, Season.W)) ||
+	E: col => 	col.isEqualTo(new Collection(1988, Season.W)) ||
+				col.isEqualTo(new Collection(1995, Season.W)) ||
 				col.isEqualTo(new Collection(2002, Season.S)) ||
 				col.isEqualTo(new Collection(2008, Season.W)) ||
 				col.isEqualTo(new Collection(2022, Season.W)),
