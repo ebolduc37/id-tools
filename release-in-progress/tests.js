@@ -56,6 +56,8 @@ const inputCDG = [
     { label: CDG.Label, productCode: "PB-B018", yearPrint: "2017" },
     { label: CDG.Label, productCode: "S9OP15", yearPrint: CDG_YEAR_BLANK },
     { label: CDG.Label, productCode: "GB-J024", yearPrint: "2017" },
+    { label: CDG.Label, productCode: "W11SC03", yearPrint: CDG_YEAR_BLANK },
+    { label: CDG.Label, productCode: "OO-K001", yearPrint: CDG_YEAR_BLANK },
 ];
 
 const YY_CODE_BLANK = YY.NoProductCode.BLANK;
@@ -202,6 +204,12 @@ const inputYY = [
                     laundryPosition: YY_LAUNDRY_ABOVE },
     { label: YY.Label, productCode: YY_CODE_UNSPECIFIED, logoStyle: YY_LOGO_UNSPECIFIED,
                     sizingSystem: YY_SIZING_UNSPECIFIED, fontType: YY_FONT_UNSPECIFIED,
+                    laundryPosition: YY_LAUNDRY_UNSPECIFIED },
+    { label: YY.Label, productCode: "FE-H02-180-1M", logoStyle: YY_LOGO_YY_2,
+                    sizingSystem: YY_SIZING_UNSPECIFIED, fontType: YY_FONT_SERIF,
+                    laundryPosition: YY_LAUNDRY_UNSPECIFIED },
+    { label: YY.Label, productCode: "FE-H02-180-111", logoStyle: YY_LOGO_YY_2,
+                    sizingSystem: YY_SIZING_UNSPECIFIED, fontType: YY_FONT_SERIF,
                     laundryPosition: YY_LAUNDRY_UNSPECIFIED },
 ];
 

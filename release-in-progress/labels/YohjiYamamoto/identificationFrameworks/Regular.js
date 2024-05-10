@@ -14,7 +14,7 @@ import { InputYY } from "../utils/index.js";
 // Constants
 import { ALL_COLLECTIONS, GARMENT_TYPE_ID, LINE_ID, LINE, SEASON_ID } from "../constants/index.js";
 const Season = Collection.Season;
-const REGEX_REGULAR = /^[A-Z]{3}\d{5}\d*$/;
+const REGEX_REGULAR = /^[A-Z]{3}\d{5}((\d*)|(\d[A-Z]))$/;
 const FRAMEWORK_REGULAR = "regular";
 
 const PRODUCT_CODE_BLANK_EXCEPTIONS = [

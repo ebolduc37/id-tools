@@ -23,6 +23,7 @@ const GARMENT_TYPE_ID = Object.freeze({
 	OP: "a dress or a one-piece",
 	P: "pants or shorts",
 	S: "a skirt or a suit piece",
+	SC: "a bag",
 	T: "a top (or track pants)",
 	U: "a jumpsuit",
 	V: "a vest",

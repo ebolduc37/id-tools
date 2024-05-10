@@ -19,8 +19,7 @@ import LINE from "../LINE.js";
 const LINE_ID = deepFreeze({
 
      A: [LINE.OO],
-     H: [LINE.ME,
-          LINE.IMM],
+     H: [LINE.ME],//LINE.IMM],
      J: [LINE.MDS],
      L: [LINE.ME],//LINE.IMM],
 });
