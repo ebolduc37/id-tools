@@ -16,7 +16,7 @@ import standardize from "../functions/standardize.js";
 const Label = Object.freeze({
     CDG: "COMME des GARÇONS",
     IM: "ISSEY MIYAKE",
-    MM: "Maison M̶a̶r̶t̶i̶n̶ Margiela",
+    MM: "Maison (Martin) Margiela",
     YY: "Yohji Yamamoto",
     UNSPECIFIED: "UNSPECIFIED",
 });
