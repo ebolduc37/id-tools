@@ -22,9 +22,9 @@ const LINE = deepFreeze({
 
     // 0
     '(0)': new Line("⓪ \"Artisanal\" collection for women", // & men?
-        new OperationPeriod(new Collection(1989, Season.S))),
+        new OperationPeriod(new Collection(1989, Season.S), new Collection(2006, Season.W))),
     '(0)(10)': new Line("⓪⑩ \"Artisanal\" collection for men",
-        new OperationPeriod(new Collection(1999, Season.S))),
+        new OperationPeriod(new Collection(1999, Season.S), new Collection(2006, Season.W))),
     
     // 1
     '1': new Line("１ The collection for women",

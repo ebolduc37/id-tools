@@ -222,7 +222,7 @@ class InputMM extends Input {
      * @return {boolean} True if it is; false otherwise.
      */
     isManufacturerValid() {
-        return this.manufacturer in InputMM.Manufacturer;
+        return this.isManufacturerMD() || this.manufacturer in InputMM.Manufacturer;
     }
 
     /**

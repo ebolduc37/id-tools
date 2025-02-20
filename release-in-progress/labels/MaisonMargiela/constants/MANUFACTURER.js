@@ -21,12 +21,12 @@ const Season = Collection.Season;
 const MANUFACTURER = deepFreeze({
 
     MII:  {
-        stylized: "MADE IN ITALY [unnamed manufacturer]",
+        stylized: "MADE IN ITALY [unnamed]",
         operationPeriod: new OperationPeriod(null, new Collection(2000, Season.W))
     },
 
     MIF:  {
-        stylized: "MADE IN FRANCE [unnamed manufacturer]",
+        stylized: "MADE IN FRANCE [unnamed]",
         operationPeriod: new OperationPeriod(null, null)
     },
 
@@ -41,17 +41,17 @@ const MANUFACTURER = deepFreeze({
     },
 
     MD_SEP: {
-        stylized: "MISS DEANNA [IT | EN]",
+        stylized: "MISS DEANNA [IT /// EN]",
         operationPeriod: new OperationPeriod(new Collection(1995, Season.W), new Collection(2001, Season.W))
     },
 
     MD_TOG_MD: {
-        stylized: "MISS DEANNA [IT + EN]",
+        stylized: "MISS DEANNA [IT & EN]",
         operationPeriod: new OperationPeriod(new Collection(2002, Season.S), new Collection(2003, Season.W))
     },
 
     MD_TOG_DS: {
-        stylized: "DEANNA S.P.A. [IT + EN]",
+        stylized: "DEANNA S.P.A. [IT & EN]",
         operationPeriod: new OperationPeriod(new Collection(2003, Season.S), new Collection(2003, Season.W))
     },
 

@@ -535,6 +535,7 @@ const MM_MANUFACTURER_MII = MM.Manufacturer["MII"];
 const MM_MANUFACTURER_MIF = MM.Manufacturer["MIF"];
 const MM_MANUFACTURER_SI = MM.Manufacturer["SI"];
 const MM_MANUFACTURER_MAC = MM.Manufacturer["MAC"];
+const MM_MANUFACTURER_MD_SEP = MM.Manufacturer["MD"]["SEP"];
 const MM_MANUFACTURER_UNSPECIFIED = MM.Manufacturer["UNSPECIFIED"];
 
 const inputMM = [
@@ -652,6 +653,10 @@ const inputMM = [
         manufacturer: MM_MANUFACTURER_MII },
     { label: MM.Label, labelNotation: MM_LABEL_NOTATION_10, productCode: MM_CODE_UNSPECIFIED,
         manufacturer: MM_MANUFACTURER_MII },
+    { label: MM.Label, labelNotation: MM_LABEL_NOTATION_BLANK, productCode: "01PR/2022/2901/1",
+        manufacturer: MM_MANUFACTURER_UNSPECIFIED },
+    { label: MM.Label, labelNotation: MM_LABEL_NOTATION_BLANK, productCode: MM_CODE_UNSPECIFIED,
+        manufacturer: MM_MANUFACTURER_MD_SEP },
 ];
 
 let input = inputMM;

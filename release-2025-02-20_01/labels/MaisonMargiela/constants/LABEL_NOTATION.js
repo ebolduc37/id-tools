@@ -69,7 +69,7 @@ const LABEL_NOTATION = deepFreeze({
 
      // 6
      '6_BLANK':     {
-          stylized: "6 [on blank label]",
+          stylized: "６ [on blank label]",
           lineList: [LINE['(6)'].newUpperBound(COL_LAST_NOT_CIRCLED)]
      },
      '6':           {
