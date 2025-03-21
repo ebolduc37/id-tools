@@ -1,7 +1,7 @@
 /**
- * Initialization of SEASON_ID.
+ * Initialization of SEASON_ID_MAIN.
  *
- * Initialization of the Yohji Yamamoto season IDs and their corresponding
+ * Initialization of the Yohji Yamamoto main production schedule season IDs and their corresponding
  * conditional function on the collections to use as a filter on possible candidates.
  *
  * @author Etienne Bolduc
@@ -19,12 +19,13 @@ const Season = Collection.Season;
  */
 
 /**
- * Enum for the Yohji Yamamoto season IDs and conditional functions to filter accordingly.
+ * Enum for the Yohji Yamamoto main production cycle season IDs
+ * and conditional functions to filter accordingly.
  * @constant
  * @readonly
  * @enum {lambda}
  */
-const SEASON_ID = Object.freeze({
+const SEASON_ID_MAIN = Object.freeze({
 
 	/** @param {Collection} col @return {boolean} */
 	A: col => col.hasNoSeason(),
@@ -65,7 +66,8 @@ const SEASON_ID = Object.freeze({
 				col.isEqualTo(new Collection(2022, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
-	H: col => 	col.isEqualTo(new Collection(2019, Season.S)),
+	H: col => 	col.isEqualTo(new Collection(1990, Season.W)) ||
+				col.isEqualTo(new Collection(2019, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
 	I: col => 	col.isEqualTo(new Collection(1997, Season.W)),
@@ -95,11 +97,13 @@ const SEASON_ID = Object.freeze({
 	/** @param {Collection} col @return {boolean} */
 	O: col =>	col.isEqualTo(new Collection(1993, Season.S)) ||
 				col.isEqualTo(new Collection(2011, Season.S)) ||
-				col.isEqualTo(new Collection(2016, Season.S)),
+				col.isEqualTo(new Collection(2016, Season.S)) ||
+				col.isEqualTo(new Collection(2024, Season.W)),
 
 	/** @param {Collection} col @return {boolean} */
 	P: col =>	col.isEqualTo(new Collection(1993, Season.W)) ||
-				col.isEqualTo(new Collection(2011, Season.W)),
+				col.isEqualTo(new Collection(2011, Season.W)) ||
+				col.isEqualTo(new Collection(2025, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
 	Q: col =>	col.isEqualTo(new Collection(1991, Season.S)) ||
@@ -113,7 +117,8 @@ const SEASON_ID = Object.freeze({
 				col.isEqualTo(new Collection(2020, Season.W)),
 
 	/** @param {Collection} col @return {boolean} */
-	S: col =>	col.isEqualTo(new Collection(1992, Season.W)),
+	S: col =>	col.isEqualTo(new Collection(1992, Season.W)) ||
+				col.isEqualTo(new Collection(2024, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
 	T: col =>	col.isEqualTo(new Collection(1994, Season.S)) ||
@@ -133,7 +138,8 @@ const SEASON_ID = Object.freeze({
 				col.isEqualTo(new Collection(2018, Season.W)),
 
 	/** @param {Collection} col @return {boolean} */
-	W: col =>	col.isEqualTo(new Collection(2018, Season.S)),
+	W: col =>	col.isEqualTo(new Collection(1989, Season.S)) ||
+				col.isEqualTo(new Collection(2018, Season.S)),
 
 	/** @param {Collection} col @return {boolean} */
 	X: col =>	col.isEqualTo(new Collection(2001, Season.S)) ||
@@ -150,7 +156,16 @@ const SEASON_ID = Object.freeze({
 	Z: col =>	col.isEqualTo(new Collection(1992, Season.S)) ||
 				col.isEqualTo(new Collection(2004, Season.S)) ||
 				col.isEqualTo(new Collection(2009, Season.W)) ||
-				col.isEqualTo(new Collection(2023, Season.S))
+				col.isEqualTo(new Collection(2023, Season.S)),
+
+	/** @param {Collection} col @return {boolean} */
+	BLANK: col => true,
+
+	/** @param {Collection} col @return {boolean} */
+	UNREADABLE: col => true,
+
+	/** @param {Collection} col @return {boolean} */
+	UNSPECIFIED: col => true,
 });
 
-export default SEASON_ID;
+export default SEASON_ID_MAIN;
