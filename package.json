@@ -1,29 +1,21 @@
 {
   "name": "id-tools",
   "version": "1.0.0",
-  "description": "Identify garments from COMME des GARÇONS, ISSEY MIYAKE, Maison (Martin) Margiela, and Yohji Yamamoto.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ebolduc37/id-tools.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ebolduc37/id-tools/issues"
-  },
-  "homepage": "https://github.com/ebolduc37/id-tools#readme",
+  "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
   }
 }
