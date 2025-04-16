@@ -1,16 +1,9 @@
-import express from 'express';
-import { identify, extract } from "../release-2025-04-15_02/index.js";
-
+const express = require("express");
+const id_function = require("../release-2025-04-15_02/index.js");
 const app = express();
 
-// enable JSON body parser
-app.use(express.json());
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-// GET garment information
 app.get('/extract', async (req, res) => {
 
     const label = req.query.label;
@@ -38,7 +31,7 @@ app.get('/extract', async (req, res) => {
     };
 
     try {
-        const response = extract(garmentData);
+        const response = id_function.extract(garmentData);
         res.json(response);
     } catch (error) {
         res.json(error);
@@ -73,11 +66,13 @@ app.get('/identify', async (req, res) => {
     };
 
     try {
-        const response = identify(garmentData);
+        const response = id_function.identify(garmentData);
         res.json(response);
     } catch (error) {
         res.json(error);
     }
 });
 
-export default app;
+app.listen(3000, () => console.log("Server ready on port 3000."));
+
+module.exports = app;

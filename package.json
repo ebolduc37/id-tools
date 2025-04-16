@@ -8,7 +8,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "[> Try it out on our website! <](https://www.myclothingarchive.net/id-tools)",
   "dependencies": {
     "express": "^5.1.0"
   },
@@ -17,5 +17,13 @@
     "@types/node": "^22.14.1",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebolduc37/id-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ebolduc37/id-tools/issues"
+  },
+  "homepage": "https://github.com/ebolduc37/id-tools#readme"
 }
