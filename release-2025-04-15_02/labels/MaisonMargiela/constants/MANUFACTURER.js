@@ -36,7 +36,7 @@ const MANUFACTURER = deepFreeze({
     },
 
     DENI_CLER: {
-        stylized: "DENI_CLER•CLER S.P.A.",
+        stylized: "DENI•CLER S.P.A.",
         operationPeriod: new OperationPeriod(new Collection(1989, Season.S), new Collection(1993, Season.W))
     },
 
