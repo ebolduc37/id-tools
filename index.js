@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-import { identify, extract } from "./release-2025-04-15_01/index.js";
+import { identify, extract } from "./release-2025-04-15_02/index.js";
 
 // GET garment information
 app.get('/extract', async (req, res) => {
