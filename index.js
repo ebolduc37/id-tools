@@ -1,14 +1,11 @@
 
 import express from "express";
-import { createServer } from "@vercel/node";
-import { identify, extract } from "../release-2025-04-15_02/index.js"; // update path if needed
+import { identify, extract } from "./release-2025-04-15_02/index.js";
 
 const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
-
-app.use(express.json());
 
 // GET garment information
 app.get('/extract', async (req, res) => {
@@ -80,6 +77,4 @@ app.get('/identify', async (req, res) => {
     }
 });
 
-//app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-export default app;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
