@@ -1,5 +1,5 @@
 const express = require("express");
-const id_function = require("../release-2025-04-23_01/index.js");
+const id_function = require("../release-2025-04-23_02/index.js");
 const app = express();
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -16,6 +16,7 @@ app.get('/extract', async (req, res) => {
     const labelNotation = req.query.labelNotation;
     const language = req.query.language;
     const laundryPosition = req.query.laundryPosition;
+    const doNotTumbleDry = req.query.doNotTumbleDry;
 
     const garmentData = {
         label: label,
@@ -27,7 +28,8 @@ app.get('/extract', async (req, res) => {
         manufacturer: manufacturer,
         labelNotation: labelNotation,
         language: language,
-        laundryPosition: laundryPosition
+        laundryPosition: laundryPosition,
+        doNotTumbleDry: doNotTumbleDry,
     };
 
     try {
@@ -51,6 +53,7 @@ app.get('/identify', async (req, res) => {
     const labelNotation = req.query.labelNotation;
     const language = req.query.language;
     const laundryPosition = req.query.laundryPosition;
+    const doNotTumbleDry = req.query.doNotTumbleDry;
 
     const garmentData = {
         label: label,
@@ -62,7 +65,8 @@ app.get('/identify', async (req, res) => {
         manufacturer: manufacturer,
         labelNotation: labelNotation,
         language: language,
-        laundryPosition: laundryPosition
+        laundryPosition: laundryPosition,
+        doNotTumbleDry: doNotTumbleDry,
     };
 
     try {
