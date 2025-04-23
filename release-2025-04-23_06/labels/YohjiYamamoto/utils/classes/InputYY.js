@@ -669,7 +669,7 @@ class InputYY extends Input {
         let message = "invalid entry";
         if (this.isDoNotTumbleDryLong()) message = "contains タンブラー乾燥はお避け下さい。";
         else if (this.isDoNotTumbleDryShort()) message = "contains タンブラー禁止";
-        else if (this.isDoNotTumbleDryBLANK()) message = "contains no タンブラー[...]";
+        else if (this.isDoNotTumbleDryBLANK()) message = "absence of タンブラー[...]";
         else if (this.isDoNotTumbleDryUnspecified()) message = "unspecified";
         return "> Laundry instructions: " + message;
     }
