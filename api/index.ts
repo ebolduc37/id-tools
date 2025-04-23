@@ -71,7 +71,8 @@ app.get('/identify', async (req, res) => {
 
     try {
         const response = id_function.identify(garmentData);
-        res.json(response);
+        //res.json(response);
+        res.json(doNotTumbleDry);
     } catch (error) {
         res.json(error);
     }
