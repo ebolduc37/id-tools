@@ -1,0 +1,88 @@
+<!--<div style="display:flex;justify-content:center;">
+    <a href="https://www.patreon.com/bePatron?u=36066750"
+       target="_blank"
+      style="opacity:1;">
+      <button type="button" class="patreon-button" style="margin:0;font-size:14px;width:300px;">Thank you for supporting our research!</button>
+</a></div>-->
+
+<a href="https://www.patreon.com/bePatron?u=36066750" data-patreon-widget-type="become-patron-button">Become a member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+
+
+<script type="module">
+  import { identify } from "https://cdn.jsdelivr.net/gh/ebolduc37/id-tools/release-2025-04-15_02/index.js";
+
+  const LABEL_IM = "ISSEY MIYAKE";
+  
+  const SIZING_UNSPECIFIED = "UNSPECIFIED";
+  const SIZING_ALPHABETICAL = "ALPHABETICAL";
+  const SIZING_NUMERICAL = "NUMERICAL";
+
+  const TYPEFACE_UNSPECIFIED = "UNSPECIFIED";
+  const TYPEFACE_SANS_SERIF = "SANS_SERIF";
+  const TYPEFACE_SLAB_SERIF = "SLAB_SERIF";
+
+  const MANUFACTURER_UNSPECIFIED = "UNSPECIFIED";
+  const MANUFACTURER_IMI = "IM_INC";
+  const MANUFACTURER_IMII = "IM_INTL_INC";
+  const MANUFACTURER_ON_LIMITS = "ON_LIMITS";
+  const MANUFACTURER_ANET = "ANET";
+  
+  
+  const LOGO_UNSPECIFIED = "UNSPECIFIED";
+  const LOGO_IM_BW = "IM_BLACK_ON_WHITE";
+  const LOGO_IM_WB = "IM_WHITE_ON_BLACK";
+  const LOGO_ME_WB = "ME_BLACK_ON_WHITE";
+  const LOGO_ME_BW = "ME_WHITE_ON_BLACK";
+  const LOGO_BRUSH = "BRUSH";
+  const LOGO_ROUND = "ROUND";
+
+  const CODE_PRE = 'IM54-FD509';
+  
+  //
+  function buttonIM() {
+
+    let productCode = document.getElementById("productCodeBox").value;
+    if (document.getElementById("productCodeBox").value === "") productCode = CODE_PRE;
+
+    let typeface = TYPEFACE_UNSPECIFIED;
+    if (document.getElementById("typeface-UNSPECIFIED").checked) typeface = TYPEFACE_UNSPECIFIED;
+    else if (document.getElementById("typeface-SANS_SERIF").checked) typeface = TYPEFACE_SANS_SERIF;
+    else if (document.getElementById("typeface-SLAB_SERIF").checked) typeface = TYPEFACE_SLAB_SERIF;
+
+    let sizingSystem = SIZING_UNSPECIFIED;
+    if (document.getElementById("sizingSystem-UNSPECIFIED").checked) sizingSystem = SIZING_UNSPECIFIED;
+    else if (document.getElementById("sizingSystem-NUMERICAL").checked) sizingSystem = SIZING_NUMERICAL;
+    else if (document.getElementById("sizingSystem-ALPHABETICAL").checked) sizingSystem = SIZING_ALPHABETICAL;
+
+    let manufacturer = MANUFACTURER_UNSPECIFIED;
+    if (document.getElementById("manufacturer-UNSPECIFIED").checked) manufacturer = MANUFACTURER_UNSPECIFIED;
+    else if (document.getElementById("manufacturer-IMI").checked) manufacturer = MANUFACTURER_IMI;
+    else if (document.getElementById("manufacturer-IMII").checked) manufacturer = MANUFACTURER_IMII;
+    else if (document.getElementById("manufacturer-ON_LIMITS").checked) manufacturer = MANUFACTURER_ON_LIMITS;
+    else if (document.getElementById("manufacturer-ANET").checked) manufacturer = MANUFACTURER_ANET;
+
+
+    
+    let logoStyle = LOGO_UNSPECIFIED;
+    if (document.getElementById("logoStyle_UNSPECIFIED").checked) logoStyle = LOGO_UNSPECIFIED;
+    else if (document.getElementById("logoStyle_IM_BW").checked) logoStyle = LOGO_IM_BW;
+    else if (document.getElementById("logoStyle_IM_WB").checked) logoStyle = LOGO_IM_WB;
+    else if (document.getElementById("logoStyle_ME_BW").checked) logoStyle = LOGO_ME_BW;
+    else if (document.getElementById("logoStyle_ME_WB").checked) logoStyle = LOGO_ME_WB;
+    else if (document.getElementById("logoStyle_BRUSH").checked) logoStyle = LOGO_BRUSH;
+    else if (document.getElementById("logoStyle_ROUND").checked) logoStyle = LOGO_ROUND;
+    
+    const garmentData = {
+      label: LABEL_IM,
+      productCode: productCode,
+      manufacturer: manufacturer,
+      logoStyle: logoStyle,
+      sizingSystem: sizingSystem,
+      typeface: typeface,
+    };
+
+    document.getElementById("resultIM").innerHTML = identify(garmentData);
+}
+  document.querySelector('#identifyIM').addEventListener('click', buttonIM);
+</script>

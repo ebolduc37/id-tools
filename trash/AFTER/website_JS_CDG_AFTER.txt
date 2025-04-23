@@ -1,0 +1,48 @@
+<a href="https://www.patreon.com/bePatron?u=36066750" data-patreon-widget-type="become-patron-button">Become a member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+<script type="module">
+
+  const baseUrl = 'https://id-tools.p.rapidapi.com/identify?';
+  const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': 'dc2994e1f6msh08332cbc48da963p1f26b2jsn4f679cbcdb5a',
+		'x-rapidapi-host': 'id-tools.p.rapidapi.com'
+	}
+  };
+
+  const LABEL_CDG = "COMME des GARÇONS";
+  const YEAR_BLANK = "BLANK";
+  const YEAR_UNREADABLE = "UNREADABLE";
+  const YEAR_UNSPECIFIED = "UNSPECIFIED";
+  
+  async function buttonCDG() {
+    
+    let productCode = document.getElementById("productCode-STRING").value;
+    if (productCode === "") {
+      productCode = "GB-N004";
+    }
+    
+    let yearPrint = document.getElementById("year-drop").value;
+    if (document.getElementById("yearPrint-BLANK").checked) yearPrint = YEAR_BLANK;
+    else if (document.getElementById("yearPrint-UNREADABLE").checked) yearPrint = YEAR_UNREADABLE;
+    else if (document.getElementById("yearPrint-UNSPECIFIED").checked) yearPrint = YEAR_UNSPECIFIED;
+
+    let query = `label=${LABEL_CDG}`;
+    query += `&productCode=${productCode}`;
+    query += `&yearPrint=${yearPrint}`;
+
+    let result = "";
+
+    try {
+	  const response = await fetch(baseUrl+query, options);
+	  result = await response.json();
+    } catch (error) {
+	  console.error(error);
+    }
+    
+    document.getElementById("resultCDG").innerHTML = result;
+}
+  document.querySelector('#identifyCDG').addEventListener('click', buttonCDG);
+
+</script>

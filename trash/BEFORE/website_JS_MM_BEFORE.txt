@@ -1,0 +1,95 @@
+
+
+<a href="https://www.patreon.com/bePatron?u=36066750" data-patreon-widget-type="become-patron-button">Become a member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+
+
+<script type="module">
+  import { identify } from "https://cdn.jsdelivr.net/gh/ebolduc37/id-tools/release-2025-04-15_02/index.js";
+
+  const LABEL_MM = "Maison (Martin) Margiela";
+  
+  const CODE_UNREADABLE = "UNREADABLE";
+  const CODE_BLANK = "BLANK";
+  const CODE_UNSPECIFIED = "UNSPECIFIED";
+
+  const NOTATION_BLANK = "BLANK";
+  const NOTATION_0 = "0";
+  const NOTATION_0_10 = "0_10";
+  const NOTATION_1 = "1";
+  const NOTATION_1_10 = "1_10";
+  const NOTATION_3 = "3";
+  const NOTATION_4 = "4";
+  const NOTATION_4_14 = "4_14";
+  const NOTATION_6 = "6";
+  const NOTATION_6_BLANK = "6_BLANK";
+  const NOTATION_6_BIG = "6_BIG";
+  const NOTATION_MM6_MMM = "MM6_MMM";
+  const NOTATION_MM6_MM = "MM6_MM";
+  const NOTATION_8 = "8";
+  const NOTATION_10 = "10";
+  const NOTATION_11 = "11";
+  const NOTATION_12 = "12";
+  const NOTATION_13 = "13";
+  const NOTATION_14 = "14";
+  const NOTATION_15 = "15";
+  const NOTATION_20 = "20";
+  const NOTATION_22 = "22";
+  const NOTATION_REP = "REPRODUCTION";
+  const NOTATION_HM = "H_M";
+  const NOTATION_TNF = "THE_NORTH_FACE";
+  const NOTATION_SUP = "SUPREME";
+
+  const MANUFACTURER_UNSPECIFIED = "UNSPECIFIED";
+  const MANUFACTURER_MII = "MADE_IN_ITALY";
+  const MANUFACTURER_MIF = "MADE_IN_FRANCE";
+  const MANUFACTURER_FUZZI = "FUZZI";
+  const MANUFACTURER_DENI = "DENI_CLER";
+  const MANUFACTURER_MD_SEP = "MISS_DEANNA_SEPARATED";
+  const MANUFACTURER_MD_TOG_MD = "MISS_DEANNA_TOGETHER";
+  const MANUFACTURER_MD_TOG_DS = "DEANNA_SPA";
+  const MANUFACTURER_SI = "STAFF_INTERNATIONAL";
+  const MANUFACTURER_MG = "MARGIELA_GROUP";
+  const MANUFACTURER_MS = "MARGIELA_SAS";
+  const MANUFACTURER_MAC = "MACKINTOSH";
+  
+  //
+  function buttonMM() {
+    
+    let productCode = document.getElementById("productCodeBox").value;
+    if (productCode === "") productCode = "01PR/2021/3473/1";
+    
+    let labelNotation = eval(document.getElementById("labelNotation-drop").value);
+
+    let manufacturer = eval(document.getElementById("manufacturer-drop").value);
+
+    if (document.getElementById("productCode-BLANK").checked) productCode = CODE_BLANK;
+    else if (document.getElementById("productCode-UNREADABLE").checked) productCode = CODE_UNREADABLE;
+    else if (document.getElementById("productCode-UNSPECIFIED").checked) productCode = CODE_UNSPECIFIED;
+
+
+    
+    const garmentData = {
+      label: LABEL_MM,
+      labelNotation: labelNotation,
+      productCode: productCode,
+      manufacturer: manufacturer
+    };
+    
+    document.getElementById("resultMM").innerHTML = identify(garmentData);
+}
+
+  document.querySelector('#identifyMM').addEventListener('click', buttonMM);
+
+  //
+  $(document).ready(function(){ 
+    $("input[name='productCode-check']").click(function() {
+      if ($(this).val() != "productCode-STRING")
+        $("#productCodeBox").addClass('productCodeBoxEmpty');
+      if ($(this).val() == "productCode-STRING")
+        $("#productCodeBox").removeClass('productCodeBoxEmpty');
+    });
+  });
+
+  
+</script>

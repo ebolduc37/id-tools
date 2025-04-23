@@ -1,5 +1,5 @@
 const express = require("express");
-const id_function = require("../release-2025-04-15_02/index.js");
+const id_function = require("../release-2025-04-23_01/index.js");
 const app = express();
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -10,7 +10,7 @@ app.get('/extract', async (req, res) => {
     const productCode = req.query.productCode;
     const yearPrint = req.query.yearPrint;
     const logoStyle = req.query.logoStyle;
-    const sizingSystem = req.query.sizingSystem;
+    const sizing = req.query.sizing;
     const typeface = req.query.typeface;
     const manufacturer = req.query.manufacturer;
     const labelNotation = req.query.labelNotation;
@@ -22,7 +22,7 @@ app.get('/extract', async (req, res) => {
         productCode: productCode,
         yearPrint: yearPrint,
         logoStyle: logoStyle,
-        sizingSystem: sizingSystem,
+        sizing: sizing,
         typeface: typeface,
         manufacturer: manufacturer,
         labelNotation: labelNotation,
@@ -45,7 +45,7 @@ app.get('/identify', async (req, res) => {
     const productCode = req.query.productCode;
     const yearPrint = req.query.yearPrint;
     const logoStyle = req.query.logoStyle;
-    const sizingSystem = req.query.sizingSystem;
+    const sizing = req.query.sizing;
     const typeface = req.query.typeface;
     const manufacturer = req.query.manufacturer;
     const labelNotation = req.query.labelNotation;
@@ -57,7 +57,7 @@ app.get('/identify', async (req, res) => {
         productCode: productCode,
         yearPrint: yearPrint,
         logoStyle: logoStyle,
-        sizingSystem: sizingSystem,
+        sizing: sizing,
         typeface: typeface,
         manufacturer: manufacturer,
         labelNotation: labelNotation,
