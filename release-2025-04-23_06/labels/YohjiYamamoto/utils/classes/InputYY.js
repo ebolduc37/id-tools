@@ -671,7 +671,7 @@ class InputYY extends Input {
         else if (this.isDoNotTumbleDryShort()) message = "contains タンブラー禁止";
         else if (this.isDoNotTumbleDryBLANK()) message = "contains no タンブラー[...]";
         else if (this.isDoNotTumbleDryUnspecified()) message = "unspecified";
-        return "> Laundry instructions (JP): " + message;
+        return "> Laundry instructions: " + message;
     }
 
 
