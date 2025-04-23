@@ -1,5 +1,5 @@
 const express = require("express");
-const id_function = require("../release-2025-04-23_02/index.js");
+const id_function = require("../release-2025-04-23_03/index.js");
 const app = express();
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -71,8 +71,7 @@ app.get('/identify', async (req, res) => {
 
     try {
         const response = id_function.identify(garmentData);
-        //res.json(response);
-        res.json(doNotTumbleDry);
+        res.json(response);
     } catch (error) {
         res.json(error);
     }
